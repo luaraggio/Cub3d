@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Buscar todos os arquivos .c e verificar na Norminette
+FILES=$(git diff --cached --name-only | grep -E '\.c$')
+
+# Se não houver arquivos .c, apenas continua o push
+if [ -z "$FILES" ]; then
+    exit 0
+fi
+
+# Executa a Norminette nos arquivos encontrados
+echo "Verificando arquivos .c na Norminette..."
+norminette $FILES
+STATUS=$?
+
+if [ $STATUS -ne 0 ]; then
+    echo "Erro: Alguns arquivos .c não passaram na Norminette."
+    exit 1
+fi
+
+echo "Todos os arquivos .c estão formatados corretamente!"
+exit 0
+
