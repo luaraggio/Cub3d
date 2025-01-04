@@ -1,0 +1,16 @@
+R 800 600        # Sets the screen resolution (width x height)
+
+NO ./textures/north.xpm   # Path to the north wall texture
+SO ./textures/south.xpm   # Path to the south wall texture
+EA ./textures/east.xpm    # Path to the east wall texture
+WE ./textures/west.xpm    # Path to the west wall texture
+S ./textures/sprite.xpm   # Path to the sprite texture (optional)
+
+F 220,220,220          # Floor color (RGB)
+C 0,0,0                # Ceiling color (RGB)
+
+1 1 1 1 1 1 1 1 1 1  # Map layout
+1 0 0 0 0 0 0 0 0 1  # Where '1' represents a wall and '0' is free space
+1 0 1 1 1 1 1 0 0 1  # The player cannot pass through walls (1)
+1 0 0 0 0 1 1 0 0 1  # The player can move through free spaces (0)
+1 1 1 1 1 1 1 1 1 1  # The edges of the map must be surrounded by walls (1)
