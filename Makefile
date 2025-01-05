@@ -12,13 +12,19 @@ COMPILER = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-MLX_PATH = includes/mlx
+MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
+
+LIBFT = libs/my_libft/libft.a
 
 MLX = $(MLX_PATH)/libmlx.a
 
-MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
+LIBFT_PATH = includes/my_libft
 
-MAP = maps/map.cub
+MLX_PATH = includes/mlx
+
+#MAP = maps/map.cub
+MAP = maps/good/simple.cub
+#MAP = maps/bad/no_walls.cub
 
 SRCS = srcs/main.c
 
@@ -30,19 +36,26 @@ OBJS = ${SRCS:.c=.o}
 all: $(NAME)
 	@echo "$(PINK) 👾🎮 Cub3d ready!$(RESET)"
 
-$(NAME): $(MLX) $(OBJS)
+$(NAME): $(MLX) $(LIBFT) $(OBJS)
 			@$(COMPILER) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) -o $(NAME)
+
+$(LIBFT):
+	@make -s -C $(LIBFT_PATH)
+	@echo "$(BLUE) 📚 libft is ready to be used$(RESET)"
 
 $(MLX):
 	@make -s -C $(MLX_PATH)
+	@echo "$(BLUE) 📚 minilibx is ready to be used$(RESET)"
 
 clean:
 	@rm -f $(OBJS)
+	make clean -C $(LIBFT_PATH)
 	@make clean -C $(MLX_PATH)
 	@echo "$(BLUE) 📤 Objects deleted$(RESET)"
 
 fclean: clean
 		@rm -f $(NAME)
+		@make fclean -C $(LIBFT_PATH)
 		@echo "$(BLUE) 🧼 All cleaned$(RESET)"
 
 re: fclean all
