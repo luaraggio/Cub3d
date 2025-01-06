@@ -30,6 +30,9 @@
 //main.c
 int	main(int argc, char **argv);
 //------------------MAP------------------
-// map_validation.c
+// map.c
 int	set_map(t_map *map, char *map_file);
+// map_validation.c
+int	valid_map(t_map *map);
+int	valid_file(char *map_file);
 #endif

@@ -23,12 +23,13 @@ LIBFT_PATH = includes/my_libft
 MLX_PATH = includes/mlx
 
 #MAP = maps/map.cub
-MAP = maps/good/test_map.cub
+#MAP = maps/good/test_map.cub
 #MAP = maps/good/matrix.cub
-#MAP = maps/bad/no_walls.cub
+MAP = maps/bad/wrong_filetype.buc
 
 SRCS = \
 srcs/main.c \
+srcs/map/map.c \
 srcs/map/map_validation.c
 
 OBJS = ${SRCS:.c=.o}
