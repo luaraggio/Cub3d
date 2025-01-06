@@ -15,4 +15,11 @@
 
 # include "enums.h"
 
+typedef struct s_map
+{
+	char		*full_map;
+	char		**map;
+	int			rows;
+	int			cols;
+}				t_map;
 #endif

@@ -13,4 +13,10 @@
 #ifndef ENUMS_H
 # define ENUMS_H
 
+enum	e_errors
+{
+	ERROR = -1,
+	NO_ERROR = 0
+};
+
 #endif

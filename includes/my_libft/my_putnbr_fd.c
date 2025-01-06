@@ -1,32 +1,36 @@
 
 #include "libft.h"
 
-static void	my_own_putchar(char n, int fd);
+static int	my_own_putchar(char n, int fd);
 
-void	my_putnbr_fd(int n, int fd)
+int	my_putnbr_fd(int n, int fd)
 {
+	int	count;
+
+	count = 0;
 	if (n == -2147483648)
 		write(fd, "-2147483648", 11);
 	else
 	{
 		if (n < 0)
 		{
-			write(fd, "-", 1);
+			count += write(fd, "-", 1);
 			my_putnbr_fd((n = -n), fd);
 		}
 		else if (n > 9)
 		{
-			my_putnbr_fd((n / 10), fd);
-			my_putnbr_fd((n % 10), fd);
+			count += my_putnbr_fd((n / 10), fd);
+			count += my_putnbr_fd((n % 10), fd);
 		}
 		else
-			my_own_putchar((n + '0'), fd);
+			count += my_own_putchar((n + '0'), fd);
 	}
+	return (count);
 }
 
-static void	my_own_putchar(char n, int fd)
+static int	my_own_putchar(char n, int fd)
 {
-	write(fd, &n, 1);
+	return (write(fd, &n, 1));
 }
 /*
 #include <limits.h>

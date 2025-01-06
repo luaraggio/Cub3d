@@ -21,12 +21,15 @@
 # define BLUE "\033[34m"
 # define PINK "\033[35m"
 
+# include "mlx/mlx.h"
+# include "my_libft/libft.h"
 # include "enums.h"
 # include "structs.h"
-# include "mlx/mlx.h"
+# include <stdio.h>
 
-//------------------MAIN------------------
-// main.c
-
-
+//main.c
+int	main(int argc, char **argv);
+//------------------MAP------------------
+// map_validation.c
+int	set_map(t_map *map, char *map_file);
 #endif

@@ -14,7 +14,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
 
-LIBFT = libs/my_libft/libft.a
+LIBFT = $(LIBFT_PATH)/libft.a
 
 MLX = $(MLX_PATH)/libmlx.a
 
@@ -23,10 +23,13 @@ LIBFT_PATH = includes/my_libft
 MLX_PATH = includes/mlx
 
 #MAP = maps/map.cub
-MAP = maps/good/simple.cub
+MAP = maps/good/test_map.cub
+#MAP = maps/good/matrix.cub
 #MAP = maps/bad/no_walls.cub
 
-SRCS = srcs/main.c
+SRCS = \
+srcs/main.c \
+srcs/map/map_validation.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -37,7 +40,7 @@ all: $(NAME)
 	@echo "$(PINK) 👾🎮 Cub3d ready!$(RESET)"
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
-			@$(COMPILER) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) -o $(NAME)
+	@$(COMPILER) $(CFLAGS) $(MLX_FLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
 
 $(LIBFT):
 	@make -s -C $(LIBFT_PATH)

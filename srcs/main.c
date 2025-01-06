@@ -11,9 +11,25 @@
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <stdio.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	printf(PINK "Olá! Seja bem-vindo ao início do nosso projeto! 🦋🐙\n" RESET);
+	t_map	map;
+
+	my_bzero(&map, sizeof(t_map));
+	(void)argv;
+	if (argc != 2)
+	{
+		my_printf_error(RED "Error\n" "Usage: ./cub3d <map.cub>\n" RESET);
+		return ERROR;
+	}
+	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do nosso projeto! 🦋🐙\n" RESET);
+	if (set_map(&map, argv[1]) == ERROR)
+		return ERROR;
+	printf("Testando:\n");
+	printf("Colunas: %d\n", map.cols);
+	printf("Linhas: %d\n", map.rows);
+	print_matrix(map.map);
+	my_clean_vect(map.map);
+	return (NO_ERROR);
 }

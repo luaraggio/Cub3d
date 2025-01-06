@@ -21,11 +21,13 @@ my_memcpy.c \
 my_memmove.c \
 my_memset.c \
 my_printf.c \
+my_printf_error.c \
 my_putchar.c \
 my_putchar_fd.c \
 my_putendl_fd.c \
 my_putnbr.c \
 my_putnbr_base.c \
+my_putnbr_base_fd.c \
 my_putnbr_fd.c \
 my_putstr.c \
 my_putstr_fd.c \
