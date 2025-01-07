@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enums.h                                            :+:      :+:    :+:   */
+/*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 23:12:01 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/03 23:12:02 by lraggio          ###   ########.fr       */
+/*   Created: 2025/01/06 19:32:59 by lpaixao-          #+#    #+#             */
+/*   Updated: 2025/01/06 19:33:00 by lpaixao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUMS_H
-# define ENUMS_H
+#include "../../includes/cub3d.h"
 
-enum	e_errors
+int	valid_walls(t_map *map)
 {
-	ERROR = -1,
-	NO_ERROR = 0
-};
-
-enum	e_flags
-{
-	OFF = 0,
-	ON = 1,
-	TRUE = 2,
-	FALSE = 3
-};
-
-#endif
+	(void)map;
+	return (NO_ERROR);
+}

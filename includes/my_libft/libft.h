@@ -17,6 +17,7 @@ int					my_isalnum(int c);
 int					my_isalpha(int c);
 int					my_isascii(int c);
 int					my_isdigit(int c);
+int					my_isnum(int c);
 int					my_isprint(int c);
 char				*my_itoa(int n);
 void				*my_memchr(const void *s, int c, size_t n);

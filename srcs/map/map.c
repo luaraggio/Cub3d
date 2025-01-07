@@ -29,7 +29,10 @@ int	set_map(t_map *map, char *map_file)
 	}
 	set_struct(map);
 	if (valid_map(map) == ERROR)
+	{
+		my_clean_vect(map->map);
 		return ERROR;
+	}
 	return NO_ERROR;
 }
 
@@ -58,6 +61,11 @@ static int	open_map(t_map *map, char *map_file)
 		}
 	}
 	close(fd);
+	if (!map->full_map)
+	{
+		my_printf_error(RED "Error\n" "Empty map\n" RESET);
+		return (ERROR);
+	}
 	return (NO_ERROR);
 }
 

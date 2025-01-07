@@ -26,10 +26,10 @@ int	main(int argc, char **argv)
 	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do nosso projeto! 🦋🐙\n" RESET);
 	if (set_map(&map, argv[1]) == ERROR)
 		return ERROR;
-	printf("Testando:\n");
-	printf("Colunas: %d\n", map.cols);
-	printf("Linhas: %d\n", map.rows);
-	print_matrix(map.map);
+//	printf("Testando:\n");
+//	printf("Colunas: %d\n", map.cols);
+//	printf("Linhas: %d\n", map.rows);
+//	print_matrix(map.map);
 	my_clean_vect(map.map);
 	return (NO_ERROR);
 }

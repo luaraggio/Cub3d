@@ -13,6 +13,7 @@ my_isalnum.c \
 my_isalpha.c \
 my_isascii.c \
 my_isdigit.c \
+my_isnum.c \
 my_isprint.c \
 my_itoa.c \
 my_memchr.c \
