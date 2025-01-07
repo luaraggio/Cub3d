@@ -27,15 +27,47 @@ int	valid_map(t_map *map)
 //	printf("Valid map\n");
 	if (valid_ceiling_and_floor(map) == ERROR)
 		return (ERROR);
-/*	if (valid_walls(map) == ERROR)
+	if (valid_walls(map) == ERROR)
 		return (ERROR);
 	if (map_is_last(map) == ERROR)
 		return (ERROR);
-	if (valid_map_chars(map) == ERROR)
+/*	if (valid_map_chars(map) == ERROR)
 		return (ERROR);
 	if (valid_player(map) == ERROR)
 		return (ERROR);
 	if (floodfeel(map) == ERROR)
 		return (ERROR);*/
+	return (NO_ERROR);
+}
+
+int	map_is_last(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map->map[i])
+		i++;
+	i--;
+	//printf("Tamanho de i = %i\n", i);
+	while (i >= 0)
+	{
+		j = 0;
+		while (map->map[i][j])
+		{
+			if (map->map[i][j] == '1' || map->map[i][j] == '0')
+				return (NO_ERROR);
+			else if (map->map[i][j] == ' ' || map->map[i][j] == 'N' || \
+					map->map[i][j] == 'S' || \
+					map->map[i][j] == 'E' || map->map[i][j] == 'W')
+				j++;
+			else
+			{
+				my_printf_error(RED "Error\n" "There must be a map at the end of the file\n" RESET);
+				return (ERROR);
+			}
+		}
+		i--;
+	}
 	return (NO_ERROR);
 }

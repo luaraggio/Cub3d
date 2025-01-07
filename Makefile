@@ -22,10 +22,12 @@ LIBFT_PATH = includes/my_libft
 
 MLX_PATH = includes/mlx
 
+BAD_MAPS = ${shell find ./maps/bad}
+
 #MAP = maps/map.cub
 MAP = maps/good/matrix.cub
 #MAP = maps/good/subject_map.cub
-#MAP = maps/bad/empty.cub
+#MAP = maps/bad/missing_texture.cub
 
 SRCS = \
 srcs/main.c \
@@ -75,3 +77,7 @@ norm:
 
 val: re
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
+	
+test: re
+	clear
+	@$(foreach map,$(BAD_MAPS),echo processing: $(map); ./cub3d $(map);)

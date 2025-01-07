@@ -27,4 +27,14 @@ enum	e_flags
 	FALSE = 3
 };
 
+enum	e_map
+{
+	NO = 1,
+	SO = 2,
+	WE = 3,
+	EA = 4,
+	F = 5,
+	C = 6
+};
+
 #endif
