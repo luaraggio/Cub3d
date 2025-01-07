@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/03 23:11:58 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/07 18:08:57 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define BLUE "\033[34m"
 # define PINK "\033[35m"
 
-//# include "mlx/mlx.h"
+# include "mlx/mlx.h"
 # include "my_libft/libft.h"
 # include "enums.h"
 # include "structs.h"
@@ -39,4 +39,5 @@ int	valid_file(char *map_file);
 int	valid_ceiling_and_floor(t_map *map);
 // walls.c
 int	valid_walls(t_map *map);
+
 #endif

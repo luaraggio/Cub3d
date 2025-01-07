@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 21:21:19 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/05 21:21:23 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:04:06 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ static int	get_cols(t_map *map);
 int	set_map(t_map *map, char *map_file)
 {
 	if (open_map(map, map_file) == ERROR)
-		return ERROR;
+		return (ERROR);
 	if (valid_file(map_file) == ERROR)
 	{
 		free(map->full_map);
 		map->full_map = NULL;
-		return ERROR;
+		return (ERROR);
 	}
 	set_struct(map);
 	if (valid_map(map) == ERROR)
 	{
 		my_clean_vect(map->map);
-		return ERROR;
+		return (ERROR);
 	}
-	return NO_ERROR;
+	return (NO_ERROR);
 }
 
 static int	open_map(t_map *map, char *map_file)
