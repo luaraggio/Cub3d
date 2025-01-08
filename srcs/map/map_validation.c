@@ -25,15 +25,15 @@ int	valid_file(char *map_file)
 int	valid_map(t_map *map)
 {
 //	printf("Valid map\n");
+/*	if (valid_map_chars(map) == ERROR)
+		return (ERROR);*/
 	if (valid_ceiling_and_floor(map) == ERROR)
 		return (ERROR);
 	if (valid_walls(map) == ERROR)
 		return (ERROR);
 	if (map_is_last(map) == ERROR)
 		return (ERROR);
-/*	if (valid_map_chars(map) == ERROR)
-		return (ERROR);
-	if (valid_player(map) == ERROR)
+/*	if (valid_player(map) == ERROR)
 		return (ERROR);
 	if (floodfeel(map) == ERROR)
 		return (ERROR);*/

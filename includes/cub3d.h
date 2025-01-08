@@ -40,4 +40,8 @@ int map_is_last(t_map *map);
 int	valid_ceiling_and_floor(t_map *map);
 // walls.c
 int	valid_walls(t_map *map);
+// is_map.c
+int	is_map(char **map);
+int	line_belongs_to_map(char *line);
+int	character_belongs_to_map(char c, char next);
 #endif

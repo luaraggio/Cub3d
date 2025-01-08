@@ -34,7 +34,8 @@ srcs/main.c \
 srcs/map/map.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \
-srcs/map/ceiling_and_floor.c 
+srcs/map/ceiling_and_floor.c \
+srcs/map/is_map.c
 
 OBJS = ${SRCS:.c=.o}
 
