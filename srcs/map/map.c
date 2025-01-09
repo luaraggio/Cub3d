@@ -76,6 +76,7 @@ static void	set_struct(t_map *map)
 	map->full_map = NULL;
 	map->rows = get_rows(map);
 	map->cols = get_cols(map);
+//	map->start_map = map_start(map);
 }
 
 static int	get_rows(t_map *map)

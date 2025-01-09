@@ -17,13 +17,18 @@ static int	check_texture(char *map_line, int j);
 
 int	valid_walls(t_map *map)
 {
+	int	err_flag;
+
+	err_flag = OFF;
 	if (direction_ok(map, "NO") == ERROR)
-		return (ERROR);
+		err_flag = ON;
 	if (direction_ok(map, "SO") == ERROR)
-		return (ERROR);
+		err_flag = ON;
 	if (direction_ok(map, "WE") == ERROR)
-		return (ERROR);
+		err_flag = ON;
 	if (direction_ok(map, "EA") == ERROR)
+		err_flag = ON;
+	if (err_flag == ON)
 		return (ERROR);
 	return (NO_ERROR);
 }
@@ -37,11 +42,11 @@ static int	direction_ok(t_map *map, char *direction)
 	i = 0;
 	flag = 0;
 //	printf("Vai checar a direção\n");
-	while (map->map[i] && map->map[i][0] != '1')
+	while (map->map[i] && line_belongs_to_map(map->map[i]) == ERROR)
 	{
 		j = 0;
 //		printf("Linha %d: %s\n", i, map->map[i]);
-		while (map->map[i][j] && map->map[i][j] != '1')
+		while (map->map[i][j] && line_belongs_to_map(map->map[i]) == ERROR)
 		{
 			if (my_strncmp(&(map->map[i][j]), direction, 2) == 0)
 			{

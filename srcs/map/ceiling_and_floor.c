@@ -25,11 +25,11 @@ int	valid_ceiling_and_floor(t_map *map)
 	c_flag = 0;
 	f_flag = 0;
 //	printf("Vai checar céu e chão\n");
-	while (map->map[i] && map->map[i][0] != '1')
+	while (map->map[i] && line_belongs_to_map(map->map[i]) == ERROR)
 	{
 		j = 0;
 //		printf("Linha %d: %s\n", i, map->map[i]);
-		while (map->map[i][j] && map->map[i][j] != '1')
+		while (map->map[i][j] && line_belongs_to_map(map->map[i]) == ERROR)
 		{
 //			printf("map->map[%d][%d] = %c\n", i, j, map->map[i][j]);
 			if (map->map[i][j] == 'C')

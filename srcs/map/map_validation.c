@@ -12,6 +12,8 @@
 
 #include "../../includes/cub3d.h"
 
+static int	map_is_empty(t_map *map);
+
 int	valid_file(char *map_file)
 {
 	if (map_file[my_strlen(map_file) - 4] != '.' || map_file[my_strlen(map_file) - 3] != 'c' || map_file[my_strlen(map_file) - 2] != 'u' || map_file[my_strlen(map_file) - 1] != 'b')
@@ -24,18 +26,24 @@ int	valid_file(char *map_file)
 
 int	valid_map(t_map *map)
 {
-//	printf("Valid map\n");
-/*	if (valid_map_chars(map) == ERROR)
-		return (ERROR);*/
-	if (valid_ceiling_and_floor(map) == ERROR)
-		return (ERROR);
-	if (valid_walls(map) == ERROR)
+	int	err_flag;
+
+	err_flag = OFF;
+	if (map_is_empty(map) == ERROR)
+		return(ERROR);
+	if (valid_map_chars(map) == ERROR)
 		return (ERROR);
 	if (map_is_last(map) == ERROR)
 		return (ERROR);
-/*	if (valid_player(map) == ERROR)
+	if (valid_ceiling_and_floor(map) == ERROR)
+		err_flag = ON;
+	if (valid_walls(map) == ERROR)
+		err_flag = ON;
+	if (err_flag == ON)
 		return (ERROR);
-	if (floodfeel(map) == ERROR)
+	if (valid_player(map) == ERROR)
+		return (ERROR);
+/*	if (floodfeel(map) == ERROR)
 		return (ERROR);*/
 	return (NO_ERROR);
 }
@@ -49,7 +57,6 @@ int	map_is_last(t_map *map)
 	while (map->map[i])
 		i++;
 	i--;
-	//printf("Tamanho de i = %i\n", i);
 	while (i >= 0)
 	{
 		j = 0;
@@ -70,4 +77,28 @@ int	map_is_last(t_map *map)
 		i--;
 	}
 	return (NO_ERROR);
+}
+
+static int	map_is_empty(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map->map[i])
+	{
+		if (map->map[i][1])
+		{
+			while (map->map[i][j])
+			{
+				if (map->map[i][j] != ' ')
+					return NO_ERROR;
+				j++;
+			}
+		}
+		i++;
+	}
+	my_printf_error(RED "Error\n" "Empty map\n" RESET);
+	return (ERROR);
 }

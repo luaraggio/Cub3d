@@ -31,17 +31,25 @@
 int	main(int argc, char **argv);
 //------------------MAP------------------
 // map.c
-int	set_map(t_map *map, char *map_file);
+int     set_map(t_map *map, char *map_file);
 // map_validation.c
-int	valid_map(t_map *map);
-int	valid_file(char *map_file);
-int map_is_last(t_map *map);
+int     valid_map(t_map *map);
+int 	valid_file(char *map_file);
+int     map_is_last(t_map *map);
 // ceiling_and_floor.c
-int	valid_ceiling_and_floor(t_map *map);
+int     valid_ceiling_and_floor(t_map *map);
 // walls.c
-int	valid_walls(t_map *map);
+int     valid_walls(t_map *map);
 // is_map.c
-int	is_map(char **map);
-int	line_belongs_to_map(char *line);
-int	character_belongs_to_map(char c, char next);
+int     is_map(char **map);
+int     character_belongs_to_map(char c, char next);
+int     is_player(char c);
+    //char    *map_start(t_map *map);
+// line_is.c 
+int 	line_belongs_to_map(char *line);
+int     line_is_direction(char *line);
+int     line_is_f_or_c(char *line);
+// char_validation.c
+int     valid_map_chars(t_map *map);
+int     valid_player(t_map *map);
 #endif

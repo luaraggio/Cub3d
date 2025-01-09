@@ -1,65 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_map.c                                           :+:      :+:    :+:   */
+/*   line_is.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 23:08:15 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/07 23:08:16 by lpaixao-         ###   ########.fr       */
+/*   Created: 2025/01/08 17:31:33 by lpaixao-          #+#    #+#             */
+/*   Updated: 2025/01/08 17:31:35 by lpaixao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	is_map(char **map)
+int	line_belongs_to_map(char *line)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (map[i])
+	while (line[i])
 	{
-		if (line_belongs_to_map(map[i]) == ERROR)
+		if ((line[i] != '\n' || line[i] != '\0') && character_belongs_to_map(line[i], line[i + 1]) == ERROR)
 			return (ERROR);
 		i++;
 	}
 	return (NO_ERROR);
 }
 
-int character_belongs_to_map(char c, char next)
+int	line_is_direction(char *line)
 {
-	if (c == ' ' || c == '1' || c == '0')
+	int	j;
+
+	j = 0;
+	while (line[j] == ' ')
+		j++;
+	if (my_strncmp(&(line[j]), "NO", 2) == 0)
 		return (NO_ERROR);
-	else if (c == 'N' && next != 'O')
+	else if (my_strncmp(&(line[j]), "SO", 2) == 0)
 		return (NO_ERROR);
-	else if (c == 'S' && next != 'O')
+	else if (my_strncmp(&(line[j]), "EA", 2) == 0)
 		return (NO_ERROR);
-	else if (c == 'W' && next != 'E')
-		return (NO_ERROR);
-	else if (c == 'E' && next != 'A')
+	else if (my_strncmp(&(line[j]), "WE", 2) == 0)
 		return (NO_ERROR);
 	else
 		return (ERROR);
 }
 
-int	is_player(char c)
+int	line_is_f_or_c(char *line)
 {
-	if (c == 'C' || c == 'S' || c == 'W' || c == 'E')
+	int	j;
+
+	j = 0;
+	while (line[j] == ' ')
+		j++;
+	if (line[j] == 'C')
+		return (NO_ERROR);
+	else if (line[j] == 'F')
 		return (NO_ERROR);
 	return (ERROR);
 }
-
-/*
-char	*map_start(t_map *map)
-{
-	int	i;
-	
-	i = 0;
-	while (map->map[i])
-	{
-		if (is_map(&(map->map[i])) == NO_ERROR)
-			return (&(map->map[i]));
-		i++;
-	}
-	return (NULL);
-}*/
