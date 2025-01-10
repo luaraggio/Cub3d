@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lpaixao <lpaixao-@student.42.rio>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/09 22:49:09 by lpaixao           #+#    #+#             */
+/*   Updated: 2025/01/09 22:49:10 by lpaixao          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 void	my_striteri(char *s, void (*f)(unsigned int, char *))
 {
@@ -19,7 +30,7 @@ void	my_striteri(char *s, void (*f)(unsigned int, char *))
 void	my_function(unsigned int i, char *alpha)
 {
 	if (alpha[i] >= 97 && alpha[i] <= 122)
-		alpha[i] = alpha[i] - 32; 
+		alpha[i] = alpha[i] - 32;
 }
 
 int	main(void)

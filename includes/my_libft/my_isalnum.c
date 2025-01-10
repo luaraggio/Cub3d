@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lpaixao <lpaixao-@student.42.rio>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/09 22:47:40 by lpaixao           #+#    #+#             */
+/*   Updated: 2025/01/09 22:47:41 by lpaixao          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	my_isalnum(int c)
 {
@@ -32,10 +43,10 @@ int	main(int argc, char *argv[])
 	original = isalnum(argv[1][0]);
 	printf("Minha função: %i \n", a);
 	if (a == 8)
-		printf("O caractere digitado é ou um dígito (de 0 a 9) 
+		printf("O caractere digitado é ou um dígito (de 0 a 9)
 		ou uma letra \n");
 	else
-		printf("O caractere digitado não é nem um dígito (de 0 a 9) 
+		printf("O caractere digitado não é nem um dígito (de 0 a 9)
 		nem uma letra \n");
 	printf("Função original: %i \n", original);
 	return (0);
