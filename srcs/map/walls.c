@@ -72,7 +72,8 @@ static int	direction_ok(t_map *map, char *direction)
 static int	check_texture(char *map_line, int j)
 {
 	(void)j;
-	printf("Vai checar a textura %s\n", map_line);
+	(void)map_line;
+//	printf("Vai checar a textura %s\n", map_line);
 	// 1- Arquivo existe?
 	// 2- Tem permissão de leitura?
 	//          Os 2 de cima descobrimos com open

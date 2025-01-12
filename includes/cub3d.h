@@ -44,7 +44,7 @@ int     valid_walls(t_map *map);
 int     is_map(char **map);
 int     character_belongs_to_map(char c, char next);
 int     is_player(char c);
-    //char    *map_start(t_map *map);
+int     map_start(t_map *map);
 // line_is.c 
 int 	line_belongs_to_map(char *line);
 int     line_is_direction(char *line);
@@ -52,4 +52,14 @@ int     line_is_f_or_c(char *line);
 // char_validation.c
 int     valid_map_chars(t_map *map);
 int     valid_player(t_map *map);
+// floodfeel.c
+int     map_is_closed(t_map *map);
+int     floodfeel(char **map, int i, int j, int total_i);
+int     check_first_and_last_line(t_map *map);
+// get_map_data.c
+int     get_rows(t_map *map);
+int     get_cols(t_map *map);
+int     get_total_i(t_map *map);
+//int	get_player_x(t_map *map);
+//int	get_player_y(t_map *map);
 #endif

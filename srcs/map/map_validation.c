@@ -43,8 +43,8 @@ int	valid_map(t_map *map)
 		return (ERROR);
 	if (valid_player(map) == ERROR)
 		return (ERROR);
-/*	if (floodfeel(map) == ERROR)
-		return (ERROR);*/
+	if (map_is_closed(map) == ERROR)
+		return (ERROR);
 	return (NO_ERROR);
 }
 

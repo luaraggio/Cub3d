@@ -25,19 +25,21 @@ MLX_PATH = includes/mlx
 BAD_MAPS = ${shell find ./maps/bad}
 
 #MAP = maps/map.cub
-#MAP = maps/good/matrix.cub
+MAP = maps/good/matrix.cub
 #MAP = maps/good/subject_map.cub
-MAP = maps/bad/empty.cub
+#MAP = maps/bad/empty.cub
 
 SRCS = \
 srcs/main.c \
 srcs/map/map.c \
+srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \
 srcs/map/ceiling_and_floor.c \
 srcs/map/is_map.c \
 srcs/map/char_validation.c \
-srcs/map/line_is.c
+srcs/map/line_is.c \
+srcs/map/floodfeel.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -84,3 +86,4 @@ val: re
 test: re
 	clear
 	@$(foreach map,$(BAD_MAPS),echo processing: $(map); ./cub3d $(map);)
+	@echo "\n"

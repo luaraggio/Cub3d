@@ -14,8 +14,7 @@
 
 static int	open_map(t_map *map, char *map_file);
 static void	set_struct(t_map *map);
-static int	get_rows(t_map *map);
-static int	get_cols(t_map *map);
+static void	set_player_start(t_map *map);
 
 int	set_map(t_map *map, char *map_file)
 {
@@ -76,35 +75,35 @@ static void	set_struct(t_map *map)
 	map->full_map = NULL;
 	map->rows = get_rows(map);
 	map->cols = get_cols(map);
-//	map->start_map = map_start(map);
+	map->total_i = get_total_i(map);
+	map->i_start = map_start(map);
+	set_player_start(map);
+//	map->player_x = get_player_x(map);
+//	map->player_y = get_player_y(map);
 }
 
-static int	get_rows(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map->map[i])
-		i++;
-	return i - 6;
-}
-
-static int	get_cols(t_map *map)
+static void	set_player_start(t_map *map)
 {
 	int	i;
 	int	j;
-	int	max_row;
-
+	
 	i = 0;
-	max_row = 0;
+	j = 0;
+	while ((i < map->total_i) && line_belongs_to_map(map->map[i]) == ERROR)
+        i++;
 	while (map->map[i])
 	{
 		j = 0;
 		while (map->map[i][j])
+		{
+			if (is_player(map->map[i][j]) == NO_ERROR)
+			{
+				map->player_j = j;
+				map->player_i = i;
+				return ;
+			}
 			j++;
-		if (i >= 6 && j > max_row)
-			max_row = j;
+		}
 		i++;
 	}
-	return max_row;
 }

@@ -44,13 +44,13 @@ int character_belongs_to_map(char c, char next)
 
 int	is_player(char c)
 {
-	if (c == 'C' || c == 'S' || c == 'W' || c == 'E')
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (NO_ERROR);
 	return (ERROR);
 }
 
-/*
-char	*map_start(t_map *map)
+
+int	map_start(t_map *map)
 {
 	int	i;
 	
@@ -58,8 +58,8 @@ char	*map_start(t_map *map)
 	while (map->map[i])
 	{
 		if (is_map(&(map->map[i])) == NO_ERROR)
-			return (&(map->map[i]));
+			return (i);
 		i++;
 	}
-	return (NULL);
-}*/
+	return (0);
+}

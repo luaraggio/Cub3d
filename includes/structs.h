@@ -19,8 +19,11 @@ typedef struct s_map
 {
 	char		*full_map;
 	char		**map;
-//	char		*start_map;
+	int			i_start;
+	int			total_i;
 	int			rows;
 	int			cols;
+	int			player_j;
+	int			player_i;
 }				t_map;
 #endif
