@@ -16,15 +16,7 @@ int	map_is_closed(t_map *map)
 {
 	char **map_copy;
 
-//	printf("Chegou na floodfeel\n");
-/*	if (check_first_and_last_line(map->map) == ERROR)
-	{
-		my_printf_error(RED "Error\n" "Map is not closed\n" RESET);
-		return (ERROR);
-	}*/
 	map_copy = my_copy_matrix(map->map);
-//	print_matrix(map_copy);
-//	printf("totay i = %i\n", map->total_i);
 	if (check_first_and_last_line(map) == ERROR || floodfeel(map_copy, map->player_i, map->player_j, map->total_i) == ERROR)
 	{
 		my_clean_vect(map_copy);

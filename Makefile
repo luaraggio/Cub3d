@@ -25,7 +25,8 @@ MLX_PATH = includes/mlx
 BAD_MAPS = ${shell find ./maps/bad}
 
 #MAP = maps/map.cub
-MAP = maps/good/matrix.cub
+#MAP = maps/good/matrix.cub
+MAP = maps/good/test_textures.cub
 #MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 
@@ -39,7 +40,8 @@ srcs/map/ceiling_and_floor.c \
 srcs/map/is_map.c \
 srcs/map/char_validation.c \
 srcs/map/line_is.c \
-srcs/map/floodfeel.c
+srcs/map/floodfeel.c \
+srcs/map/texture.c
 
 OBJS = ${SRCS:.c=.o}
 

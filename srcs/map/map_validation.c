@@ -14,7 +14,7 @@
 
 static int	map_is_empty(t_map *map);
 
-int	valid_file(char *map_file)
+int	valid_map_file(char *map_file)
 {
 	if (map_file[my_strlen(map_file) - 4] != '.' || map_file[my_strlen(map_file) - 3] != 'c' || map_file[my_strlen(map_file) - 2] != 'u' || map_file[my_strlen(map_file) - 1] != 'b')
 	{

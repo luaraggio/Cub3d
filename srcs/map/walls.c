@@ -13,7 +13,7 @@
 #include "../../includes/cub3d.h"
 
 static int	direction_ok(t_map *map, char *direction);
-static int	check_texture(char *map_line, int j);
+static int	check_texture(t_map *map, char *map_line, int j);
 
 int	valid_walls(t_map *map)
 {
@@ -51,7 +51,7 @@ static int	direction_ok(t_map *map, char *direction)
 			if (my_strncmp(&(map->map[i][j]), direction, 2) == 0)
 			{
 				flag++;
-				if (check_texture(map->map[i], j + 2) == ERROR)
+				if (check_texture(map, map->map[i], j + 2) == ERROR)
 					return (ERROR);
 				break ;
 			}
@@ -69,14 +69,26 @@ static int	direction_ok(t_map *map, char *direction)
 	return (NO_ERROR);
 }
 
-static int	check_texture(char *map_line, int j)
+static int	check_texture(t_map *map, char *map_line, int j)
 {
 	(void)j;
 	(void)map_line;
-//	printf("Vai checar a textura %s\n", map_line);
-	// 1- Arquivo existe?
+	printf("Vai checar a textura %s\n", map_line);
+	set_textures_names(map, map_line);
+	printf("Textura NO: %s\n", map->noth_texture);
+	printf("Textura SO: %s\n", map->south_texture);
+	printf("Textura WE: %s\n", map->west_texture);
+	printf("Textura EA: %s\n", map->east_texture);
+/*	// 1- Arquivo existe?
 	// 2- Tem permissão de leitura?
-	//          Os 2 de cima descobrimos com open
+	if (open_texture() == ERROR)
+		return ERROR;
 	// 3- A extensão do arquivo está correta?
+	if (valid_texture_file() == ERROR)
+	{
+		free(map->full_map);
+		map->full_map = NULL;
+		return ERROR;
+	}*/
 	return (NO_ERROR);
 }

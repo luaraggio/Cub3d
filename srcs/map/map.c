@@ -20,7 +20,7 @@ int	set_map(t_map *map, char *map_file)
 {
 	if (open_map(map, map_file) == ERROR)
 		return ERROR;
-	if (valid_file(map_file) == ERROR)
+	if (valid_map_file(map_file) == ERROR)
 	{
 		free(map->full_map);
 		map->full_map = NULL;
@@ -78,8 +78,11 @@ static void	set_struct(t_map *map)
 	map->total_i = get_total_i(map);
 	map->i_start = map_start(map);
 	set_player_start(map);
-//	map->player_x = get_player_x(map);
-//	map->player_y = get_player_y(map);
+/*	set_textures_names(map, map_line);
+	printf("Textura NO: %s\n", map->noth_texture);
+	printf("Textura SO: %s\n", map->south_texture);
+	printf("Textura WE: %s\n", map->west_texture);
+	printf("Textura EA: %s\n", map->east_texture);*/
 }
 
 static void	set_player_start(t_map *map)

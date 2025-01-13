@@ -25,5 +25,13 @@ typedef struct s_map
 	int			cols;
 	int			player_j;
 	int			player_i;
+	char		*noth_texture;
+	char		*south_texture;
+	char		*west_texture;
+	char		*east_texture;
+	int			fd_noth_texture;
+	int			fd_south_texture;
+	int			fd_west_texture;
+	int			fd_east_texture;
 }				t_map;
 #endif

@@ -46,21 +46,17 @@ int valid_player(t_map *map)
         i++;
 	while (map->map[i])
     {
-//      printf("Map->map[%i]: %s\n", i, map->map[i]);
         j = 0;
         while (map->map[i][j])
         {
-//            printf("Map->map[%i][%i]: %c\n", i, j, map->map[i][j]);
             if (is_player(map->map[i][j]) == NO_ERROR)
             {
-//                printf("Player encontrado em map->map[%i][%i] %c\n", i, j, map->map[i][j]);
                 player_count++;
             }
             j++;
         }
         i++;
     }
-//    printf("Player count %i em map->map[%i][%i]\n", player_count, i, j);
     if (player_count != 1)
     {
         my_printf_error(RED "Error\n" "There must be one player, and only one, in the map\n" RESET);
