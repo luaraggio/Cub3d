@@ -14,13 +14,15 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
 
+LIBFT_PATH = includes/my_libft
+
+MLX_PATH = includes/mlx
+
 LIBFT = $(LIBFT_PATH)/libft.a
 
 MLX = $(MLX_PATH)/libmlx.a
 
-LIBFT_PATH = includes/my_libft
-
-MLX_PATH = includes/mlx
+CONTAINER_WORKDIR_PATH = "/Users/lraggio/Studies/my_container/"
 
 #MAP = maps/map.cub
 MAP = maps/good/matrix.cub
@@ -32,7 +34,8 @@ srcs/main.c \
 srcs/map/map.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \
-srcs/map/ceiling_and_floor.c 
+srcs/map/ceiling_and_floor.c \
+srcs/game.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -75,3 +78,6 @@ norm:
 
 val: re
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
+
+container:
+	exec docker container run -u root -ti -v $(CONTAINER_WORKDIR_PATH):/workspace devcontainer
