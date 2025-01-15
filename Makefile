@@ -14,10 +14,15 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
 
+LIBFT_PATH = includes/my_libft
+
+MLX_PATH = includes/mlx
+
 LIBFT = $(LIBFT_PATH)/libft.a
 
 MLX = $(MLX_PATH)/libmlx.a
 
+CONTAINER_WORKDIR_PATH = "/Users/lraggio/Studies/my_container/"
 LIBFT_PATH = includes/my_libft
 
 MLX_PATH = includes/mlx
@@ -37,6 +42,7 @@ srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \
 srcs/map/ceiling_and_floor.c \
+srcs/game.c \
 srcs/map/is_map.c \
 srcs/map/char_validation.c \
 srcs/map/line_is.c \
@@ -84,6 +90,9 @@ norm:
 
 val: re
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
+
+container:
+	exec docker container run -u root -ti -v $(CONTAINER_WORKDIR_PATH):/workspace devcontainer
 	
 test: re
 	clear

@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/03 23:11:58 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/15 15:38:01 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 # define BLUE "\033[34m"
 # define PINK "\033[35m"
 
+//Size
+# define W_HEIGHT 640
+# define W_WIDTH 480
+
+# include "mlx/mlx.h"
 # include "mlx/mlx.h"
 # include "my_libft/libft.h"
 # include "enums.h"
@@ -29,6 +34,10 @@
 
 //main.c
 int	main(int argc, char **argv);
+
+//game.c
+int start_game(void);
+
 //------------------MAP------------------
 // map.c
 int     set_map(t_map *map, char *map_file);
@@ -39,6 +48,8 @@ int     map_is_last(t_map *map);
 // ceiling_and_floor.c
 int     valid_ceiling_and_floor(t_map *map);
 // walls.c
+int	valid_walls(t_map *map);
+
 int     valid_walls(t_map *map);
 // is_map.c
 int     is_map(char **map);

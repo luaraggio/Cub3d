@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/03 23:12:04 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/15 15:38:26 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct s_map
 	int			total_i;
 	int			rows;
 	int			cols;
+
+	int			height; //altura
+	int			width; //largura
 	int			player_j;
 	int			player_i;
 	char		*noth_texture;
@@ -34,4 +37,14 @@ typedef struct s_map
 	int			fd_west_texture;
 	int			fd_east_texture;
 }				t_map;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	int		moves;
+	int		w_height;
+	int		w_width;
+}			t_game;
+
 #endif
