@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:32:59 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/06 19:33:00 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:07:48 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ static int	check_texture(t_map *map, char *map_line, int j)
 {
 	(void)j;
 	(void)map_line;
-	printf("Vai checar a textura %s\n", map_line);
+	//printf("Vai checar a textura %s\n", map_line);
 	set_textures_names(map, map_line);
-	printf("Textura NO: %s\n", map->noth_texture);
-	printf("Textura SO: %s\n", map->south_texture);
-	printf("Textura WE: %s\n", map->west_texture);
-	printf("Textura EA: %s\n", map->east_texture);
+	//printf("Textura NO: %s\n", map->noth_texture);
+	//printf("Textura SO: %s\n", map->south_texture);
+	//printf("Textura WE: %s\n", map->west_texture);
+	//printf("Textura EA: %s\n", map->east_texture);
 /*	// 1- Arquivo existe?
 	// 2- Tem permissão de leitura?
 	if (open_texture() == ERROR)

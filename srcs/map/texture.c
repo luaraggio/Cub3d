@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 20:29:02 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/12 20:29:04 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:08:44 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	set_texture(t_map *map, char *map_line, char *direction)
 		j += 2;
 		while (map_line[j] && map_line[j] == ' ')
 			j++;
-		printf("Texture %s: %s, com j = %i em %c\n", direction, &(map_line[j]), j, map_line[j]);
+		//printf("Texture %s: %s, com j = %i em %c\n", direction, &(map_line[j]), j, map_line[j]);
 		if (my_strcmp(direction, "NO") == 0)
 			map->noth_texture = my_strdup(&(map_line[j]));
 		else if (my_strcmp(direction, "SO") == 0)

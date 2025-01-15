@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/15 15:31:29 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/15 18:33:37 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,24 @@ otherwise a non-null pointer is returned as a connection identifier.
 
 int init_game_struct(t_game *game)
 {
-    game->w_height = W_HEIGHT * 1;
-    game->w_width = W_WIDTH * 1;
+    game->w_height = W_HEIGHT;
+    game->w_width = W_WIDTH;
 	game->moves = 0;
     return (NO_ERROR);
 }
 
-int start_game()
+int exit_game(t_game *game)
 {
-    t_game *game;
+    mlx_destroy_window(game->mlx, game->win);
+    mlx_destroy_display(game->mlx);
+    free(game->mlx);
+    free(game);
+    //exit(EXIT_SUCCESS);
+    return (NO_ERROR);
+}
 
-    game = my_calloc(1, sizeof(t_game));
+int start_game(t_game *game)
+{
     game->mlx = mlx_init();
     if (game->mlx == NULL)
     {
@@ -48,6 +55,6 @@ int start_game()
         return (ERROR);
     }
     init_game_struct(game);
-    game->win = mlx_new_window(game->mlx, game->w_width, game->w_height, "Cub3d 🤖");
+    game->win = mlx_new_window(game->mlx, game->w_width, game->w_height, "Cub3d");
     return (NO_ERROR);
 }
