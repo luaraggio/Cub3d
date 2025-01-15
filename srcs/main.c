@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:10 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/14 23:28:05 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/15 15:32:59 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,16 @@ int	check_args(int argc)
 int	main(int argc, char **argv)
 {
 	t_map	map;
-	t_game *game;
 
 	my_bzero(&map, sizeof(t_map));
-	game = NULL;
+	//game = NULL;
 	(void)argv;
 	if (check_args(argc) == ERROR)
 		return (ERROR);
 	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do nosso projeto! 🦋🐙\n" RESET);
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
-	start_game(game);
+	start_game();
 	//hooks das teclas
 	//hook do próprio jogo
 	my_clean_vect(map.map);
