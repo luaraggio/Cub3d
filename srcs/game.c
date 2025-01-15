@@ -6,18 +6,11 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/15 18:33:37 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:09:24 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-/*int close_game(t_game *game)
-{
-    mlx_destroy_display(game->mlx);
-    exit(EXIT_SUCCESS);
-    return (END);
-}*/
 
 /*
 
@@ -36,11 +29,9 @@ int init_game_struct(t_game *game)
 
 int exit_game(t_game *game)
 {
-    mlx_destroy_window(game->mlx, game->win);
     mlx_destroy_display(game->mlx);
     free(game->mlx);
-    free(game);
-    //exit(EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
     return (NO_ERROR);
 }
 

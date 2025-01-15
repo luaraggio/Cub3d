@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/15 18:15:21 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/15 20:05:38 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv);
 //game.c
 int start_game(t_game *game);
 int exit_game(t_game *game);
+int init_game_struct(t_game *game);
 
 //------------------MAP------------------
 // map.c
