@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/07 18:08:57 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/14 23:27:24 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # define BLUE "\033[34m"
 # define PINK "\033[35m"
 
+//Size
+# define W_HEIGHT 640
+# define W_WIDTH 480
+
 # include "mlx/mlx.h"
 # include "my_libft/libft.h"
 # include "enums.h"
@@ -29,6 +33,10 @@
 
 //main.c
 int	main(int argc, char **argv);
+
+//game.c
+int start_game(t_game *game);
+
 //------------------MAP------------------
 // map.c
 int	set_map(t_map *map, char *map_file);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/07 19:51:22 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/14 23:21:37 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,13 @@ typedef struct s_map
 	int			width; //largura
 }				t_map;
 
-typedef struct s_window
-{
-	int			w_height; //altura
-	int			w_width; //largura
-}			t_window;
-
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
 	int		moves;
-	struct s_map *map;
-	struct s_window *window;
+	int		w_height;
+	int		w_width;
 }			t_game;
 
 #endif

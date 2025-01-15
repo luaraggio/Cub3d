@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:01 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/03 23:12:02 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/14 23:03:10 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ enum	e_flags
 	OFF = 0,
 	ON = 1,
 	TRUE = 2,
-	FALSE = 3
+	FALSE = 3,
+	END = 4
 };
 
 #endif
