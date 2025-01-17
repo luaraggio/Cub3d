@@ -21,6 +21,19 @@
 # define BLUE "\033[34m"
 # define PINK "\033[35m"
 
+//Keycodes
+
+# define ESC_KEY 65307
+# define Q_KEY 113
+# define UP_KEY 65362
+# define DOWN_KEY 65364 
+# define RIGHT_KEY 65363
+# define LEFT_KEY 65361
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
+
 //Size
 # define W_HEIGHT 800
 # define W_WIDTH 1300
@@ -36,9 +49,10 @@
 int	main(int argc, char **argv);
 
 //game.c
-int start_game(t_game *game);
-int exit_game(t_game *game);
 int init_game_struct(t_game *game);
+int press_key(int keycode, t_game *game);
+int exit_game(t_game *game);
+int start_game(t_game *game);
 
 //------------------MAP------------------
 // map.c

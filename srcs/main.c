@@ -35,7 +35,5 @@ int	main(int argc, char **argv)
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
 	start_game(&game);
-	mlx_hook(game.win, 17, 0, exit_game, &game);
-    mlx_loop(game.mlx);
 	my_clean_vect(map.map);
 }
