@@ -1,24 +1,13 @@
 NAME = cub3d
-
 CC = cc
-
 CFLAGS = -Wall -Wextra -Werror -g
-
 MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
-
 LIBFT_PATH = includes/my_libft
-
 MLX_PATH = includes/mlx
-
 LIBFT = $(LIBFT_PATH)/libft.a
-
 MLX = $(MLX_PATH)/libmlx.a
 
 CONTAINER_WORKDIR_PATH = "/Users/lraggio/Studies/my_container/"
-LIBFT_PATH = includes/my_libft
-
-MLX_PATH = includes/mlx
-
 BAD_MAPS = ${shell find ./maps/bad}
 
 # Colors
