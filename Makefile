@@ -31,12 +31,13 @@ srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \
 srcs/map/ceiling_and_floor.c \
-srcs/game.c \
 srcs/map/is_map.c \
 srcs/map/char_validation.c \
 srcs/map/line_is.c \
 srcs/map/floodfeel.c \
-srcs/map/texture.c
+srcs/map/texture.c \
+srcs/game.c \
+srcs/keys.c
 
 OBJS = ${SRCS:.c=.o}
 

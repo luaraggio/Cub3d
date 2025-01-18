@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:10 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/15 19:48:21 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/17 21:21:05 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int	check_args(int argc)
 
 int	main(int argc, char **argv)
 {
-	(void)argv;
 	t_map	map;
 	t_game	game;
 
+	(void)argv;
 	my_bzero(&map, sizeof(t_map));
 	if (check_args(argc) == ERROR)
 		return (ERROR);
-	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do nosso projeto! 🦋🐙\n" RESET);
+	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do "
+		"nosso projeto! 🦋🐙\n" RESET);
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
 	start_game(&game);
