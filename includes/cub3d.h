@@ -73,4 +73,5 @@ int     get_cols(t_map *map);
 int     get_total_i(t_map *map);
 // texture.c
 void    set_textures_names(t_map *map, char *map_line);
+int		open_texture(t_map *map);
 #endif

@@ -79,12 +79,12 @@ static int	check_texture(t_map *map, char *map_line, int j)
 //	printf("Textura SO: %s\n", map->south_texture);
 //	printf("Textura WE: %s\n", map->west_texture);
 //	printf("Textura EA: %s\n", map->east_texture);
-/*	// 1- Arquivo existe?
+	// 1- Arquivo existe?
 	// 2- Tem permissão de leitura?
-	if (open_texture() == ERROR)
+	if (open_texture(map) != NO_ERROR)
 		return ERROR;
 	// 3- A extensão do arquivo está correta?
-	if (valid_texture_file() == ERROR)
+/*	if (valid_texture_file() == ERROR)
 	{
 		free(map->full_map);
 		map->full_map = NULL;

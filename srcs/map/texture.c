@@ -50,24 +50,19 @@ int	open_texture(t_map *map)
 {
 	map->fd_north_texture = open(map->north_texture, O_RDONLY);
 	if (map->fd_north_texture == -1)
-	{
-		my_printf_error(RED "Error\n" "Unable to open texture north\n" RESET);
-		return (ERROR);
-	}
+		return (my_printf_error(RED "Error\n" "Unable to open texture north\n" RESET));
 	map->fd_south_texture = open(map->north_texture, O_RDONLY);
 	if (map->fd_south_texture == -1)
 	{
 		close(map->fd_north_texture);
-		my_printf_error(RED "Error\n" "Unable to open texture south\n" RESET);
-		return (ERROR);
+		return (my_printf_error(RED "Error\n" "Unable to open texture south\n" RESET));
 	}
 	map->fd_west_texture = open(map->north_texture, O_RDONLY);
 	if (map->fd_west_texture == -1)
 	{
 		close(map->fd_north_texture);
 		close(map->fd_south_texture);
-		my_printf_error(RED "Error\n" "Unable to open texture west\n" RESET);
-		return (ERROR);
+		return (my_printf_error(RED "Error\n" "Unable to open texture west\n" RESET));
 	}
 	map->fd_east_texture = open(map->north_texture, O_RDONLY);
 	if (map->fd_east_texture == -1)
@@ -75,8 +70,7 @@ int	open_texture(t_map *map)
 		close(map->fd_north_texture);
 		close(map->fd_south_texture);
 		close(map->fd_west_texture);
-		my_printf_error(RED "Error\n" "Unable to open texture east\n" RESET);
-		return (ERROR);
+		return (my_printf_error(RED "Error\n" "Unable to open texture east\n" RESET));
 	}
 	return (NO_ERROR);
 }
