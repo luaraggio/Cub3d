@@ -36,7 +36,7 @@ static void	set_texture(t_map *map, char *map_line, char *direction)
 			j++;
 		printf("Texture %s: %s, com j = %i em %c\n", direction, &(map_line[j]), j, map_line[j]);
 		if (my_strcmp(direction, "NO") == 0)
-			map->noth_texture = my_strdup(&(map_line[j]));
+			map->north_texture = my_strdup(&(map_line[j]));
 		else if (my_strcmp(direction, "SO") == 0)
 			map->south_texture = my_strdup(&(map_line[j]));
 		else if (my_strcmp(direction, "WE") == 0)
@@ -44,4 +44,39 @@ static void	set_texture(t_map *map, char *map_line, char *direction)
 		else if (my_strcmp(direction, "EA") == 0)
 			map->east_texture = my_strdup(&(map_line[j]));
 	}
+}
+
+int	open_texture(t_map *map)
+{
+	map->fd_north_texture = open(map->north_texture, O_RDONLY);
+	if (map->fd_north_texture == -1)
+	{
+		my_printf_error(RED "Error\n" "Unable to open texture north\n" RESET);
+		return (ERROR);
+	}
+	map->fd_south_texture = open(map->north_texture, O_RDONLY);
+	if (map->fd_south_texture == -1)
+	{
+		close(map->fd_north_texture);
+		my_printf_error(RED "Error\n" "Unable to open texture south\n" RESET);
+		return (ERROR);
+	}
+	map->fd_west_texture = open(map->north_texture, O_RDONLY);
+	if (map->fd_west_texture == -1)
+	{
+		close(map->fd_north_texture);
+		close(map->fd_south_texture);
+		my_printf_error(RED "Error\n" "Unable to open texture west\n" RESET);
+		return (ERROR);
+	}
+	map->fd_east_texture = open(map->north_texture, O_RDONLY);
+	if (map->fd_east_texture == -1)
+	{
+		close(map->fd_north_texture);
+		close(map->fd_south_texture);
+		close(map->fd_west_texture);
+		my_printf_error(RED "Error\n" "Unable to open texture east\n" RESET);
+		return (ERROR);
+	}
+	return (NO_ERROR);
 }

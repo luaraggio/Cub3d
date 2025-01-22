@@ -75,10 +75,10 @@ static int	check_texture(t_map *map, char *map_line, int j)
 	(void)map_line;
 	printf("Vai checar a textura %s\n", map_line);
 	set_textures_names(map, map_line);
-	printf("Textura NO: %s\n", map->noth_texture);
-	printf("Textura SO: %s\n", map->south_texture);
-	printf("Textura WE: %s\n", map->west_texture);
-	printf("Textura EA: %s\n", map->east_texture);
+//	printf("Textura NO: %s\n", map->noth_texture);
+//	printf("Textura SO: %s\n", map->south_texture);
+//	printf("Textura WE: %s\n", map->west_texture);
+//	printf("Textura EA: %s\n", map->east_texture);
 /*	// 1- Arquivo existe?
 	// 2- Tem permissão de leitura?
 	if (open_texture() == ERROR)
