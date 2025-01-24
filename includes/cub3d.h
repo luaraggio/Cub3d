@@ -26,7 +26,6 @@
 # define W_WIDTH 480
 
 # include "mlx/mlx.h"
-# include "mlx/mlx.h"
 # include "my_libft/libft.h"
 # include "enums.h"
 # include "structs.h"
@@ -49,8 +48,6 @@ int     map_is_last(t_map *map);
 int     valid_ceiling_and_floor(t_map *map);
 // walls.c
 int	valid_walls(t_map *map);
-
-int     valid_walls(t_map *map);
 // is_map.c
 int     is_map(char **map);
 int     character_belongs_to_map(char c, char next);
@@ -73,5 +70,7 @@ int     get_cols(t_map *map);
 int     get_total_i(t_map *map);
 // texture.c
 void    set_textures_names(t_map *map, char *map_line);
+void	set_texture(t_map *map, char *map_line, char *direction);
 int		open_texture(t_map *map);
+int	check_textures_extension(t_map *map);
 #endif

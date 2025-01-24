@@ -13,13 +13,14 @@
 #include "../../includes/cub3d.h"
 
 static int	direction_ok(t_map *map, char *direction);
-static int	check_texture(t_map *map, char *map_line, int j);
+static int	validate_texture(t_map *map);
 
 int	valid_walls(t_map *map)
 {
 	int	err_flag;
 
 	err_flag = OFF;
+	printf("Está na valid walls\n");
 	if (direction_ok(map, "NO") == ERROR)
 		err_flag = ON;
 	if (direction_ok(map, "SO") == ERROR)
@@ -29,6 +30,8 @@ int	valid_walls(t_map *map)
 	if (direction_ok(map, "EA") == ERROR)
 		err_flag = ON;
 	if (err_flag == ON)
+		return (ERROR);
+	if (validate_texture(map) == ERROR)
 		return (ERROR);
 	return (NO_ERROR);
 }
@@ -51,8 +54,7 @@ static int	direction_ok(t_map *map, char *direction)
 			if (my_strncmp(&(map->map[i][j]), direction, 2) == 0)
 			{
 				flag++;
-				if (check_texture(map, map->map[i], j + 2) == ERROR)
-					return (ERROR);
+				set_texture(map, map->map[i], direction);
 				break ;
 			}
 			else if (map->map[i][j] != ' ')
@@ -69,26 +71,9 @@ static int	direction_ok(t_map *map, char *direction)
 	return (NO_ERROR);
 }
 
-static int	check_texture(t_map *map, char *map_line, int j)
+static int	validate_texture(t_map *map)
 {
-	(void)j;
-	(void)map_line;
-//	printf("Vai checar a textura %s\n", map_line);
-	set_textures_names(map, map_line);
-//	printf("Textura NO: %s\n", map->noth_texture);
-//	printf("Textura SO: %s\n", map->south_texture);
-//	printf("Textura WE: %s\n", map->west_texture);
-//	printf("Textura EA: %s\n", map->east_texture);
-	// 1- Arquivo existe?
-	// 2- Tem permissão de leitura?
-	if (open_texture(map) != NO_ERROR)
-		return ERROR;
-	// 3- A extensão do arquivo está correta?
-/*	if (valid_texture_file() == ERROR)
-	{
-		free(map->full_map);
-		map->full_map = NULL;
-		return ERROR;
-	}*/
+	check_textures_extension(map);
+	open_texture(map);
 	return (NO_ERROR);
 }

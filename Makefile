@@ -31,9 +31,10 @@ BAD_MAPS = ${shell find ./maps/bad}
 
 #MAP = maps/map.cub
 #MAP = maps/good/matrix.cub
-MAP = maps/good/test_textures.cub
+#MAP = maps/good/test_textures.cub
 #MAP = maps/good/subject_map.cub
-#MAP = maps/bad/empty.cub
+MAP = maps/bad/texture_dir.cub
+#MAP = maps/bad/no_filetype
 
 SRCS = \
 srcs/main.c \
@@ -58,7 +59,12 @@ all: $(NAME)
 	@echo "$(PINK) 👾🎮 Cub3d ready!$(RESET)"
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
-	@$(COMPILER) $(CFLAGS) $(MLX_FLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
+	@$(COMPILER) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+
+leticia:
+	@echo "$(GREEN)👩‍💻 Leticia is ready to be used$(RESET)"
+	@$(COMPILER) $(CFLAGS) $(SRCS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+
 
 $(LIBFT):
 	@make -s -C $(LIBFT_PATH)
