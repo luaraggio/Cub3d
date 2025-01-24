@@ -73,7 +73,7 @@ static int	check_texture(t_map *map, char *map_line, int j)
 {
 	(void)j;
 	(void)map_line;
-	printf("Vai checar a textura %s\n", map_line);
+//	printf("Vai checar a textura %s\n", map_line);
 	set_textures_names(map, map_line);
 //	printf("Textura NO: %s\n", map->noth_texture);
 //	printf("Textura SO: %s\n", map->south_texture);

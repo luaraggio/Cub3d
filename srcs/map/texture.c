@@ -34,7 +34,7 @@ static void	set_texture(t_map *map, char *map_line, char *direction)
 		j += 2;
 		while (map_line[j] && map_line[j] == ' ')
 			j++;
-		printf("Texture %s: %s, com j = %i em %c\n", direction, &(map_line[j]), j, map_line[j]);
+//		printf("Texture %s: %s, com j = %i em %c\n", direction, &(map_line[j]), j, map_line[j]);
 		if (my_strcmp(direction, "NO") == 0)
 			map->north_texture = my_strdup(&(map_line[j]));
 		else if (my_strcmp(direction, "SO") == 0)
