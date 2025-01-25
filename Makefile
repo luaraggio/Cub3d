@@ -1,3 +1,15 @@
+NAME = cub3d
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
+MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
+LIBFT_PATH = includes/my_libft
+MLX_PATH = includes/mlx
+LIBFT = $(LIBFT_PATH)/libft.a
+MLX = $(MLX_PATH)/libmlx.a
+
+CONTAINER_WORKDIR_PATH = "/Users/lraggio/Studies/my_container/"
+BAD_MAPS = ${shell find ./maps/bad}
+
 # Colors
 RESET=\033[0m
 PURPLE = \033[35m
@@ -5,29 +17,6 @@ GREEN=\033[32m
 PINK=\033[35m
 RED=\033[31m
 BLUE=\033[34m
-
-NAME = cub3d
-
-COMPILER = cc
-
-CFLAGS = -Wall -Wextra -Werror -g
-
-MLX_FLAGS = -L/usr/lib/X11 -lXext -lX11
-
-LIBFT_PATH = includes/my_libft
-
-MLX_PATH = includes/mlx
-
-LIBFT = $(LIBFT_PATH)/libft.a
-
-MLX = $(MLX_PATH)/libmlx.a
-
-CONTAINER_WORKDIR_PATH = "/Users/lraggio/Studies/my_container/"
-LIBFT_PATH = includes/my_libft
-
-MLX_PATH = includes/mlx
-
-BAD_MAPS = ${shell find ./maps/bad}
 
 #MAP = maps/map.cub
 #MAP = maps/good/matrix.cub
@@ -43,17 +32,18 @@ srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \
 srcs/map/ceiling_and_floor.c \
-srcs/game.c \
 srcs/map/is_map.c \
 srcs/map/char_validation.c \
 srcs/map/line_is.c \
 srcs/map/floodfeel.c \
-srcs/map/texture.c
+srcs/map/texture.c \
+srcs/game.c \
+srcs/keys.c
 
 OBJS = ${SRCS:.c=.o}
 
 %.o: %.c
-	@$(COMPILER) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 	@echo "$(PINK) 👾🎮 Cub3d ready!$(RESET)"
@@ -68,11 +58,11 @@ leticia:
 
 $(LIBFT):
 	@make -s -C $(LIBFT_PATH)
-	@echo "$(BLUE) 📚 libft is ready to be used$(RESET)"
+	@echo "$(BLUE) 📚 Libft is ready to be used$(RESET)"
 
 $(MLX):
 	@make -s -C $(MLX_PATH)
-	@echo "$(BLUE) 📚 minilibx is ready to be used$(RESET)"
+	@echo "$(BLUE) 📚 Minilibx is ready to be used$(RESET)"
 
 clean:
 	@rm -f $(OBJS)
@@ -99,7 +89,7 @@ val: re
 
 container:
 	exec docker container run -u root -ti -v $(CONTAINER_WORKDIR_PATH):/workspace devcontainer
-	
+
 test: re
 	clear
 	@$(foreach map,$(BAD_MAPS),echo processing: $(map); ./cub3d $(map);)

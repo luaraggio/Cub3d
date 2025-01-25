@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/15 15:38:01 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/01/17 21:18:48 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,22 @@
 # define BLUE "\033[34m"
 # define PINK "\033[35m"
 
+//Keycodes
+
+# define ESC_KEY 65307
+# define Q_KEY 113
+# define UP_KEY 65362
+# define DOWN_KEY 65364
+# define RIGHT_KEY 65363
+# define LEFT_KEY 65361
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
+
 //Size
-# define W_HEIGHT 640
-# define W_WIDTH 480
+# define W_HEIGHT 800
+# define W_WIDTH 1300
 
 # include "mlx/mlx.h"
 # include "my_libft/libft.h"
@@ -35,7 +48,14 @@
 int	main(int argc, char **argv);
 
 //game.c
-int start_game(void);
+int init_game_struct(t_game *game);
+int exit_game(t_game *game);
+int	set_hooks(t_game *game);
+int start_game(t_game *game);
+
+//keys.c
+void	print_key(const char *key_name, const char *color);
+int press_key(int keycode, t_game *game);
 
 //------------------MAP------------------
 // map.c
@@ -53,7 +73,7 @@ int     is_map(char **map);
 int     character_belongs_to_map(char c, char next);
 int     is_player(char c);
 int     map_start(t_map *map);
-// line_is.c 
+// line_is.c
 int 	line_belongs_to_map(char *line);
 int     line_is_direction(char *line);
 int     line_is_f_or_c(char *line);
