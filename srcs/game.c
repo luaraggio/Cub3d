@@ -31,6 +31,7 @@ int	init_game_struct(t_game *game, t_map *map)
 
 int	exit_game(t_game *game)
 {
+	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	clear_map(game->map);
@@ -52,8 +53,8 @@ int	start_game(t_game *game, t_map *map)
 	{
 		my_printf_error(RED "Error. Something went wrong with "
 			"mlx initialization\n" RESET);
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
+//		mlx_destroy_display(game->mlx);
+//		free(game->mlx);
 		return (ERROR);
 	}
 	init_game_struct(game, map);
