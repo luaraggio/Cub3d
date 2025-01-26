@@ -20,11 +20,12 @@ identifier.
 
 */
 
-int	init_game_struct(t_game *game)
+int	init_game_struct(t_game *game, t_map *map)
 {
 	game->w_height = W_HEIGHT;
 	game->w_width = W_WIDTH;
 	game->moves = 0;
+	game->map = map;
 	return (NO_ERROR);
 }
 
@@ -32,6 +33,7 @@ int	exit_game(t_game *game)
 {
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+	clear_map(game->map);
 	exit(EXIT_SUCCESS);
 	return (NO_ERROR);
 }
@@ -43,7 +45,7 @@ int	set_hooks(t_game *game)
 	return (NO_ERROR);
 }
 
-int	start_game(t_game *game)
+int	start_game(t_game *game, t_map *map)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
@@ -54,7 +56,7 @@ int	start_game(t_game *game)
 		free(game->mlx);
 		return (ERROR);
 	}
-	init_game_struct(game);
+	init_game_struct(game, map);
 	game->win = mlx_new_window(game->mlx, game->w_width, game->w_height,
 			"Cub3d");
 	set_hooks(game);

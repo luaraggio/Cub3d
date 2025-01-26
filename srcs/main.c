@@ -34,6 +34,6 @@ int	main(int argc, char **argv)
 		"nosso projeto! 🦋🐙\n" RESET);
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
-	start_game(&game);
+	start_game(&game, &map);
 	clear_map(&map);
 }

@@ -48,10 +48,10 @@
 int	main(int argc, char **argv);
 
 //game.c
-int init_game_struct(t_game *game);
+int init_game_struct(t_game *game, t_map *map);
 int exit_game(t_game *game);
 int	set_hooks(t_game *game);
-int start_game(t_game *game);
+int start_game(t_game *game, t_map *map);
 
 //keys.c
 void	print_key(const char *key_name, const char *color);
@@ -92,7 +92,7 @@ int     get_total_i(t_map *map);
 void    set_textures_names(t_map *map, char *map_line);
 void	set_texture(t_map *map, char *map_line, char *direction);
 int		open_texture(t_map *map);
-int	check_textures_extension(t_map *map);
+int		check_textures_extension(t_map *map);
 // clear.c
 void	clear_map(t_map *map);
 void	close_texture_fds(t_map *map);

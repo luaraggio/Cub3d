@@ -45,6 +45,7 @@ typedef struct s_game
 	int		moves;
 	int		w_height;
 	int		w_width;
+	t_map	*map;
 }			t_game;
 
 #endif
