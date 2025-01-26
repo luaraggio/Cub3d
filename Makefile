@@ -19,10 +19,10 @@ RED=\033[31m
 BLUE=\033[34m
 
 #MAP = maps/map.cub
-#MAP = maps/good/matrix.cub
+MAP = maps/good/matrix.cub
 #MAP = maps/good/test_textures.cub
 #MAP = maps/good/subject_map.cub
-MAP = maps/bad/texture_dir.cub
+#MAP = maps/bad/empty.cub
 #MAP = maps/bad/no_filetype
 
 SRCS = \
@@ -38,7 +38,8 @@ srcs/map/line_is.c \
 srcs/map/floodfeel.c \
 srcs/map/texture.c \
 srcs/game.c \
-srcs/keys.c
+srcs/keys.c \
+srcs/clear.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -49,11 +50,11 @@ all: $(NAME)
 	@echo "$(PINK) 👾🎮 Cub3d ready!$(RESET)"
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
-	@$(COMPILER) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
 
 leticia:
 	@echo "$(GREEN)👩‍💻 Leticia is ready to be used$(RESET)"
-	@$(COMPILER) $(CFLAGS) $(SRCS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRCS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
 
 
 $(LIBFT):
@@ -92,5 +93,5 @@ container:
 
 test: re
 	clear
-	@$(foreach map,$(BAD_MAPS),echo processing: $(map); ./cub3d $(map);)
+	@$(foreach map,$(BAD_MAPS),echo processing: $(map); valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(map);)
 	@echo "\n"

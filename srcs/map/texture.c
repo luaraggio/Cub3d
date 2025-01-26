@@ -69,18 +69,25 @@ int	open_texture(t_map *map)
 int	check_textures_extension(t_map *map)
 {
 	int	size;
+	int	ret;
 	
+	ret = NO_ERROR;
 	size = my_strlen(map->north_texture);
 	if (map->north_texture[size - 4] != '.' || map->north_texture[size - 3] != 'x' || map->north_texture[size - 2] != 'p' || map->north_texture[size - 1] != 'm')
-		return (my_printf_error(RED "Error\n" "Invalid file extension for north texture\n" RESET));
+		ret = my_printf_error(RED "Error\n" "Invalid file extension for north texture\n" RESET);
 	size = my_strlen(map->south_texture);
 	if (map->south_texture[size - 4] != '.' || map->south_texture[size - 3] != 'x' || map->south_texture[size - 2] != 'p' || map->south_texture[size - 1] != 'm')
-		return (my_printf_error(RED "Error\n" "Invalid file extension for south texture\n" RESET));
+		ret = my_printf_error(RED "Error\n" "Invalid file extension for south texture\n" RESET);
 	size = my_strlen(map->west_texture);
 	if (map->west_texture[size - 4] != '.' || map->west_texture[size - 3] != 'x' || map->west_texture[size - 2] != 'p' || map->west_texture[size - 1] != 'm')
-		return (my_printf_error(RED "Error\n" "Invalid file extension for west texture\n" RESET));
+		ret = my_printf_error(RED "Error\n" "Invalid file extension for west texture\n" RESET);
 	size = my_strlen(map->east_texture);
 	if (map->east_texture[size - 4] != '.' || map->east_texture[size - 3] != 'x' || map->east_texture[size - 2] != 'p' || map->east_texture[size - 1] != 'm')
-		return (my_printf_error(RED "Error\n" "Invalid file extension for east texture\n" RESET));
+		ret = my_printf_error(RED "Error\n" "Invalid file extension for east texture\n" RESET);
+	if (ret != NO_ERROR)
+	{
+		close_texture_fds(map);
+		return (ERROR);
+	}
 	return (NO_ERROR);
 }

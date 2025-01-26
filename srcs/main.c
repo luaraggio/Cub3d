@@ -27,7 +27,6 @@ int	main(int argc, char **argv)
 	t_map	map;
 	t_game	game;
 
-	(void)argv;
 	my_bzero(&map, sizeof(t_map));
 	if (check_args(argc) == ERROR)
 		return (ERROR);
@@ -36,5 +35,5 @@ int	main(int argc, char **argv)
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
 	start_game(&game);
-	my_clean_vect(map.map);
+	clear_map(&map);
 }

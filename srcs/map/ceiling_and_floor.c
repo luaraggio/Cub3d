@@ -82,9 +82,10 @@ static int	rgb_is_valid(t_map *map, int i, int j)
 //		printf("No loop: map->map[%d][%d] = %c\n", i, j, map->map[i][j]);
 		if ((my_isnum(map->map[i][j]) != 0 || map->map[i][j] == '-' || map->map[i][j] == '+') && rgb_size < 3)
 		{
+//			printf("No if de é número: map->map[%d] = %s\n", i, map->map[i]);
 //			printf("No if de é número: map->map[%d][%d] = %c\n", i, j, map->map[i][j]);
 			rgb_size++;
-			if (rgb_size < 3)
+			if (rgb_size < 3 && map->map[i][j + 1] == ',')
 				str_n = my_strcdup(&map->map[i][j], ',');
 			else
 				str_n = my_strcdup(&map->map[i][j], '\0');

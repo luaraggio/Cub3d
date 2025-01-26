@@ -27,9 +27,10 @@ int	set_map(t_map *map, char *map_file)
 		return (ERROR);
 	}
 	set_struct(map);
-	if (valid_map(map) == ERROR)
+	if (valid_map(map) != NO_ERROR)
 	{
-		my_clean_vect(map->map);
+		clear_map(map);
+		//my_clean_vect(map->map);
 		return (ERROR);
 	}
 	return (NO_ERROR);

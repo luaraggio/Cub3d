@@ -20,7 +20,7 @@ int	valid_walls(t_map *map)
 	int	err_flag;
 
 	err_flag = OFF;
-	printf("Está na valid walls\n");
+//	printf("Vai validar as paredes\n");
 	if (direction_ok(map, "NO") == ERROR)
 		err_flag = ON;
 	if (direction_ok(map, "SO") == ERROR)
@@ -31,6 +31,7 @@ int	valid_walls(t_map *map)
 		err_flag = ON;
 	if (err_flag == ON)
 		return (ERROR);
+//	printf("Vai validar as texturas\n");
 	if (validate_texture(map) == ERROR)
 		return (ERROR);
 	return (NO_ERROR);
@@ -44,7 +45,7 @@ static int	direction_ok(t_map *map, char *direction)
 
 	i = 0;
 	flag = 0;
-//	printf("Vai checar a direção\n");
+//	printf("Vai checar a direção em %s\n", direction);
 	while (map->map[i] && line_belongs_to_map(map->map[i]) == ERROR)
 	{
 		j = 0;
@@ -54,7 +55,8 @@ static int	direction_ok(t_map *map, char *direction)
 			if (my_strncmp(&(map->map[i][j]), direction, 2) == 0)
 			{
 				flag++;
-				set_texture(map, map->map[i], direction);
+				if (flag <= 1)
+					set_texture(map, map->map[i], direction);
 				break ;
 			}
 			else if (map->map[i][j] != ' ')
@@ -73,7 +75,9 @@ static int	direction_ok(t_map *map, char *direction)
 
 static int	validate_texture(t_map *map)
 {
-	check_textures_extension(map);
-	open_texture(map);
+	if (check_textures_extension(map) != NO_ERROR)
+		return (ERROR);
+	if (open_texture(map) != NO_ERROR)
+		return (ERROR);
 	return (NO_ERROR);
 }
