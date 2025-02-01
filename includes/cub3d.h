@@ -6,12 +6,20 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/17 21:18:48 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/01 16:56:54 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# include "enums.h"
+# include "mlx/mlx.h"
+# include "my_libft/libft.h"
+# include "structs.h"
+# include <math.h>
+# include <stdio.h>
+# include <stdbool.h>
 
 //Colors
 # define GREEN "\033[0;32m"
@@ -22,7 +30,6 @@
 # define PINK "\033[35m"
 
 //Keycodes
-
 # define ESC_KEY 65307
 # define Q_KEY 113
 # define UP_KEY 65362
@@ -34,15 +41,13 @@
 # define S_KEY 115
 # define D_KEY 100
 
-//Size
+//Window Size
 # define W_HEIGHT 800
 # define W_WIDTH 1300
 
-# include "mlx/mlx.h"
-# include "my_libft/libft.h"
-# include "enums.h"
-# include "structs.h"
-# include <stdio.h>
+//Speed
+# define MOVE_SPEED 0.01
+# define ROTATION_SPEED 0.01
 
 //main.c
 int	main(int argc, char **argv);
