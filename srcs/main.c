@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:10 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/17 21:21:05 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/01 16:53:33 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 		"nosso projeto! 🦋🐙\n" RESET);
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
+	//carregar mapa para alimentar structs com as infos necessárias p/ janela
 	start_game(&game, &map);
 	clear_map(&map);
 }

@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/17 21:17:34 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/01 16:52:56 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,27 @@ void	print_key(const char *key_name, const char *color)
 	printf("A tecla " "%s%s" RESET " foi pressionada.\n", color, key_name);
 }
 
-int	press_key(int keycode, t_game *game)
+/*int	is_move_key(int keycode)
+{
+	return ((keycode == UP_KEY || keycode == DOWN_KEY || keycode == DOWN_KEY
+			|| keycode == LEFT_KEY || keycode == W_KEY || keycode == A_KEY
+			|| keycode == S_KEY || keycode == D_KEY));
+}*/
+
+/*void handle_events(int event_type, int keycode, t_game *game) {
+	if (event_type == KEY_PRESS)
+		press_key(keycode, game);
+	else if (event_type == KEY_RELEASE)
+		release_key(keycode, game);
+}
+
+void	handle_shift(t_player *player)
+{
+	player->speed = MOVE_SPEED * 2;
+	print_key("SHIFT", PINK);
+}*/
+
+int	press_key(int keycode, t_game *game) //t_player *player)
 {
 	if (keycode == ESC_KEY)
 	{
@@ -40,7 +60,13 @@ int	press_key(int keycode, t_game *game)
 		print_key("S", PINK);
 	if (keycode == D_KEY)
 		print_key("D", PINK);
+		/*if (keycode == SHIFT_LEFT_KEY || SHIFT_RIGHT_KEY)
+	{
+		print_key("SHIFT", PINK);
+		handle_shift(player);
+	}*/
 	else
 		printf(RED "Alguma outra tecla foi pressionada.\n" RESET);
+	//keycode = game->last_key;
 	return (NO_ERROR);
 }
