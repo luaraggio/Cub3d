@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/15 15:38:26 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/01 17:00:14 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,25 @@
 
 typedef struct s_map
 {
-	char		*full_map;
-	char		**map;
-	int			i_start;
-	int			total_i;
-	int			rows;
-	int			cols;
-
-	int			height; //altura
-	int			width; //largura
-	int			player_j;
-	int			player_i;
-	char		*north_texture;
-	char		*south_texture;
-	char		*west_texture;
-	char		*east_texture;
-	int			fd_north_texture;
-	int			fd_south_texture;
-	int			fd_west_texture;
-	int			fd_east_texture;
-}				t_map;
+	char	*full_map;
+	char	**map;
+	int		i_start;
+	int		total_i;
+	int		rows;
+	int		cols;
+	int		height;// altura
+	int		width;// largura
+	int		player_j;
+	int		player_i;
+	char	*north_texture;
+	char	*south_texture;
+	char	*west_texture;
+	char	*east_texture;
+	int		fd_north_texture;
+	int		fd_south_texture;
+	int		fd_west_texture;
+	int		fd_east_texture;
+}			t_map;
 
 typedef struct s_game
 {
@@ -45,7 +44,20 @@ typedef struct s_game
 	int		moves;
 	int		w_height;
 	int		w_width;
+	int		last_key;
 	t_map	*map;
 }			t_game;
+
+typedef struct s_player
+{
+	double	x_player;
+	double	y_player;
+	double	x_coordinate;// position x
+	double	y_coordinate;// position y
+	double	x_direction;// sin -> seno
+	double	y_direction;// cos -> cosseno
+	double	move_speed;
+	double	rotation_speed;
+}			t_player;
 
 #endif
