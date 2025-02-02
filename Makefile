@@ -39,7 +39,8 @@ srcs/map/floodfeel.c \
 srcs/map/texture.c \
 srcs/game.c \
 srcs/keys.c \
-srcs/clear.c
+srcs/clear.c \
+srcs/print_game/print_game.c
 
 OBJS = ${SRCS:.c=.o}
 

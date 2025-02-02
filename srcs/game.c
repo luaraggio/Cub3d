@@ -22,10 +22,15 @@ identifier.
 
 int	init_game_struct(t_game *game, t_map *map)
 {
+	t_all_images	*all_images;
+
+	all_images = (t_all_images *)malloc(sizeof(t_all_images));
+	my_bzero(all_images, sizeof(t_all_images));
 	game->w_height = W_HEIGHT;
 	game->w_width = W_WIDTH;
 	game->moves = 0;
 	game->map = map;
+	game->images = all_images;
 	return (NO_ERROR);
 }
 
@@ -60,6 +65,8 @@ int	start_game(t_game *game, t_map *map)
 	game->win = mlx_new_window(game->mlx, game->w_width, game->w_height,
 			"Cub3d");
 	set_hooks(game);
+	print_game(game, map);
+	// Iniciar a impressão mesmo em 2d
 	mlx_loop(game->mlx);
 	return (NO_ERROR);
 }

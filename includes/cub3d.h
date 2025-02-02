@@ -96,4 +96,9 @@ int		check_textures_extension(t_map *map);
 // clear.c
 void	clear_map(t_map *map);
 void	close_texture_fds(t_map *map);
+
+//------------------PRINT_GAME------------------
+// print_game.c
+void	print_game(t_game *game, t_map *map);
+
 #endif
