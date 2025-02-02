@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:22:20 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/02/02 15:22:23 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/02/02 19:16:09 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	print_game(t_game *game, t_map *map)
 	img_ceiling = (t_image *)malloc(sizeof(t_image));
 	img_floor = (t_image *)malloc(sizeof(t_image));
 	my_bzero(img_floor, sizeof(t_image));
-	my_bzero(img_floor, sizeof(t_image));
+	my_bzero(img_ceiling, sizeof(t_image));
 	game->images->rectangle_ceiling = img_ceiling;
 	game->images->rectangle_floor = img_floor;
 	print_background(game, img_floor);
 	print_background(game, img_ceiling);
-	
+
 }
 
 static void	print_background(t_game *game, t_image *img) // Mudar de printagem de pixels para printagem de retângulos
@@ -39,7 +39,7 @@ static void	print_background(t_game *game, t_image *img) // Mudar de printagem d
 	img->size_line = W_WIDTH;
 	img->size_height = W_HEIGHT / 2;
 	img->img = mlx_new_image(game->mlx, W_WIDTH, W_HEIGHT / 2);
-	img->addr = mlx_get_data_addr(img, &(img->bits_per_pixel), &(img->size_line), &(img->endian));
+	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel), &(img->size_line), &(img->endian));
 	print_img_struct(img, "img");
 //	fill_rectangle(game, img, W_WIDTH, W_HEIGHT / 2, 0x00F00000);
 //	mlx_put_image_to_window(game->mlx, game->win, img, 0, 0);
