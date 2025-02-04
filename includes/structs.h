@@ -15,7 +15,7 @@
 
 # include "enums.h"
 
-typedef struct s_all_images	t_all_images;
+//typedef struct s_all_images	t_all_images;
 typedef struct s_image	t_image;
 
 typedef struct s_map
@@ -26,7 +26,6 @@ typedef struct s_map
 	int			total_i;
 	int			rows;
 	int			cols;
-
 	int			height; //altura
 	int			width; //largura
 	int			player_j;
@@ -45,14 +44,15 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
+	t_image	*image;
 	int		moves;
 	int		w_height;
 	int		w_width;
 	t_map	*map;
-	t_all_images	*images;
+//	t_all_images	*images;
 }			t_game;
 
-typedef struct s_all_images
+/*typedef struct s_all_images
 {
 //	void	*img_north;
 //	void	*img_south;
@@ -61,7 +61,7 @@ typedef struct s_all_images
 //	void	*img_sprite;
 	t_image	*rectangle_ceiling;
 	t_image	*rectangle_floor;
-}			t_all_images;
+}			t_all_images;*/
 
 typedef struct s_image
 {

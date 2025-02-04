@@ -22,15 +22,15 @@ identifier.
 
 int	init_game_struct(t_game *game, t_map *map)
 {
-	t_all_images	*all_images;
+	t_image	*image;
 
-	all_images = (t_all_images *)malloc(sizeof(t_all_images));
-	my_bzero(all_images, sizeof(t_all_images));
+	image = (t_image *)malloc(sizeof(t_image));
+	my_bzero(image, sizeof(t_image));
 	game->w_height = W_HEIGHT;
 	game->w_width = W_WIDTH;
 	game->moves = 0;
 	game->map = map;
-	game->images = all_images;
+	game->image = image;
 	return (NO_ERROR);
 }
 
