@@ -36,9 +36,7 @@ int	init_game_struct(t_game *game, t_map *map)
 
 int	exit_game(t_game *game)
 {
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	clear_map(game->map);
+	clear_all(game, game->map);
 	exit(EXIT_SUCCESS);
 	return (NO_ERROR);
 }

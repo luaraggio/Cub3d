@@ -69,7 +69,7 @@ typedef struct s_image
 	char	*addr;
 	int		bpp;
 	int		endian;
-	int		bits_per_pixel;
+//	int		bits_per_pixel;
 	int		size_line;
 	int		size_height;
 }			t_image;

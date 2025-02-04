@@ -13,17 +13,16 @@
 #include "../../includes/cub3d.h"
 
 static void	create_general_img(void *mlx, t_image *img);
-static void	print_background(t_game *game, t_image *img);
+static void	print_background(t_image *img);
 static void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
-static void print_img_struct(t_image *img, char *name);
+//static void print_img_struct(t_image *img, char *name);
 
 void	print_game(t_game *game, t_map *map)
 {
 	(void)map;
 	create_general_img(game->mlx, game->image);
-	print_background(game, game->image);
-/*	print_background(game, img_floor);
-	print_background(game, img_ceiling);*/
+	print_background(game->image);
+	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);
 }
 
 static void	create_general_img(void *mlx, t_image *img)
@@ -31,10 +30,10 @@ static void	create_general_img(void *mlx, t_image *img)
 	img->size_line = W_WIDTH;
 	img->size_height = W_HEIGHT;
 	img->img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel), &(img->size_line), &(img->endian));
+	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line), &(img->endian));
 }
 
-static void	print_background(t_game *game, t_image *img) // Mudar de printagem de pixels para printagem de retângulos
+static void	print_background(t_image *img) // Mudar de printagem de pixels para printagem de retângulos
 {
 	int i;
 	int j;
@@ -46,7 +45,7 @@ static void	print_background(t_game *game, t_image *img) // Mudar de printagem d
 		while (j < W_WIDTH)
 		{
 			if (i < W_HEIGHT / 2)
-				my_mlx_pixel_put(img, i, j, 0x00F00000); // Cor do teto
+				my_mlx_pixel_put(img, i, j, 0x00FF0000); // Cor do teto
 			else
 				my_mlx_pixel_put(img, i, j, 0x00F00FF0); // Cor do chão
 			j++;
@@ -57,14 +56,12 @@ static void	print_background(t_game *game, t_image *img) // Mudar de printagem d
 
 static void	my_mlx_pixel_put(t_image *image, int i, int j, int color)
 {
-	image->img[i][j] = color;
-/*	char *dst;
-	(void)color;
+	char *dst;
 
-	dst = image->addr + (y * image->size_line + x * (image->bpp / 8));
-	*(unsigned int*)dst = color;*/
+	dst = image->addr + (i * image->size_line + j * (image->bpp / 8));
+	*(unsigned int*)dst = color;
 }
-
+/*
 static void print_img_struct(t_image *img, char *name)
 {
 	printf("Printing %s\n", name);
@@ -76,3 +73,4 @@ static void print_img_struct(t_image *img, char *name)
 	printf("size_height: %d\n", img->size_height);
 	printf("\n");
 }
+*/

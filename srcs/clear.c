@@ -12,6 +12,12 @@
 
 #include "../includes/cub3d.h"
 
+void	clear_all(t_game *game, t_map *map)
+{
+	clear_game(game);
+	clear_map(map);
+}
+
 void	clear_map(t_map *map)
 {
 	my_clean_vect(map->map);
@@ -28,4 +34,13 @@ void	close_texture_fds(t_map *map)
 	close(map->fd_south_texture);
 	close(map->fd_west_texture);
 	close(map->fd_east_texture);
+}
+
+void	clear_game(t_game *game)
+{
+	mlx_destroy_image(game->mlx, game->image->img);
+	free(game->image);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
 }
