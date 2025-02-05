@@ -91,9 +91,9 @@ int     line_is_f_or_c(char *line);
 // char_validation.c
 int     valid_map_chars(t_map *map);
 int     valid_player(t_map *map);
-// floodfeel.c
+// floodfill.c
 int     map_is_closed(t_map *map);
-int     floodfeel(char **map, int i, int j, int total_i);
+int     floodfill(char **map, int i, int j, int total_i);
 int     check_first_and_last_line(t_map *map);
 // get_map_data.c
 int     get_rows(t_map *map);
@@ -107,4 +107,11 @@ int		check_textures_extension(t_map *map);
 // clear.c
 void	clear_map(t_map *map);
 void	close_texture_fds(t_map *map);
+void	clear_all(t_game *game, t_map *map);
+void	clear_game(t_game *game);
+
+//------------------PRINT_GAME------------------
+// print_game.c
+void	print_game(t_game *game, t_map *map);
+
 #endif

@@ -35,13 +35,14 @@ srcs/map/ceiling_and_floor.c \
 srcs/map/is_map.c \
 srcs/map/char_validation.c \
 srcs/map/line_is.c \
-srcs/map/floodfeel.c \
+srcs/map/floodfill.c \
 srcs/map/texture.c \
 srcs/game.c \
 srcs/keys.c \
 srcs/clear.c \
 srcs/moves.c \
-srcs/player.c
+srcs/player.c \
+srcs/print_game/print_game.c
 
 OBJS = ${SRCS:.c=.o}
 
