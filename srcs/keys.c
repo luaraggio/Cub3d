@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/01 16:52:56 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/05 02:45:02 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,44 @@ int	press_key(int keycode, t_game *game) //t_player *player)
 		exit_game(game);
 	}
 	if (keycode == UP_KEY)
+	{
 		print_key("seta para cima", PINK);
+	}
 	if (keycode == DOWN_KEY)
+	{
+
 		print_key("seta para baixo", PINK);
+	}
 	if (keycode == RIGHT_KEY)
+	{
+
 		print_key("seta para a direita", PINK);
+	}
 	if (keycode == LEFT_KEY)
+	{
+
 		print_key("seta para a esquerda", PINK);
+	}
 	if (keycode == W_KEY)
+	{
+
 		print_key("W", PINK);
+	}
 	if (keycode == A_KEY)
+	{
+
 		print_key("A", PINK);
+	}
 	if (keycode == S_KEY)
+	{
+
 		print_key("S", PINK);
+	}
 	if (keycode == D_KEY)
+	{
+
 		print_key("D", PINK);
+	}
 		/*if (keycode == SHIFT_LEFT_KEY || SHIFT_RIGHT_KEY)
 	{
 		print_key("SHIFT", PINK);

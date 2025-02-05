@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/01/17 21:19:58 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/05 03:08:30 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	init_game_struct(t_game *game, t_map *map)
 {
 	game->w_height = W_HEIGHT;
 	game->w_width = W_WIDTH;
-	game->moves = 0;
 	game->map = map;
 	return (NO_ERROR);
 }
