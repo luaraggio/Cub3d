@@ -53,11 +53,6 @@ all: $(NAME)
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
 
-leticia:
-	@echo "$(GREEN)👩‍💻 Leticia is ready to be used$(RESET)"
-	@$(CC) $(CFLAGS) $(SRCS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
-
-
 $(LIBFT):
 	@make -s -C $(LIBFT_PATH)
 	@echo "$(BLUE) 📚 Libft is ready to be used$(RESET)"
@@ -79,8 +74,10 @@ fclean: clean
 
 re: fclean all
 
-run: re
+cube:
 	./$(NAME) $(MAP)
+
+run: re cube
 
 norm:
 	@echo "$(PURPLE)Passando a Norminette com a flag -R CheckForbiddenSourceHeader: $(RESET)"
@@ -92,7 +89,7 @@ val: re
 container:
 	exec docker container run -u root -ti -v $(CONTAINER_WORKDIR_PATH):/workspace devcontainer
 
-test: re
+test_error: re
 	clear
 	@$(foreach map,$(BAD_MAPS),echo processing: $(map); valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(map);)
 	@echo "\n"
