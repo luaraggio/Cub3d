@@ -47,7 +47,7 @@ int	set_hooks(t_game *game)
 	return (NO_ERROR);
 }
 
-int	start_game(t_game *game, t_map *map)
+int	start_game(t_game *game, t_map *map, t_player *player)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
@@ -62,8 +62,9 @@ int	start_game(t_game *game, t_map *map)
 	game->win = mlx_new_window(game->mlx, game->w_width, game->w_height,
 			"Cub3d");
 	set_hooks(game);
-	print_game(game, map);
-	// Iniciar a impressão mesmo em 2d
+	init_player_struct(player);
+	//print_game();        
+	draw_player(game, player);
 	mlx_loop(game->mlx);
 	return (NO_ERROR);
 }

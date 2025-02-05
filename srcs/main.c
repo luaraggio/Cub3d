@@ -24,10 +24,12 @@ int	check_args(int argc)
 
 int	main(int argc, char **argv)
 {
-	t_map	map;
-	t_game	game;
+	t_map		map;
+	t_game		game;
+	t_player	player;
 
 	my_bzero(&map, sizeof(t_map));
+	my_bzero(&player, sizeof(t_player));
 	if (check_args(argc) == ERROR)
 		return (ERROR);
 	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do "
@@ -35,6 +37,6 @@ int	main(int argc, char **argv)
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
 	//carregar mapa para alimentar structs com as infos necessárias p/ janela
-	start_game(&game, &map);
+	start_game(&game, &map, &player);
 	clear_map(&map);
 }
