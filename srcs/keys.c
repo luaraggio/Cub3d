@@ -48,37 +48,37 @@ int	press_key(int keycode, t_game *game) //t_player *player)
 	{
 		print_key("seta para cima", PINK);
 	}
-	if (keycode == DOWN_KEY)
+	else if (keycode == DOWN_KEY)
 	{
 
 		print_key("seta para baixo", PINK);
 	}
-	if (keycode == RIGHT_KEY)
+	else if (keycode == RIGHT_KEY)
 	{
 
 		print_key("seta para a direita", PINK);
 	}
-	if (keycode == LEFT_KEY)
+	else if (keycode == LEFT_KEY)
 	{
 
 		print_key("seta para a esquerda", PINK);
 	}
-	if (keycode == W_KEY)
+	else if (keycode == W_KEY)
 	{
 
 		print_key("W", PINK);
 	}
-	if (keycode == A_KEY)
+	else if (keycode == A_KEY)
 	{
 
 		print_key("A", PINK);
 	}
-	if (keycode == S_KEY)
+	else if (keycode == S_KEY)
 	{
 
 		print_key("S", PINK);
 	}
-	if (keycode == D_KEY)
+	else if (keycode == D_KEY)
 	{
 
 		print_key("D", PINK);
