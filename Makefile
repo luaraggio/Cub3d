@@ -52,7 +52,7 @@ all: $(NAME)
 	@echo "$(PINK) 👾🎮 Cub3d ready!$(RESET)"
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME) -lm
 
 leticia:
 	@echo "$(GREEN)👩‍💻 Leticia is ready to be used$(RESET)"

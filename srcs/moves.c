@@ -56,10 +56,10 @@ void	turn_player_to_left(t_player *player)
 void	turn_player_to_right(t_player *player)
 {
 	double	old_x_direction;
-    double  old_plane_x;
-
-    old_x_direction = player->x_direction;
-    old_plane_x = 0;
+	double  old_plane_x;\
+	
+	old_x_direction = player->x_direction;
+	old_plane_x = 0;
 
 	// Aplica a rotação no vetor de direção
 	player->x_direction = player->x_direction * cos(player->rotation_speed)
