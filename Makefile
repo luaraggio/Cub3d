@@ -19,8 +19,8 @@ RED=\033[31m
 BLUE=\033[34m
 
 #MAP = maps/map.cub
-MAP = maps/good/matrix.cub
-#MAP = maps/good/test_textures.cub
+#MAP = maps/good/matrix.cub
+MAP = maps/good/test_textures.cub
 #MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/no_filetype
@@ -37,6 +37,7 @@ srcs/map/char_validation.c \
 srcs/map/line_is.c \
 srcs/map/floodfeel.c \
 srcs/map/texture.c \
+srcs/map/color.c \
 srcs/game.c \
 srcs/keys.c \
 srcs/clear.c \

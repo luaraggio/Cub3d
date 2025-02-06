@@ -13,7 +13,8 @@
 #include "../../includes/cub3d.h"
 
 static int	open_map(t_map *map, char *map_file);
-static void	set_struct(t_map *map);
+static void	set_initial_map_struct(t_map *map);
+static void	finish_map_struct(t_map *map);
 static void	set_player_start(t_map *map);
 
 int	set_map(t_map *map, char *map_file)
@@ -26,13 +27,13 @@ int	set_map(t_map *map, char *map_file)
 		map->full_map = NULL;
 		return (ERROR);
 	}
-	set_struct(map);
+	set_initial_map_struct(map);
 	if (valid_map(map) != NO_ERROR)
 	{
 		clear_map(map);
-		//my_clean_vect(map->map);
 		return (ERROR);
 	}
+	finish_map_struct(map);
 	return (NO_ERROR);
 }
 
@@ -69,7 +70,7 @@ static int	open_map(t_map *map, char *map_file)
 	return (NO_ERROR);
 }
 
-static void	set_struct(t_map *map)
+static void	set_initial_map_struct(t_map *map)
 {
 	map->map = my_split(map->full_map, '\n');
 	free(map->full_map);
@@ -79,11 +80,14 @@ static void	set_struct(t_map *map)
 	map->total_i = get_total_i(map);
 	map->i_start = map_start(map);
 	set_player_start(map);
-/*	set_textures_names(map, map_line);
-	printf("Textura NO: %s\n", map->noth_texture);
-	printf("Textura SO: %s\n", map->south_texture);
-	printf("Textura WE: %s\n", map->west_texture);
-	printf("Textura EA: %s\n", map->east_texture);*/
+	map->ceiling_color = OFF;
+	map->floor_color = OFF;
+}
+
+static void	finish_map_struct(t_map *map)
+{
+	map->floor_color = get_color(map, 'F');
+	map->ceiling_color = get_color(map, 'C');
 }
 
 static void	set_player_start(t_map *map)

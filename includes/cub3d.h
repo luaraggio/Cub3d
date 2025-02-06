@@ -98,6 +98,8 @@ void	clear_map(t_map *map);
 void	close_texture_fds(t_map *map);
 void	clear_all(t_game *game, t_map *map);
 void	clear_game(t_game *game);
+// color.c
+int		get_color(t_map *map, char ref);
 
 //------------------PRINT_GAME------------------
 // print_game.c
