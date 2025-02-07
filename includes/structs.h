@@ -29,8 +29,8 @@ typedef struct s_map
 	int			width; //largura
 	int			player_j;
 	int			player_i;
-	int			floor_color;
-	int			ceiling_color;
+	unsigned int			floor_color;
+	unsigned int			ceiling_color;
 	char		*north_texture;
 	char		*south_texture;
 	char		*west_texture;

@@ -55,11 +55,6 @@ static int	open_map(t_map *map, char *map_file)
 		if (ret == NULL)
 			break ;
 		map->full_map = my_strjoin_cleaning(map->full_map, ret);
-		if (ret)
-		{
-			free(ret);
-			ret = NULL;
-		}
 	}
 	close(fd);
 	if (!map->full_map)

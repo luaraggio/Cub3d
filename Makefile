@@ -12,7 +12,7 @@ BAD_MAPS = ${shell find ./maps/bad}
 
 # Colors
 RESET=\033[0m
-PURPLE = \033[35m
+PURPLE=\033[35m
 GREEN=\033[32m
 PINK=\033[35m
 RED=\033[31m
