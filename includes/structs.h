@@ -19,27 +19,23 @@ typedef struct s_image	t_image;
 
 typedef struct s_map
 {
-	char		*full_map;
-	char		**map;
-	int			i_start;
-	int			total_i;
-	int			rows;
-	int			cols;
-	int			height; //altura
-	int			width; //largura
-	int			player_j;
-	int			player_i;
-	unsigned int			floor_color;
-	unsigned int			ceiling_color;
-	char		*north_texture;
-	char		*south_texture;
-	char		*west_texture;
-	char		*east_texture;
-	int			fd_north_texture;
-	int			fd_south_texture;
-	int			fd_west_texture;
-	int			fd_east_texture;
-}				t_map;
+	char					*full_map;
+	char					**map; // É o arquivo .cub inteiro. Mudar o nome dessa variável para criar a cópia apenas no mapa
+	int						i_start; // Uso para a check_first_and_last_line, logo antes da floodfill
+	int						total_i; // Uso na floodfill
+	int						player_j; // Vetor position do jogador em x
+	int						player_i; // Vetor position do jogador em y
+	unsigned int			floor_color; // Já em hexadecimal
+	unsigned int			ceiling_color; // Já em hexadecimal
+	char					*north_texture;
+	char					*south_texture;
+	char					*west_texture;
+	char					*east_texture;
+	int						fd_north_texture;
+	int						fd_south_texture;
+	int						fd_west_texture;
+	int						fd_east_texture;
+}							t_map;
 
 typedef struct s_game
 {

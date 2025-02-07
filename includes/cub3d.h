@@ -96,8 +96,6 @@ int     map_is_closed(t_map *map);
 int     floodfill(char **map, int i, int j, int total_i);
 int     check_first_and_last_line(t_map *map);
 // get_map_data.c
-int     get_rows(t_map *map);
-int     get_cols(t_map *map);
 int     get_total_i(t_map *map);
 // texture.c
 void    set_textures_names(t_map *map, char *map_line);

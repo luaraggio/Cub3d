@@ -70,8 +70,6 @@ static void	set_initial_map_struct(t_map *map)
 	map->map = my_split(map->full_map, '\n');
 	free(map->full_map);
 	map->full_map = NULL;
-	map->rows = get_rows(map);
-	map->cols = get_cols(map);
 	map->total_i = get_total_i(map);
 	map->i_start = map_start(map);
 	set_player_start(map);
