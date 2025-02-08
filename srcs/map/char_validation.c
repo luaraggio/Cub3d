@@ -17,13 +17,13 @@ int valid_map_chars(t_map *map)
     int i;
 
     i = 0;
-    while (map->map[i])
+    while (map->map_file[i])
     {
-        if (line_is_direction(map->map[i]) == NO_ERROR)
+        if (line_is_direction(map->map_file[i]) == NO_ERROR)
             i++;
-        else if (line_is_f_or_c(map->map[i]) == NO_ERROR)
+        else if (line_is_f_or_c(map->map_file[i]) == NO_ERROR)
             i++;
-        else if (line_belongs_to_map(map->map[i]) == NO_ERROR)
+        else if (line_belongs_to_map(map->map_file[i]) == NO_ERROR)
             i++;
         else
         {
@@ -42,14 +42,14 @@ int valid_player(t_map *map)
 	
 	i = 0;
     player_count = 0;
-	while (line_belongs_to_map(map->map[i]) == ERROR)
+	while (line_belongs_to_map(map->map_file[i]) == ERROR)
         i++;
-	while (map->map[i])
+	while (map->map_file[i])
     {
         j = 0;
-        while (map->map[i][j])
+        while (map->map_file[i][j])
         {
-            if (is_player(map->map[i][j]) == NO_ERROR)
+            if (is_player(map->map_file[i][j]) == NO_ERROR)
             {
                 player_count++;
             }

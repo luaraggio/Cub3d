@@ -23,14 +23,14 @@ unsigned int	get_color(t_map *map, char ref)
 	i = 0;
 	j = 0;
 	color = OFF;
-	while (map->map[i])
+	while (map->map_file[i])
 	{
-		if (map->map[i][j] == ref)
+		if (map->map_file[i][j] == ref)
 		{
 			j++;
-			while (map->map[i][j] == ' ')
+			while (map->map_file[i][j] == ' ')
 				j++;
-			color = rgb_to_hexa(my_substr(&(map->map[i][j]), 0, my_strlen(&(map->map[i][j]))));
+			color = rgb_to_hexa(my_substr(&(map->map_file[i][j]), 0, my_strlen(&(map->map_file[i][j]))));
 		}
 		i++;
 	}

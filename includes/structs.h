@@ -20,7 +20,8 @@ typedef struct s_image	t_image;
 typedef struct s_map
 {
 	char					*full_map;
-	char					**map; // É o arquivo .cub inteiro. Mudar o nome dessa variável para criar a cópia apenas no mapa
+	char					**map_file; // É o arquivo .cub inteiro. Mudar o nome dessa variável para criar a cópia apenas no mapa
+	char					**map;
 	int						i_start; // Uso para a check_first_and_last_line, logo antes da floodfill
 	int						total_i; // Uso na floodfill
 	int						player_j; // Vetor position do jogador em x

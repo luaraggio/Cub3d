@@ -24,24 +24,24 @@ int	valid_ceiling_and_floor(t_map *map)
 	i = 0;
 	c_flag = 0;
 	f_flag = 0;
-	while (map->map[i] && line_belongs_to_map(map->map[i]) == ERROR)
+	while (map->map_file[i] && line_belongs_to_map(map->map_file[i]) == ERROR)
 	{
 		j = 0;
-		while (map->map[i][j] && line_belongs_to_map(map->map[i]) == ERROR)
+		while (map->map_file[i][j] && line_belongs_to_map(map->map_file[i]) == ERROR)
 		{
-			if (map->map[i][j] == 'C')
+			if (map->map_file[i][j] == 'C')
 			{
 				c_flag++;
 				if (rgb_is_valid(map, i, j++) == ERROR)
 					return (ERROR);
 			}
-			else if (map->map[i][j] == 'F')
+			else if (map->map_file[i][j] == 'F')
 			{
 				f_flag++;
 				if (rgb_is_valid(map, i, j++) == ERROR)
 					return (ERROR);
 			}
-			else if (map->map[i][j] != ' ')
+			else if (map->map_file[i][j] != ' ')
 				break ;
 			j++;
 		}
@@ -70,16 +70,16 @@ static int	rgb_is_valid(t_map *map, int i, int j)
 	num = 0;
 	rgb_size = 0;
 	str_n = NULL;
-	line_size = my_strlen(map->map[i]);
-	while (j <= line_size && map->map[i][j])
+	line_size = my_strlen(map->map_file[i]);
+	while (j <= line_size && map->map_file[i][j])
 	{
-		if ((my_isnum(map->map[i][j]) != 0 || map->map[i][j] == '-' || map->map[i][j] == '+') && rgb_size < 3)
+		if ((my_isnum(map->map_file[i][j]) != 0 || map->map_file[i][j] == '-' || map->map_file[i][j] == '+') && rgb_size < 3)
 		{
 			rgb_size++;
-			if (rgb_size < 3 && my_strchr(&map->map[i][j], ',') != NULL)
-				str_n = my_strcdup(&map->map[i][j], ',');
+			if (rgb_size < 3 && my_strchr(&map->map_file[i][j], ',') != NULL)
+				str_n = my_strcdup(&map->map_file[i][j], ',');
 			else
-				str_n = my_strcdup(&map->map[i][j], '\0');
+				str_n = my_strcdup(&map->map_file[i][j], '\0');
 			num = atoi(str_n);
 			j += my_strlen(str_n);
 			free(str_n);

@@ -54,19 +54,19 @@ int	map_is_last(t_map *map)
 	int	j;
 
 	i = 0;
-	while (map->map[i])
+	while (map->map_file[i])
 		i++;
 	i--;
 	while (i >= 0)
 	{
 		j = 0;
-		while (map->map[i][j])
+		while (map->map_file[i][j])
 		{
-			if (map->map[i][j] == '1' || map->map[i][j] == '0')
+			if (map->map_file[i][j] == '1' || map->map_file[i][j] == '0')
 				return (NO_ERROR);
-			else if (map->map[i][j] == ' ' || map->map[i][j] == 'N' || \
-					map->map[i][j] == 'S' || \
-					map->map[i][j] == 'E' || map->map[i][j] == 'W')
+			else if (map->map_file[i][j] == ' ' || map->map_file[i][j] == 'N' || \
+					map->map_file[i][j] == 'S' || \
+					map->map_file[i][j] == 'E' || map->map_file[i][j] == 'W')
 				j++;
 			else
 			{
@@ -86,13 +86,13 @@ static int	map_is_empty(t_map *map)
 
 	i = 0;
 	j = 0;
-	while (map->map[i])
+	while (map->map_file[i])
 	{
-		if (map->map[i][1])
+		if (map->map_file[i][1])
 		{
-			while (map->map[i][j])
+			while (map->map_file[i][j])
 			{
-				if (map->map[i][j] != ' ')
+				if (map->map_file[i][j] != ' ')
 					return NO_ERROR;
 				j++;
 			}

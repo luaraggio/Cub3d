@@ -67,7 +67,7 @@ static int	open_map(t_map *map, char *map_file)
 
 static void	set_initial_map_struct(t_map *map)
 {
-	map->map = my_split(map->full_map, '\n');
+	map->map_file = my_split(map->full_map, '\n');
 	free(map->full_map);
 	map->full_map = NULL;
 	map->total_i = get_total_i(map);
@@ -81,6 +81,7 @@ static void	finish_map_struct(t_map *map)
 {
 	map->floor_color = get_color(map, 'F');
 	map->ceiling_color = get_color(map, 'C');
+	copy_map(map);
 }
 
 static void	set_player_start(t_map *map)
@@ -90,14 +91,14 @@ static void	set_player_start(t_map *map)
 	
 	i = 0;
 	j = 0;
-	while ((i < map->total_i) && line_belongs_to_map(map->map[i]) == ERROR)
+	while ((i < map->total_i) && line_belongs_to_map(map->map_file[i]) == ERROR)
         i++;
-	while (map->map[i])
+	while (map->map_file[i])
 	{
 		j = 0;
-		while (map->map[i][j])
+		while (map->map_file[i][j])
 		{
-			if (is_player(map->map[i][j]) == NO_ERROR)
+			if (is_player(map->map_file[i][j]) == NO_ERROR)
 			{
 				map->player_j = j;
 				map->player_i = i;

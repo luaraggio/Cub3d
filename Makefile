@@ -38,6 +38,7 @@ srcs/map/line_is.c \
 srcs/map/floodfill.c \
 srcs/map/texture.c \
 srcs/map/color.c \
+srcs/map/copy_map.c \
 srcs/game.c \
 srcs/keys.c \
 srcs/clear.c \

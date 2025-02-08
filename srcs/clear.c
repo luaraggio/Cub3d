@@ -20,6 +20,7 @@ void	clear_all(t_game *game, t_map *map)
 
 void	clear_map(t_map *map)
 {
+	my_clean_vect(map->map_file);
 	my_clean_vect(map->map);
 	free(map->north_texture);
 	free(map->south_texture);
