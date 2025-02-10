@@ -26,24 +26,28 @@ void    copy_map(t_map *map)
     malloc_map(map);
     while (map->map_file[i])
     {
+//        printf("i = %d\n", i);
         j = 0;
         while (map->map_file[i][j])
         {
+//            printf("j = %d\n", j);
             map->map[k][j] = map->map_file[i][j];
             j++;
         }
         k++;
         i++;
     }
-    print_matrix(map->map);
+//    print_matrix(map->map);
 }
 
 static void malloc_map(t_map *map)
 {
     int i;
+    int k;
     int j;
 
     i = map->i_start;
+    k = 0;
     j = 0;
 //    printf("total_i = %d\n", map->total_i);
 //    printf("i_start = %d\n", map->i_start);
@@ -54,9 +58,10 @@ static void malloc_map(t_map *map)
         j = 0;
         while (map->map_file[i][j])
             j++;
-//        printf("Em map[%i] vai malocar %i\n", i, j + 1);
-        map->map[i] = my_calloc(j + 1, sizeof(char *));
+//        printf("Em map->map[%i] vai malocar %i\n", i, j + 1);
+        map->map[k] = my_calloc(j + 1, sizeof(char *));
         i++;
+        k++;
     }
 //    printf("Mapa alocado. Falta copiar\n");
 }
