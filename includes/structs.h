@@ -15,7 +15,8 @@
 
 # include "enums.h"
 
-typedef struct s_image	t_image;
+typedef struct s_image		t_image;
+typedef struct s_textures	t_textures;
 
 typedef struct s_map
 {
@@ -26,8 +27,14 @@ typedef struct s_map
 	int						total_i; // Uso na floodfill
 	int						player_j; // Vetor position do jogador em x
 	int						player_i; // Vetor position do jogador em y
+	char					player_direction; // Direção que o jogador está olhando
 	unsigned int			floor_color; // Já em hexadecimal
 	unsigned int			ceiling_color; // Já em hexadecimal
+	t_textures				*textures;
+}							t_map;
+
+typedef struct s_textures
+{
 	char					*north_texture;
 	char					*south_texture;
 	char					*west_texture;
@@ -36,7 +43,8 @@ typedef struct s_map
 	int						fd_south_texture;
 	int						fd_west_texture;
 	int						fd_east_texture;
-}							t_map;
+}				t_textures;
+
 
 typedef struct s_game
 {

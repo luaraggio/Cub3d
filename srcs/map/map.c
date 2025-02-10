@@ -75,6 +75,8 @@ static void	set_initial_map_struct(t_map *map)
 	set_player_start(map);
 	map->ceiling_color = OFF;
 	map->floor_color = OFF;
+	map->textures = (t_textures *)malloc(sizeof(t_textures));
+	my_bzero(map->textures, sizeof(t_textures));
 }
 
 static void	finish_map_struct(t_map *map)
@@ -102,6 +104,7 @@ static void	set_player_start(t_map *map)
 			{
 				map->player_j = j;
 				map->player_i = i;
+				map->player_direction = map->map_file[i][j];
 				return ;
 			}
 			j++;

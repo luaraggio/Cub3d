@@ -26,9 +26,6 @@ int	valid_map_file(char *map_file)
 
 int	valid_map(t_map *map)
 {
-/*	int	err_flag;
-
-	err_flag = OFF;*/
 	if (map_is_empty(map) == ERROR)
 		return(ERROR);
 	if (valid_map_chars(map) == ERROR)
@@ -39,8 +36,6 @@ int	valid_map(t_map *map)
 		return (ERROR);
 	if (valid_walls(map) == ERROR)
 		return (ERROR);
-/*	if (err_flag == ON)
-		return (ERROR);*/
 	if (valid_player(map) == ERROR)
 		return (ERROR);
 	if (map_is_closed(map) == ERROR)
