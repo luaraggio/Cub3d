@@ -27,6 +27,8 @@ int	init_game_struct(t_game *game, t_map *map)
 	image = (t_image *)malloc(sizeof(t_image));
 	my_bzero(image, sizeof(t_image));
 	game->mlx = mlx_init();
+	game->w_height = W_HEIGHT;
+	game->w_width = W_WIDTH;
 	if (game->mlx == NULL)
 	{
 		my_printf_error(RED "Error. Something went wrong with "
@@ -37,8 +39,6 @@ int	init_game_struct(t_game *game, t_map *map)
 	}
 	game->win = mlx_new_window(game->mlx, game->w_width, game->w_height,
 		"Cub3d");
-	game->w_height = W_HEIGHT;
-	game->w_width = W_WIDTH;
 	game->map = map;
 	game->image = image;
 	return (NO_ERROR);
