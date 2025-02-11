@@ -20,7 +20,7 @@ identifier.
 
 */
 
-int	init_game_struct(t_game *game, t_map *map)
+int	init_game_struct(t_game *game, t_map *map, t_player *player)
 {
 	t_image	*image;
 
@@ -41,6 +41,7 @@ int	init_game_struct(t_game *game, t_map *map)
 		"Cub3d");
 	game->map = map;
 	game->image = image;
+	game->player = player;
 	return (NO_ERROR);
 }
 
@@ -60,9 +61,9 @@ void	set_hooks(t_game *game)
 
 int	start_game(t_game *game, t_map *map, t_player *player)
 {
-	init_game_struct(game, map);
-	set_hooks(game);
+	init_game_struct(game, map, player);
 	init_player_struct(map, player);
+	set_hooks(game);
 	print_game(game);
 	// Iniciar a impressão mesmo em 2d
 	mlx_loop(game->mlx);

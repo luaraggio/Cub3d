@@ -44,7 +44,6 @@ void	set_player_position(t_map *map, t_player *player)
 
 int	init_player_struct(t_map *map, t_player *player)
 {
-	//my_bzero(player, sizeof(player));
 	player->x = map->player_j;
 	player->y = map->player_i;
 	player->plane_x = 0;

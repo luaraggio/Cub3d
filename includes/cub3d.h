@@ -58,7 +58,7 @@ int	main(int argc, char **argv);
 
 //game.c
 void	set_hooks(t_game *game);
-int init_game_struct(t_game *game, t_map *map);
+int init_game_struct(t_game *game, t_map *map, t_player *player);
 int exit_game(t_game *game);
 int start_game(t_game *game, t_map *map, t_player *player);
 
@@ -125,5 +125,8 @@ void    copy_map(t_map *map);
 //------------------PRINT_GAME------------------
 // print_game.c
 void	print_game(t_game *game);
+void	my_mlx_pixel_put(t_image *image, int i, int j, int color);
+// print_2d.c
+void    print_2dmap(t_game *game, char **map_2d);
 
 #endif

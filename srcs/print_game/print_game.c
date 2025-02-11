@@ -13,16 +13,14 @@
 #include "../../includes/cub3d.h"
 
 static void	create_general_img(void *mlx, t_image *img);
-//static void	print_player(t_game *game);
 static void	print_background(t_image *img, t_map *map);
-static void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 //static void print_img_struct(t_image *img, char *name);
 
 void	print_game(t_game *game)
 {
 	create_general_img(game->mlx, game->image);
 	print_background(game->image, game->map);
-//	print_player(game); // Para a visualização 2D do mapa
+	print_2dmap(game, game->map->map); // Para a visualização 2D do mapa
 	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);
 }
 
@@ -33,11 +31,6 @@ static void	create_general_img(void *mlx, t_image *img)
 	img->img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
 	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line), &(img->endian));
 }
-/*
-static void	print_player(t_game *game)
-{
-	my_mlx_pixel_put(game->image, );
-}*/
 
 static void	print_background(t_image *img, t_map *map) // Mudar de printagem de pixels para printagem de retângulos
 {
@@ -60,7 +53,7 @@ static void	print_background(t_image *img, t_map *map) // Mudar de printagem de 
 	}
 }
 
-static void	my_mlx_pixel_put(t_image *image, int i, int j, int color)
+void	my_mlx_pixel_put(t_image *image, int i, int j, int color)
 {
 	char *dst;
 

@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 
 	my_bzero(&map, sizeof(t_map));
 	my_bzero(&player, sizeof(t_player));
+	my_bzero(&player, sizeof(player));
 	check_args(argc);
 	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do "
 		"nosso projeto! 🦋🐙\n" RESET);

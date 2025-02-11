@@ -18,6 +18,7 @@
 
 typedef struct s_image		t_image;
 typedef struct s_textures	t_textures;
+typedef struct s_player		t_player;
 
 typedef struct s_map
 {
@@ -49,13 +50,14 @@ typedef struct s_textures
 
 typedef struct s_game
 {
-	void	*mlx;
-	void	*win;
-	t_image	*image;
-	int		w_height;
-	int		w_width;
-	bool	keys[7000];
-	t_map	*map;
+	void		*mlx;
+	void		*win;
+	t_image		*image;
+	int			w_height;
+	int			w_width;
+	bool		keys[7000];
+	t_map		*map;
+	t_player	*player;
 }			t_game;
 
 typedef struct s_player
