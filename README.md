@@ -71,34 +71,6 @@ After compilation, run the game with the following command:
 ./cub3d maps/example_map.cub
 ```
 This will launch the game with the specified .cub map. Replace maps/example_map.cub with the path to any map you wish to use.
-## Map Format
-
-Maps in Cub3D are defined in .cub files. These files contain the following elements:
-
-- **Resolution**: Defines the screen resolution.
-- **Textures**: Paths to the textures for walls and optional sprites.
-- **Colors**: Defines the RGB values for the floor and ceiling colors.
-- **Map Layout**: Defines the layout of the map using a grid of 1 (wall) and 0 (free space).
-### Example Map File (example_map.cub)
-
-```txt
-R 800 600        # Screen resolution (width x height)
-
-NO ./textures/north.xpm   # Path to the north wall texture
-SO ./textures/south.xpm   # Path to the south wall texture
-EA ./textures/east.xpm    # Path to the east wall texture
-WE ./textures/west.xpm    # Path to the west wall texture
-S ./textures/sprite.xpm   # Path to the sprite texture (optional)
-
-F 220,220,220          # Floor color (RGB)
-C 0,0,0                # Ceiling color (RGB)
-
-1 1 1 1 1 1 1 1 1 1  # Map layout (walls)
-1 0 0 0 0 0 0 0 0 1  # '1' represents walls, '0' represents free spaces
-1 0 1 1 1 1 1 0 0 1  # The player cannot walk through walls
-1 0 0 0 0 1 1 0 0 1  # The player can move through free spaces
-1 1 1 1 1 1 1 1 1 1  # Walls must surround the map
-```
 ## Controls
 
 - **W**: Move forward.
@@ -110,16 +82,6 @@ C 0,0,0                # Ceiling color (RGB)
 ## Makefile
 
 The Makefile includes several useful targets for managing the project.
-
-### Targets:
-
-- **all**: Builds the project.
-- **clean**: Removes object files (.o files).
-- **fclean**: Removes object files and the executable (cub3d).
-- **re**: Rebuilds the project from scratch.
-- **valgrind**: Runs the project with Valgrind to check for memory leaks.
-- **norm**: Runs the Norminette to check for code style compliance.
- 
 ### Usage:
 
 ``` bash
@@ -134,4 +96,3 @@ make norm    # Runs Norminette checks
 
 Cub3D is a fun and educational project that provides a simple 3D raycasting engine. It gives you the opportunity to dive into computer graphics, map parsing, and handling user input in a game environment. By working with the project, you'll gain valuable experience in programming with C, particularly in graphics rendering, memory management, and system-level programming.
 
-This project also challenges you to handle complex algorithms, such as raycasting, which is the foundation of many early 3D games. Overall, Cub3D offers both a solid technical foundation and an exciting experience in game development.
