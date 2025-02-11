@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/11 00:16:56 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:48:12 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,11 @@ void	print_key(const char *key_name, const char *color)
 	printf("A tecla " "%s%s" RESET " foi pressionada.\n", color, key_name);
 }
 
-/*int	is_move_key(int keycode)
+void	handle_shift(t_player *player)
 {
-	return ((keycode == UP_KEY || keycode == DOWN_KEY || keycode == DOWN_KEY
-			|| keycode == LEFT_KEY || keycode == W_KEY || keycode == A_KEY
-			|| keycode == S_KEY || keycode == D_KEY));
-}*/
-
-/*void	handle_shift(t_player *player)
-{
-	player->speed = MOVE_SPEED * 2;
+	player->move_speed = MOVE_SPEED * 2;
 	print_key("SHIFT", PINK);
-}*/
+}
 
 int	release_key(int keycode, t_game *game)
 {
@@ -41,7 +34,7 @@ int	release_key(int keycode, t_game *game)
 	return (NO_ERROR);
 }
 
-int	press_key(int keycode, t_game *game)
+int	press_key(int keycode, t_game *game, t_player *player)
 {
 	if (keycode < 0 || keycode > 7000)
 	{
@@ -51,6 +44,8 @@ int	press_key(int keycode, t_game *game)
 	game->keys[keycode] = true; // Marca a tecla como pressionada
 	if (keycode == ESC_KEY)
 		exit_game(game);
+	else if (keycode == L_SHIFT_KEY || keycode == R_SHIFT_KEY)
+		handle_shift(player);
 	else if (keycode == RIGHT_KEY)
 		print_key("seta para a direita", PINK);
 	else if (keycode == LEFT_KEY)

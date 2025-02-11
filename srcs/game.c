@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 23:32:10 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:48:38 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	set_hooks(t_game *game)
 int	start_game(t_game *game, t_map *map, t_player *player)
 {
 	init_game_struct(game, map);
-	set_hooks(game);
 	init_player_struct(map, player);
+	set_hooks(game);
 	print_game(game, map);
 	//draw_player(game, player);
 	mlx_loop(game->mlx);

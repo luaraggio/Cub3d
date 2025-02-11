@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/11 00:24:18 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:49:35 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,17 @@
 
 //Keycodes
 # define ESC_KEY 65307
-# define Q_KEY 113
-# define UP_KEY 65362
-# define DOWN_KEY 65364
-# define RIGHT_KEY 65363
 # define LEFT_KEY 65361
+# define UP_KEY 65362
+# define RIGHT_KEY 65363
+# define DOWN_KEY 65364
+# define Q_KEY 113
 # define W_KEY 119
 # define A_KEY 97
 # define S_KEY 115
 # define D_KEY 100
+# define L_SHIFT_KEY 65505
+# define R_SHIFT_KEY 65506
 
 //Window Size
 # define W_HEIGHT 800
@@ -69,7 +71,7 @@ void	draw_player(t_game *game, t_player *player);
 
 //keys.c
 void	print_key(const char *key_name, const char *color);
-int press_key(int keycode, t_game *game);
+int press_key(int keycode, t_game *game, t_player *player);
 int	release_key(int keycode, t_game *game);
 
 //moves.c
