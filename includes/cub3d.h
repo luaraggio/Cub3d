@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 23:31:59 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:24:18 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <signal.h>
 
 //Colors
 # define GREEN "\033[0;32m"

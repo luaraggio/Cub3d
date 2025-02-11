@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 23:31:04 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:16:56 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	press_key(int keycode, t_game *game)
 {
 	if (keycode < 0 || keycode > 7000)
 	{
-		printf("Deu erro dentro de press_key");	
+		printf("Deu erro dentro de press_key");
 		return (ERROR);
 	}
 	game->keys[keycode] = true; // Marca a tecla como pressionada
@@ -67,4 +67,3 @@ int	press_key(int keycode, t_game *game)
 		printf(RED "Alguma outra tecla foi pressionada.\n" RESET);
 	return (NO_ERROR);
 }
-

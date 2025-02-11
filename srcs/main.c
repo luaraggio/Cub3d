@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:10 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 20:41:26 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/11 00:23:57 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,29 @@ int	check_args(int argc)
 	return (NO_ERROR);
 }
 
+void	signal_handle(int signal)
+{
+	if (signal == SIGINT)
+	{
+		printf("Olá do sig int");
+		exit(NO_ERROR);
+	}
+	else if (signal == SIGQUIT)
+		return ;
+}
+
+void	setup_signal_handling()
+{
+	struct sigaction	sa;
+
+	my_memset(&sa, 0, sizeof(sa));
+	sa.sa_handler = signal_handle;
+	if (sigaction(SIGINT, &sa, NULL) == -1)
+	{
+		printf("Erro no sigaction");
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_map		map;
@@ -31,6 +54,7 @@ int	main(int argc, char **argv)
 	my_bzero(&map, sizeof(t_map));
 	my_bzero(&player, sizeof(t_player));
 	check_args(argc);
+	setup_signal_handling();
 	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do "
 		"nosso projeto! 🦋🐙\n" RESET);
 	if (set_map(&map, argv[1]) == ERROR)
