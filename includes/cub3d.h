@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/05 02:47:06 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/10 23:31:59 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@
 # define W_HEIGHT 800
 # define W_WIDTH 1300
 
+# define MAP_WIDTH 10
+# define MAP_HEIGHT 10
+# define TILE_SIZE 32
+
 //Speed
 # define MOVE_SPEED 0.01
 # define ROTATION_SPEED 0.01
@@ -53,14 +57,19 @@
 int	main(int argc, char **argv);
 
 //game.c
+void	set_hooks(t_game *game);
 int init_game_struct(t_game *game, t_map *map);
 int exit_game(t_game *game);
-int	set_hooks(t_game *game);
-int start_game(t_game *game, t_map *map);
+int start_game(t_game *game, t_map *map, t_player *player);
+
+//player.c
+int	init_player_struct(t_map *map, t_player *player);
+void	draw_player(t_game *game, t_player *player);
 
 //keys.c
 void	print_key(const char *key_name, const char *color);
 int press_key(int keycode, t_game *game);
+int	release_key(int keycode, t_game *game);
 
 //moves.c
 void	move_player_forward(t_player *player);
