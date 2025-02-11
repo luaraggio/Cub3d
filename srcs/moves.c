@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:53:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 21:36:16 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/10 23:25:36 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@
 
 void	move_player_forward(t_player *player)
 {
+	//if (player->x + deslocamento !colide))
 	player->x += player->x_direction * player->move_speed;
 	player->y += player->y_direction * player->move_speed;
+	return ;
 }
 
 void	move_player_backward(t_player *player)
 {
+	//if (player->x + deslocamento !colide))
 	player->x -= player->x_direction * player->move_speed;
 	player->y -= player->y_direction * player->move_speed;
 }
