@@ -104,8 +104,6 @@ int     map_is_closed(t_map *map);
 int     floodfill(char **map, int i, int j, int total_i);
 int     check_first_and_last_line(t_map *map);
 // get_map_data.c
-int     get_rows(t_map *map);
-int     get_cols(t_map *map);
 int     get_total_i(t_map *map);
 // texture.c
 void    set_textures_names(t_map *map, char *map_line);
@@ -117,6 +115,11 @@ void	clear_map(t_map *map);
 void	close_texture_fds(t_map *map);
 void	clear_all(t_game *game, t_map *map);
 void	clear_game(t_game *game);
+// color.c
+unsigned int		get_color(t_map *map, char ref);
+char	*dec_to_hex(int n);
+// copy_map.c
+void    copy_map(t_map *map);
 
 //------------------PRINT_GAME------------------
 // print_game.c

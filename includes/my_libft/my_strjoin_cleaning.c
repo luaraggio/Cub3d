@@ -31,6 +31,9 @@ char	*my_strjoin_cleaning(char *s1, char *s2)
 		return (NULL);
 	string = my_join(s1, s2, string);
 	free(s1);
+	s1 = NULL;
+	free(s2);
+	s2 = NULL;
 	return (string);
 }
 

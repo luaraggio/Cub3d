@@ -13,7 +13,8 @@
 #include "../../includes/cub3d.h"
 
 static int	open_map(t_map *map, char *map_file);
-static void	set_struct(t_map *map);
+static void	set_initial_map_struct(t_map *map);
+static void	finish_map_struct(t_map *map);
 static void	set_player_start(t_map *map);
 
 int	set_map(t_map *map, char *map_file)
@@ -26,13 +27,13 @@ int	set_map(t_map *map, char *map_file)
 		map->full_map = NULL;
 		return (ERROR);
 	}
-	set_struct(map);
+	set_initial_map_struct(map);
 	if (valid_map(map) != NO_ERROR)
 	{
 		clear_map(map);
-		//my_clean_vect(map->map);
 		return (ERROR);
 	}
+	finish_map_struct(map);
 	return (NO_ERROR);
 }
 
@@ -54,11 +55,6 @@ static int	open_map(t_map *map, char *map_file)
 		if (ret == NULL)
 			break ;
 		map->full_map = my_strjoin_cleaning(map->full_map, ret);
-		if (ret)
-		{
-			free(ret);
-			ret = NULL;
-		}
 	}
 	close(fd);
 	if (!map->full_map)
@@ -69,21 +65,25 @@ static int	open_map(t_map *map, char *map_file)
 	return (NO_ERROR);
 }
 
-static void	set_struct(t_map *map)
+static void	set_initial_map_struct(t_map *map)
 {
-	map->map = my_split(map->full_map, '\n');
+	map->map_file = my_split(map->full_map, '\n');
 	free(map->full_map);
 	map->full_map = NULL;
-	map->rows = get_rows(map);
-	map->cols = get_cols(map);
 	map->total_i = get_total_i(map);
 	map->i_start = map_start(map);
 	set_player_start(map);
-/*	set_textures_names(map, map_line);
-	printf("Textura NO: %s\n", map->noth_texture);
-	printf("Textura SO: %s\n", map->south_texture);
-	printf("Textura WE: %s\n", map->west_texture);
-	printf("Textura EA: %s\n", map->east_texture);*/
+	map->ceiling_color = OFF;
+	map->floor_color = OFF;
+	map->textures = (t_textures *)malloc(sizeof(t_textures));
+	my_bzero(map->textures, sizeof(t_textures));
+}
+
+static void	finish_map_struct(t_map *map)
+{
+	map->floor_color = get_color(map, 'F');
+	map->ceiling_color = get_color(map, 'C');
+	copy_map(map);
 }
 
 static void	set_player_start(t_map *map)
@@ -93,17 +93,18 @@ static void	set_player_start(t_map *map)
 	
 	i = 0;
 	j = 0;
-	while ((i < map->total_i) && line_belongs_to_map(map->map[i]) == ERROR)
+	while ((i < map->total_i) && line_belongs_to_map(map->map_file[i]) == ERROR)
         i++;
-	while (map->map[i])
+	while (map->map_file[i])
 	{
 		j = 0;
-		while (map->map[i][j])
+		while (map->map_file[i][j])
 		{
-			if (is_player(map->map[i][j]) == NO_ERROR)
+			if (is_player(map->map_file[i][j]) == NO_ERROR)
 			{
 				map->player_j = j;
 				map->player_i = i;
+				map->player_direction = map->map_file[i][j];
 				return ;
 			}
 			j++;

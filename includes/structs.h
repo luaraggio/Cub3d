@@ -15,30 +15,36 @@
 
 # include "enums.h"
 
-//typedef struct s_all_images	t_all_images;
-typedef struct s_image	t_image;
+typedef struct s_image		t_image;
+typedef struct s_textures	t_textures;
 
 typedef struct s_map
 {
-	char		*full_map;
-	char		**map;
-	int			i_start;
-	int			total_i;
-	int			rows;
-	int			cols;
-	int			height; //altura
-	int			width; //largura
-	int			player_j;
-	int			player_i;
-	char		*north_texture;
-	char		*south_texture;
-	char		*west_texture;
-	char		*east_texture;
-	int			fd_north_texture;
-	int			fd_south_texture;
-	int			fd_west_texture;
-	int			fd_east_texture;
-}				t_map;
+	char					*full_map;
+	char					**map_file; // É o arquivo .cub inteiro. Mudar o nome dessa variável para criar a cópia apenas no mapa
+	char					**map;
+	int						i_start; // Uso para a check_first_and_last_line, logo antes da floodfill
+	int						total_i; // Uso na floodfill
+	int						player_j; // Vetor position do jogador em x
+	int						player_i; // Vetor position do jogador em y
+	char					player_direction; // Direção que o jogador está olhando
+	unsigned int			floor_color; // Já em hexadecimal
+	unsigned int			ceiling_color; // Já em hexadecimal
+	t_textures				*textures;
+}							t_map;
+
+typedef struct s_textures
+{
+	char					*north_texture;
+	char					*south_texture;
+	char					*west_texture;
+	char					*east_texture;
+	int						fd_north_texture;
+	int						fd_south_texture;
+	int						fd_west_texture;
+	int						fd_east_texture;
+}				t_textures;
+
 
 typedef struct s_game
 {
@@ -49,7 +55,6 @@ typedef struct s_game
 	int		w_width;
 	int		last_key;
 	t_map	*map;
-//	t_all_images	*images;
 }			t_game;
 
 typedef struct s_player
@@ -64,24 +69,12 @@ typedef struct s_player
 	double	rotation_speed;
 }			t_player;
 
-/*typedef struct s_all_images
-{
-//	void	*img_north;
-//	void	*img_south;
-//	void	*img_west;
-//	void	*img_east;
-//	void	*img_sprite;
-	t_image	*rectangle_ceiling;
-	t_image	*rectangle_floor;
-}			t_all_images;*/
-
 typedef struct s_image
 {
 	void	*img;
 	char	*addr;
 	int		bpp;
 	int		endian;
-//	int		bits_per_pixel;
 	int		size_line;
 	int		size_height;
 }			t_image;

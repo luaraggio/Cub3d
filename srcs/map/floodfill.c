@@ -16,7 +16,7 @@ int	map_is_closed(t_map *map)
 {
 	char **map_copy;
 
-	map_copy = my_copy_matrix(map->map);
+	map_copy = my_copy_matrix(map->map_file);
 	if (check_first_and_last_line(map) == ERROR || floodfill(map_copy, map->player_i, map->player_j, map->total_i) == ERROR)
 	{
 		my_clean_vect(map_copy);
@@ -57,16 +57,16 @@ int	check_first_and_last_line(t_map *map)
 	int j;
 
 	j = 0;
-	while (map->map[map->i_start][j])
+	while (map->map_file[map->i_start][j])
 	{
-		if (map->map[map->i_start][j] != '1')
+		if (map->map_file[map->i_start][j] != '1')
 			return (ERROR);
 		j++;
 	}
 	j = 0;
-	while (map->map[map->total_i][j])
+	while (map->map_file[map->total_i][j])
 	{
-		if (map->map[map->total_i][j] != '1')
+		if (map->map_file[map->total_i][j] != '1')
 			return (ERROR);
 		j++;
 	}

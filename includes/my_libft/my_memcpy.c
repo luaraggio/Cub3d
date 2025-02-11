@@ -23,11 +23,16 @@ void	*my_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	if (!dest && !src)
 		return (NULL);
+	my_printf("NA MEMCPY\n");
+	my_printf("dest: %s\n", str);
+	my_printf("src: %s\n", str2);
 	while (i < n)
 	{
 		str[i] = str2[i];
 		i++;
 	}
+	my_printf("dest: %s\n", str);
+	my_printf("src: %s\n", str2);
 	return (str);
 }
 /*

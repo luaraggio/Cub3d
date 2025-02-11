@@ -55,9 +55,9 @@ int	map_start(t_map *map)
 	int	i;
 	
 	i = 0;
-	while (map->map[i])
+	while (map->map_file[i])
 	{
-		if (is_map(&(map->map[i])) == NO_ERROR)
+		if (is_map(&(map->map_file[i])) == NO_ERROR)
 			return (i);
 		i++;
 	}

@@ -46,20 +46,20 @@ static int	direction_ok(t_map *map, char *direction)
 	i = 0;
 	flag = 0;
 //	printf("Vai checar a direção em %s\n", direction);
-	while (map->map[i] && line_belongs_to_map(map->map[i]) == ERROR)
+	while (map->map_file[i] && line_belongs_to_map(map->map_file[i]) == ERROR)
 	{
 		j = 0;
 //		printf("Linha %d: %s\n", i, map->map[i]);
-		while (map->map[i][j] && line_belongs_to_map(map->map[i]) == ERROR)
+		while (map->map_file[i][j] && line_belongs_to_map(map->map_file[i]) == ERROR)
 		{
-			if (my_strncmp(&(map->map[i][j]), direction, 2) == 0)
+			if (my_strncmp(&(map->map_file[i][j]), direction, 2) == 0)
 			{
 				flag++;
 				if (flag <= 1)
-					set_texture(map, map->map[i], direction);
+					set_texture(map, map->map_file[i], direction);
 				break ;
 			}
-			else if (map->map[i][j] != ' ')
+			else if (map->map_file[i][j] != ' ')
 				break ;
 			j++;
 		}

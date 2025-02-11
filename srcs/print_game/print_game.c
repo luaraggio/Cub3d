@@ -13,7 +13,7 @@
 #include "../../includes/cub3d.h"
 
 static void	create_general_img(void *mlx, t_image *img);
-static void	print_background(t_image *img);
+static void	print_background(t_image *img, t_map *map);
 static void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 //static void print_img_struct(t_image *img, char *name);
 
@@ -21,7 +21,7 @@ void	print_game(t_game *game, t_map *map)
 {
 	(void)map;
 	create_general_img(game->mlx, game->image);
-	print_background(game->image);
+	print_background(game->image, game->map);
 	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);
 }
 
@@ -33,7 +33,7 @@ static void	create_general_img(void *mlx, t_image *img)
 	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line), &(img->endian));
 }
 
-static void	print_background(t_image *img) // Mudar de printagem de pixels para printagem de retângulos
+static void	print_background(t_image *img, t_map *map) // Mudar de printagem de pixels para printagem de retângulos
 {
 	int i;
 	int j;
@@ -45,9 +45,9 @@ static void	print_background(t_image *img) // Mudar de printagem de pixels para 
 		while (j < W_WIDTH)
 		{
 			if (i < W_HEIGHT / 2)
-				my_mlx_pixel_put(img, i, j, 0x00FF0000); // Cor do teto
+				my_mlx_pixel_put(img, i, j, map->ceiling_color); // Cor do teto
 			else
-				my_mlx_pixel_put(img, i, j, 0x00F00FF0); // Cor do chão
+				my_mlx_pixel_put(img, i, j, map->floor_color); // Cor do chão
 			j++;
 		}
 		i++;
