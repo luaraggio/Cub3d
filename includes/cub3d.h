@@ -115,6 +115,6 @@ void    copy_map(t_map *map);
 
 //------------------PRINT_GAME------------------
 // print_game.c
-void	print_game(t_game *game, t_map *map);
+void	print_game(t_game *game);
 
 #endif
