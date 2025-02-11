@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 21:03:03 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/10 23:32:10 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int	exit_game(t_game *game)
 
 void	set_hooks(t_game *game)
 {
-	mlx_key_hook(game->win, press_key, game);
-	mlx_hook(game->win, 17, 0, exit_game, game);
+	mlx_hook(game->win, 2, 1L << 0, press_key, game);     // Evento keypress
+	mlx_hook(game->win, 3, 1L << 1, release_key, game);   // Evento keyrelease
+	mlx_hook(game->win, 17, 0, exit_game, game);          // Evento de fechar a janela
 }
 
 int	start_game(t_game *game, t_map *map, t_player *player)

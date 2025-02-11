@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 21:04:11 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/10 23:31:59 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	draw_player(t_game *game, t_player *player);
 //keys.c
 void	print_key(const char *key_name, const char *color);
 int press_key(int keycode, t_game *game);
+int	release_key(int keycode, t_game *game);
 
 //moves.c
 void	move_player_forward(t_player *player);

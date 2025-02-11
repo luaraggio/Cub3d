@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 20:18:30 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/10 23:29:18 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include "enums.h"
+# include <stdbool.h>
 
 typedef struct s_image		t_image;
 typedef struct s_textures	t_textures;
@@ -53,7 +54,7 @@ typedef struct s_game
 	t_image	*image;
 	int		w_height;
 	int		w_width;
-	int		last_key;
+	bool	keys[256];
 	t_map	*map;
 }			t_game;
 
