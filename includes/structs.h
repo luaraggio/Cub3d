@@ -54,7 +54,7 @@ typedef struct s_game
 	t_image	*image;
 	int		w_height;
 	int		w_width;
-	bool	keys[256];
+	bool	keys[7000];
 	t_map	*map;
 }			t_game;
 

@@ -24,14 +24,7 @@ void	print_key(const char *key_name, const char *color)
 			|| keycode == S_KEY || keycode == D_KEY));
 }*/
 
-/*void handle_events(int event_type, int keycode, t_game *game) {
-	if (event_type == KEY_PRESS)
-		press_key(keycode, game);
-	else if (event_type == KEY_RELEASE)
-		release_key(keycode, game);
-}
-
-void	handle_shift(t_player *player)
+/*void	handle_shift(t_player *player)
 {
 	player->speed = MOVE_SPEED * 2;
 	print_key("SHIFT", PINK);
@@ -39,16 +32,22 @@ void	handle_shift(t_player *player)
 
 int	release_key(int keycode, t_game *game)
 {
-	if (keycode < 0 || keycode > 255)
+	if (keycode < 0 || keycode > 7000)
+	{
+		printf("Deu erro dentro de release_key");
 		return (ERROR);
+	}
 	game->keys[keycode] = false; // Marca a tecla como solta
 	return (NO_ERROR);
 }
 
 int	press_key(int keycode, t_game *game)
 {
-	if (keycode < 0 || keycode > 255)
+	if (keycode < 0 || keycode > 7000)
+	{
+		printf("Deu erro dentro de press_key");	
 		return (ERROR);
+	}
 	game->keys[keycode] = true; // Marca a tecla como pressionada
 	if (keycode == ESC_KEY)
 		exit_game(game);
