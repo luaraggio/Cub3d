@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:54:55 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/10 22:22:19 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/11 17:44:28 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,9 @@ void	set_player_position(t_map *map, t_player *player)
 
 int	init_player_struct(t_map *map, t_player *player)
 {
-	//my_bzero(player, sizeof(player));
+	my_bzero(player, sizeof(player));
 	player->x = map->player_j;
 	player->y = map->player_i;
-	player->plane_x = 0;
-	player->plane_y = 0;
-	player->x_direction = 0;
-	player->y_direction = 0;
 	player->move_speed = MOVE_SPEED;
 	player->rotation_speed = ROTATION_SPEED;
 	set_player_position(map, player);

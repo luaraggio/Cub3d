@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/11 00:48:38 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/12 15:03:18 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,42 @@ identifier.
 
 */
 
-int	init_game_struct(t_game *game, t_map *map)
+void	init_image_struct(t_game *game, t_map *map)
 {
 	t_image	*image;
 
 	image = (t_image *)malloc(sizeof(t_image));
 	my_bzero(image, sizeof(t_image));
-	game->mlx = mlx_init();
-	game->w_height = W_HEIGHT;
-	game->w_width = W_WIDTH;
-	if (game->mlx == NULL)
-	{
-		my_printf_error(RED "Error. Something went wrong with "
-			"mlx initialization\n" RESET);
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-		return (ERROR);
-	}
-	game->win = mlx_new_window(game->mlx, game->w_width, game->w_height,
-		"Cub3d");
 	game->map = map;
 	game->image = image;
-	return (NO_ERROR);
+}
+
+t_game	*init_game(t_game *game, t_map *map, t_player *player)
+{
+	int	i;
+
+	// t_game	*game;
+	i = -1;
+	game = malloc(sizeof(t_game));
+	if (!game)
+		return (NULL);
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (free(game), NULL);
+	game->win = mlx_new_window(game->mlx, W_WIDTH, W_HEIGHT, "Cub3d");
+	if (!game->win)
+		return (free(game), NULL);
+	game->keys = malloc(sizeof(int) * MAX_KEYS);
+	if (!game->keys)
+	{
+		mlx_destroy_window(game->mlx, game->win);
+		return (free(game), NULL);
+	}
+	while (++i < MAX_KEYS)
+		game->keys[i] = 0;
+	init_image_struct(game, map);
+	init_player_struct(map, player);
+	return (game);
 }
 
 int	exit_game(t_game *game)
@@ -53,18 +67,17 @@ int	exit_game(t_game *game)
 
 void	set_hooks(t_game *game)
 {
-	mlx_hook(game->win, 2, 1L << 0, press_key, game);     // Evento keypress
-	mlx_hook(game->win, 3, 1L << 1, release_key, game);   // Evento keyrelease
-	mlx_hook(game->win, 17, 0, exit_game, game);          // Evento de fechar a janela
+	mlx_hook(game->win, 2, 1L << 0, press_key, game);
+	mlx_hook(game->win, 3, 1L << 1, release_key, game);
+	mlx_hook(game->win, 17, 0, exit_game, game);
 }
 
-int	start_game(t_game *game, t_map *map, t_player *player)
+int	play_cub3d(t_game *game, t_map *map, t_player *player)
 {
-	init_game_struct(game, map);
-	init_player_struct(map, player);
+	init_game(game, map, player);
 	set_hooks(game);
 	print_game(game, map);
-	//draw_player(game, player);
+	// draw_player(game, player);
 	mlx_loop(game->mlx);
 	return (NO_ERROR);
 }

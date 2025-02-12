@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:10:35 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/02/05 15:32:45 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/12 13:24:38 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ void	clear_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+	free(game->keys);
+	free(game);
 }
