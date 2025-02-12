@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:10:35 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/02/12 13:24:38 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/12 15:14:32 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	close_texture_fds(t_map *map)
 	close(map->textures->fd_west_texture);
 	close(map->textures->fd_east_texture);
 }
-
 
 void	clear_game(t_game *game)
 {
