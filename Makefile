@@ -20,7 +20,8 @@ BLUE=\033[34m
 
 #MAP = maps/map.cub
 #MAP = maps/good/matrix.cub
-MAP = maps/good/test_textures.cub
+MAP = maps/good/test_pos_bottom.cub;
+#MAP = maps/good/test_textures.cub
 #MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/no_filetype
@@ -45,7 +46,7 @@ srcs/clear.c \
 srcs/moves.c \
 srcs/player.c \
 srcs/print_game/print_game.c \
-srcs/print_game/print_2d.c
+srcs/print_game/minimap_system/print_2d.c
 
 OBJS = ${SRCS:.c=.o}
 

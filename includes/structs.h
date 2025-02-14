@@ -81,4 +81,20 @@ typedef struct s_image
 	int		size_line;
 	int		size_height;
 }			t_image;
+
+typedef struct	s_map2d
+{
+	char	**map_2d;
+	int		map_width;
+	int		map_height;
+	double	max_width;
+	double	max_height;
+	double	scale;
+	double	player_x;
+	double	player_y;
+	double	player_size;
+	int		player_color;
+	int		wall_color;
+}				t_map2d;
+
 #endif

@@ -20,7 +20,7 @@ void	print_game(t_game *game)
 {
 	create_general_img(game->mlx, game->image);
 	print_background(game->image, game->map);
-	print_2dmap(game, game->map->map); // Para a visualização 2D do mapa
+	print_2dmap(game, game->map->map);
 	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);
 }
 
