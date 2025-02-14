@@ -37,9 +37,7 @@ void    print_2dmap(t_game *game, char **map_2d)
         map2d.map_width++;
 
     scale_x = (double)map2d.max_width / map2d.map_width;
-//    printf("scale_x = %f\n", scale_x);
     scale_y = (double)map2d.max_height / map2d.map_height;
-//    printf("scale_y = %f\n", scale_y);
     if (scale_x < scale_y) {
         map2d.scale = scale_x;
     } else {
