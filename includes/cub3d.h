@@ -53,6 +53,9 @@
 # define MOVE_SPEED 0.01
 # define ROTATION_SPEED 0.01
 
+//Texture Size
+#define TEXTURE_SIZE 64
+
 //main.c
 int	main(int argc, char **argv);
 
@@ -111,6 +114,7 @@ void    set_textures_names(t_map *map, char *map_line);
 void	set_texture(t_map *map, char *map_line, char *direction);
 int		open_texture(t_map *map);
 int		check_textures_extension(t_map *map);
+void	create_texture_imgs(t_textures *textures, void *mlx);
 // clear.c
 void	clear_map(t_map *map);
 void	close_texture_fds(t_map *map);

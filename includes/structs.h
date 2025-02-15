@@ -45,6 +45,10 @@ typedef struct s_textures
 	int						fd_south_texture;
 	int						fd_west_texture;
 	int						fd_east_texture;
+	t_image					*north_texture_img;
+	t_image					*south_texture_img;
+	t_image					*west_texture_img;
+	t_image					*east_texture_img;
 }				t_textures;
 
 

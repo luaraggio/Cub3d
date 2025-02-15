@@ -12,10 +12,13 @@
 
 #include "../includes/cub3d.h"
 
+static void	clear_textures(void *mlx, t_textures *textures);
+
 void	clear_all(t_game *game, t_map *map)
 {
 	clear_game(game);
 	clear_map(map);
+	clear_textures(game->mlx, map->textures);
 }
 
 void	clear_map(t_map *map)
@@ -38,6 +41,18 @@ void	close_texture_fds(t_map *map)
 	close(map->textures->fd_east_texture);
 }
 
+static void	clear_textures(void *mlx, t_textures *textures)
+{
+	mlx_destroy_image(mlx, textures->north_texture_img->img);
+	mlx_destroy_image(mlx, textures->south_texture_img->img);
+	mlx_destroy_image(mlx, textures->west_texture_img->img);
+	mlx_destroy_image(mlx, textures->east_texture_img->img);
+	free(textures->north_texture_img);
+	free(textures->south_texture_img);
+	free(textures->west_texture_img);
+	free(textures->east_texture_img);
+	free(textures);
+}
 
 void	clear_game(t_game *game)
 {

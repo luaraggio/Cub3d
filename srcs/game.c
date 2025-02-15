@@ -76,6 +76,7 @@ int	start_game(t_game *game, t_map *map, t_player *player)
 {
 	init_game_struct(game, map, player);
 	init_player_struct(map, player);
+	create_texture_imgs(map->textures, game->mlx);
 	game_loop(game);
 	return (NO_ERROR);
 }
