@@ -64,6 +64,7 @@ void	set_hooks(t_game *game);
 int init_game_struct(t_game *game, t_map *map, t_player *player);
 int exit_game(t_game *game);
 int start_game(t_game *game, t_map *map, t_player *player);
+void	print_add_img(t_textures *textures);
 
 //player.c
 int	init_player_struct(t_map *map, t_player *player);
@@ -114,9 +115,10 @@ void    set_textures_names(t_map *map, char *map_line);
 void	set_texture(t_map *map, char *map_line, char *direction);
 int		open_texture(t_map *map);
 int		check_textures_extension(t_map *map);
-void	create_texture_imgs(t_textures *textures, void *mlx);
+void	create_texture_imgs(t_textures *textures, t_game *game);
 // clear.c
 void	clear_map(t_map *map);
+void	clear_texture_map(t_map *map);
 void	close_texture_fds(t_map *map);
 void	clear_all(t_game *game, t_map *map);
 void	clear_game(t_game *game);
