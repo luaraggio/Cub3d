@@ -12,15 +12,13 @@
 
 #include "../includes/cub3d.h"
 
-static void	destroy_texture_imgs(void *mlx, t_textures *textures);
+static void	destroy_texture_imgs(t_game *game, t_textures *textures);
 
 void	clear_all(t_game *game, t_map *map)
 {
-	printf("Em clear_all\n");
-	print_add_img(map->textures);
-	clear_game(game);
-	destroy_texture_imgs(game->mlx, map->textures);
+	destroy_texture_imgs(game, map->textures);
 	clear_map(map);
+	clear_game(game);
 }
 
 void	clear_map(t_map *map)
@@ -53,14 +51,28 @@ void	close_texture_fds(t_map *map)
 	close(map->textures->fd_east_texture);
 }
 
-static void	destroy_texture_imgs(void *mlx, t_textures *textures)
+static void	destroy_texture_imgs(t_game *game, t_textures *textures)
 {
-	printf("Em destroy_texture_imgs\n");
-	print_add_img(textures);
-	mlx_destroy_image(mlx, textures->north_texture_img->img);
+	if (textures->north_texture_img && textures->north_texture_img->img) {
+        mlx_destroy_image(game->mlx, textures->north_texture_img->img);
+        textures->north_texture_img->img = NULL;
+    }
+    if (textures->south_texture_img && textures->south_texture_img->img) {
+        mlx_destroy_image(game->mlx, textures->south_texture_img->img);
+        textures->south_texture_img->img = NULL;
+    }
+    if (textures->west_texture_img && textures->west_texture_img->img) {
+        mlx_destroy_image(game->mlx, textures->west_texture_img->img);
+        textures->west_texture_img->img = NULL;
+    }
+    if (textures->east_texture_img && textures->east_texture_img->img) {
+        mlx_destroy_image(game->mlx, textures->east_texture_img->img);
+        textures->east_texture_img->img = NULL;
+    }
+/*	mlx_destroy_image(mlx, textures->north_texture_img->img);
 	mlx_destroy_image(mlx, textures->south_texture_img->img);
 	mlx_destroy_image(mlx, textures->west_texture_img->img);
-	mlx_destroy_image(mlx, textures->east_texture_img->img);
+	mlx_destroy_image(mlx, textures->east_texture_img->img);*/
 	free(textures->north_texture_img);
 	textures->north_texture_img = NULL;
 	free(textures->south_texture_img);

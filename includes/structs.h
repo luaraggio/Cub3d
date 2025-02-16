@@ -51,7 +51,6 @@ typedef struct s_textures
 	t_image					*east_texture_img;
 }				t_textures;
 
-
 typedef struct s_game
 {
 	void		*mlx;

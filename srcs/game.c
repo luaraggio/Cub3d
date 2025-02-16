@@ -76,14 +76,12 @@ int	start_game(t_game *game, t_map *map, t_player *player)
 {
 	init_game_struct(game, map, player);
 	init_player_struct(map, player);
-	//printf("Em start_game, antes de chamar a create_texture_imgs\n");
-	//print_add_img(map->textures);
 	create_texture_imgs(map->textures, game);
 	game_loop(game);
 	return (NO_ERROR);
 }
 
-
+/*
 void	print_add_img(t_textures *textures)
 {
 	printf("& t_image de north: %p\n", textures->north_texture_img);
@@ -94,4 +92,4 @@ void	print_add_img(t_textures *textures)
 	printf("textures->west_texture_img->img: %p\n", textures->west_texture_img->img);
 	printf("& t_image de east: %p\n", textures->east_texture_img);
 	printf("textures->east_texture_img->img: %p\n", textures->east_texture_img->img);
-}
+}*/

@@ -16,6 +16,7 @@ static int	open_map(t_map *map, char *map_file);
 static void	set_initial_map_struct(t_map *map);
 static void	finish_map_struct(t_map *map);
 static void	set_player_start(char **map, t_map *st_map, int flag_start);
+static void	start_textures(t_textures *textures);
 
 int	set_map(t_map *map, char *map_file)
 {
@@ -77,6 +78,23 @@ static void	set_initial_map_struct(t_map *map)
 	map->floor_color = OFF;
 	map->textures = (t_textures *)malloc(sizeof(t_textures));
 	my_bzero(map->textures, sizeof(t_textures));
+	start_textures(map->textures);
+}
+
+static void	start_textures(t_textures *textures)
+{
+	textures->north_texture = NULL;
+	textures->south_texture = NULL;
+	textures->west_texture = NULL;
+	textures->east_texture = NULL;
+	textures->fd_north_texture = -1;
+	textures->fd_south_texture = -1;
+	textures->fd_west_texture = -1;
+	textures->fd_east_texture = -1;
+	textures->north_texture_img = (t_image *)malloc(sizeof(t_image));
+	textures->south_texture_img = (t_image *)malloc(sizeof(t_image));
+	textures->west_texture_img = (t_image *)malloc(sizeof(t_image));
+	textures->east_texture_img = (t_image *)malloc(sizeof(t_image));
 }
 
 static void	finish_map_struct(t_map *map)
