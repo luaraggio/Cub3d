@@ -16,6 +16,7 @@ static void	print_minigame(t_game *game, t_map2d *map_2d);
 static void    found_wall(t_game *game, t_map2d *map_2d, int i, int j);
 static void    found_player(t_game *game, t_map2d *map_2d, int i, int j);
 static int get_opposite_color(int color);
+static void draw_line_to_wall(t_game *game, t_map2d *map2d);
 //static void    print_map2d_struct(t_map2d *map2d);
 
 void    print_2dmap(t_game *game, char **map_2d)
@@ -67,6 +68,7 @@ static void	print_minigame(t_game *game, t_map2d *map_2d)
         }
         i++;
     }
+    draw_line_to_wall(game, map_2d);
 }
 
 static void    found_wall(t_game *game, t_map2d *map_2d, int i, int j)
@@ -128,6 +130,27 @@ static int get_opposite_color(int color)
     new_color = (r << 16) | (g << 8) | b;
     return new_color;
 }
+
+static void draw_line_to_wall(t_game *game, t_map2d *map2d)
+{
+    double x;
+    double y;
+    double x_dir;
+    double y_dir;
+
+    x = game->player->x * map2d->scale;
+    y = game->player->y * map2d->scale;
+    x_dir = game->player->x_direction * map2d->scale;
+    y_dir = game->player->y_direction * map2d->scale;
+
+    while (map2d->map_2d[(int)(y / map2d->scale)][(int)(x / map2d->scale)] != '1')
+    {
+        my_mlx_pixel_put(game->image, (int)x, (int)y, 0xFFFFFF);
+        x += x_dir * 0.1;
+        y += y_dir * 0.1;
+    }
+}
+
 /*
 static void    print_map2d_struct(t_map2d *map2d)
 {

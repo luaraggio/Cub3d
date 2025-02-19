@@ -61,8 +61,8 @@ void	set_hooks(t_game *game)
 
 int	game_loop(t_game *game)
 {
-//	printf("game->player->x_direction = %f\n", game->player->x_direction);
-//	printf("game->player->y_direction = %f\n", game->player->y_direction);
+	printf("game->player->x_direction = %f\n", game->player->x_direction);
+	printf("game->player->y_direction = %f\n", game->player->y_direction);
 	print_game(game);
 	usleep(937500);
 	return (0);
