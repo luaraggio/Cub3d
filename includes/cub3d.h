@@ -63,6 +63,7 @@ int	main(int argc, char **argv);
 void	set_hooks(t_game *game);
 int init_game_struct(t_game *game, t_map *map, t_player *player);
 int exit_game(t_game *game);
+int	game_loop(t_game *game);
 int start_game(t_game *game, t_map *map, t_player *player);
 //void	print_add_img(t_textures *textures);
 

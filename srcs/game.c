@@ -12,8 +12,6 @@
 
 #include "../includes/cub3d.h"
 
-static void	game_loop(t_game *game);
-
 /*
 
 If	mlx_init(void) fails to set up the connection to the graphical system,
@@ -61,15 +59,13 @@ void	set_hooks(t_game *game)
 	mlx_hook(game->win, 17, 0, exit_game, game);          // Evento de fechar a janela
 }
 
-static void	game_loop(t_game *game)
+int	game_loop(t_game *game)
 {
-	while (42)
-	{
-		usleep(937500);
-		set_hooks(game);
-		print_game(game);
-		mlx_loop(game->mlx);
-	}
+//	printf("game->player->x_direction = %f\n", game->player->x_direction);
+//	printf("game->player->y_direction = %f\n", game->player->y_direction);
+	print_game(game);
+	usleep(937500);
+	return (0);
 }
 
 int	start_game(t_game *game, t_map *map, t_player *player)
@@ -77,7 +73,9 @@ int	start_game(t_game *game, t_map *map, t_player *player)
 	init_game_struct(game, map, player);
 	init_player_struct(map, player);
 	create_texture_imgs(map->textures, game);
-	game_loop(game);
+	mlx_loop_hook(game->mlx, game_loop, game);
+	set_hooks(game);
+	mlx_loop(game->mlx);
 	return (NO_ERROR);
 }
 
