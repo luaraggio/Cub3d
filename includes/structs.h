@@ -55,7 +55,7 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
-	bool		keys[7000];
+	bool		keys[TOTAL_KEYS];
 	t_image		*image;
 	t_map		*map;
 	t_player	*player;

@@ -17,6 +17,8 @@ int	init_game(t_game *game, t_map *map, t_player *player)
 	t_image	*image;
 
 	image = (t_image *)malloc(sizeof(t_image));
+	if (!image)
+		return (ERROR);
 	my_bzero(image, sizeof(t_image));
 	game->map = map;
 	game->image = image;
@@ -31,7 +33,8 @@ int	init_game(t_game *game, t_map *map, t_player *player)
 	}
 	game->win = mlx_new_window(game->mlx, W_WIDTH, W_HEIGHT,
 		"Cub3d");
-	init_player_struct(game, player);
+	reset_key_array(game);
+	init_player(game, player);
 	return (NO_ERROR);
 }
 
@@ -44,10 +47,10 @@ int	exit_game(t_game *game)
 
 void	set_hooks(t_game *game)
 {
-	mlx_loop_hook(game->mlx, game_loop, game);
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, release_key, game);
 	mlx_hook(game->win, 17, 0, exit_game, game);
+	mlx_loop_hook(game->mlx, game_loop, game);
 	mlx_loop(game->mlx);
 }
 

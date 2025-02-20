@@ -36,15 +36,11 @@ void	set_player_position(t_game *game, t_player *player)
 	}
 }
 
-int	init_player_struct(t_game *game, t_player *player)
+int	init_player(t_game *game, t_player *player)
 {
 	game->player = player;
 	player->x = game->map->player_j;
 	player->y = game->map->player_i;
-	player->plane_x = 0;
-	player->plane_y = 0;
-	player->x_direction = 0;
-	player->y_direction = 0;
 	player->move_speed = MOVE_SPEED;
 	player->rotation_speed = ROTATION_SPEED;
 	set_player_position(game, player);

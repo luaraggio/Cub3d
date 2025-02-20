@@ -12,59 +12,86 @@
 
 #include "../includes/cub3d.h"
 
-void	print_key(const char *key_name, const char *color)
+void	print_pressed_key(const char *key_name, const char *color)
 {
 	printf("A tecla " "%s%s" RESET " foi pressionada.\n", color, key_name);
 }
 
-/*int	is_move_key(int keycode)
+/*void	print_released_key(const char *key_name, const char *color)
 {
-	return ((keycode == UP_KEY || keycode == DOWN_KEY || keycode == DOWN_KEY
-			|| keycode == LEFT_KEY || keycode == W_KEY || keycode == A_KEY
-			|| keycode == S_KEY || keycode == D_KEY));
+	printf("A tecla " "%s%s" RESET " foi solta.\n", color, key_name);
 }*/
 
 /*void	handle_shift(t_player *player)
 {
 	player->speed = MOVE_SPEED * 2;
-	print_key("SHIFT", PINK);
+	print_pressed_key("SHIFT", PINK);
 }*/
+
+void	reset_key_array(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while(i < TOTAL_KEYS)
+	{
+		game->keys[i] = false;
+		i++;
+	}
+
+}
 
 int	release_key(int keycode, t_game *game)
 {
-	if (keycode < 0 || keycode > 7000)
-	{
-		printf("Deu erro dentro de release_key");
-		return (ERROR);
-	}
-	game->keys[keycode] = false; // Marca a tecla como solta
+	if (keycode == RIGHT_KEY)
+		game->keys[RIGHT_INDEX] = false;
+	else if (keycode == LEFT_KEY)
+		game->keys[LEFT_INDEX] = false;
+	else if (keycode == W_KEY)
+		game->keys[W_INDEX] = false;
+	else if (keycode == S_KEY)
+		game->keys[S_INDEX] = false;
+	else if (keycode == A_KEY)
+		game->keys[A_INDEX] = false;
+	else if (keycode == D_KEY)
+		game->keys[D_INDEX] = false;
 	return (NO_ERROR);
 }
 
 int	press_key(int keycode, t_game *game)
 {
-	if (keycode < 0 || keycode > 7000)
-	{
-		printf("Deu erro dentro de press_key");	
-		return (ERROR);
-	}
-	game->keys[keycode] = true; // Marca a tecla como pressionada
 	if (keycode == ESC_KEY)
 		exit_game(game);
 	else if (keycode == RIGHT_KEY)
-		print_key("seta para a direita", PINK);
+	{
+		game->keys[RIGHT_INDEX] = true;
+		print_pressed_key("seta para a direita", PINK);
+	}
 	else if (keycode == LEFT_KEY)
-		print_key("seta para a esquerda", PINK);
+	{
+		game->keys[LEFT_INDEX] = true;
+		print_pressed_key("seta para a esquerda", PINK);
+	}
 	else if (keycode == W_KEY)
-		print_key("W", PINK);
+	{
+		game->keys[W_INDEX] = true;
+		print_pressed_key("W", PINK);
+	}
 	else if (keycode == S_KEY)
-		print_key("S", PINK);
+	{
+		game->keys[S_INDEX] = true;
+		print_pressed_key("S", PINK);
+	}
 	else if (keycode == A_KEY)
-		print_key("A", PINK);
+	{
+		game->keys[A_INDEX] = true;
+		print_pressed_key("A", PINK);
+	}
 	else if (keycode == D_KEY)
-		print_key("D", PINK);
-	else
-		printf(RED "Alguma outra tecla foi pressionada.\n" RESET);
+	{
+		game->keys[D_INDEX] = true;
+		print_pressed_key("D", PINK);
+	}
 	return (NO_ERROR);
 }
 
