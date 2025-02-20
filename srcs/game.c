@@ -12,50 +12,30 @@
 
 #include "../includes/cub3d.h"
 
-/*
-
-If	mlx_init(void) fails to set up the connection to the graphical system,
-it will return NULL, otherwise a non-null pointer is returned as a connection
-identifier.
-
-*/
-
-void	init_image_struct(t_game *game, t_map *map)
+int	init_game(t_game *game, t_map *map, t_player *player)
 {
 	t_image	*image;
 
 	image = (t_image *)malloc(sizeof(t_image));
+	if (!image)
+		return (ERROR);
 	my_bzero(image, sizeof(t_image));
 	game->map = map;
 	game->image = image;
-}
-
-t_game	*init_game(t_game *game, t_map *map, t_player *player)
-{
-	int	i;
-
-	// t_game	*game;
-	i = -1;
-	game = malloc(sizeof(t_game));
-	if (!game)
-		return (NULL);
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return (free(game), NULL);
-	game->win = mlx_new_window(game->mlx, W_WIDTH, W_HEIGHT, "Cub3d");
-	if (!game->win)
-		return (free(game), NULL);
-	game->keys = malloc(sizeof(int) * MAX_KEYS);
-	if (!game->keys)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		return (free(game), NULL);
+		my_printf_error(RED "Error. Something went wrong with "
+			"mlx initialization\n" RESET);
+			mlx_destroy_display(game->mlx);
+			free(game->mlx);
+			return (ERROR);
 	}
-	while (++i < MAX_KEYS)
-		game->keys[i] = 0;
-	init_image_struct(game, map);
-	init_player_struct(map, player);
-	return (game);
+	game->win = mlx_new_window(game->mlx, W_WIDTH, W_HEIGHT,
+		"Cub3d");
+	reset_key_array(game);
+	init_player(game, player);
+	return (NO_ERROR);
 }
 
 int	exit_game(t_game *game)
@@ -70,14 +50,35 @@ void	set_hooks(t_game *game)
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, release_key, game);
 	mlx_hook(game->win, 17, 0, exit_game, game);
+	mlx_loop_hook(game->mlx, game_loop, game);
+	mlx_loop(game->mlx);
 }
 
-int	play_cub3d(t_game *game, t_map *map, t_player *player)
+int	game_loop(t_game *game)
+{
+	//printf("game->player->x_direction = %f\n", game->player->x_direction);
+	//printf("game->player->y_direction = %f\n", game->player->y_direction);
+	print_game(game);
+	usleep(937500);
+	return (0);
+}
+
+void	play_cub3d(t_game *game, t_map *map, t_player *player)
 {
 	init_game(game, map, player);
+	create_texture_imgs(map->textures, game);
 	set_hooks(game);
-	print_game(game, map);
-	// draw_player(game, player);
-	mlx_loop(game->mlx);
-	return (NO_ERROR);
 }
+
+/*
+void	print_add_img(t_textures *textures)
+{
+	printf("& t_image de north: %p\n", textures->north_texture_img);
+	printf("textures->north_texture_img->img: %p\n", textures->north_texture_img->img);
+	printf("& t_image de south: %p\n", textures->south_texture_img);
+	printf("textures->south_texture_img->img: %p\n", textures->south_texture_img->img);
+	printf("& t_image de west: %p\n", textures->west_texture_img);
+	printf("textures->west_texture_img->img: %p\n", textures->west_texture_img->img);
+	printf("& t_image de east: %p\n", textures->east_texture_img);
+	printf("textures->east_texture_img->img: %p\n", textures->east_texture_img->img);
+}*/

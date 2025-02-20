@@ -38,4 +38,16 @@ enum	e_map
 	C = 6
 };
 
+enum	e_key_array
+{
+	W_INDEX = 0,
+	A_INDEX = 1,
+	S_INDEX = 2,
+	D_INDEX = 3,
+	LEFT_INDEX = 4,
+	RIGHT_INDEX = 5,
+	ESC_INDEX = 6,
+	TOTAL_KEYS = 7
+};
+
 #endif

@@ -91,3 +91,18 @@ int	check_textures_extension(t_map *map)
 	}
 	return (NO_ERROR);
 }
+
+void	create_texture_imgs(t_textures *textures, t_game *game)
+{
+	int	size;
+	
+	size = TEXTURE_SIZE;
+	textures->north_texture_img->img = mlx_xpm_file_to_image(game->mlx, textures->north_texture, &size, &size);
+	textures->south_texture_img->img = mlx_xpm_file_to_image(game->mlx, textures->south_texture, &size, &size);
+	textures->west_texture_img->img = mlx_xpm_file_to_image(game->mlx, textures->west_texture, &size, &size);
+	textures->east_texture_img->img = mlx_xpm_file_to_image(game->mlx, textures->east_texture, &size, &size);
+	textures->north_texture_img->addr = mlx_get_data_addr(textures->north_texture_img->img, &(textures->north_texture_img->bpp), &(textures->north_texture_img->size_line), &(textures->north_texture_img->endian));
+	textures->south_texture_img->addr = mlx_get_data_addr(textures->south_texture_img->img, &(textures->south_texture_img->bpp), &(textures->south_texture_img->size_line), &(textures->south_texture_img->endian));
+	textures->west_texture_img->addr = mlx_get_data_addr(textures->west_texture_img->img, &(textures->west_texture_img->bpp), &(textures->west_texture_img->size_line), &(textures->west_texture_img->endian));
+	textures->east_texture_img->addr = mlx_get_data_addr(textures->east_texture_img->img, &(textures->east_texture_img->bpp), &(textures->east_texture_img->size_line), &(textures->east_texture_img->endian));
+}

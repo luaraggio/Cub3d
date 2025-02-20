@@ -18,6 +18,7 @@
 
 typedef struct s_image		t_image;
 typedef struct s_textures	t_textures;
+typedef struct s_player		t_player;
 
 typedef struct s_map
 {
@@ -45,16 +46,21 @@ typedef struct s_textures
 	int						fd_south_texture;
 	int						fd_west_texture;
 	int						fd_east_texture;
-}							t_textures;
+	t_image					*north_texture_img;
+	t_image					*south_texture_img;
+	t_image					*west_texture_img;
+	t_image					*east_texture_img;
+}				t_textures;
 
 typedef struct s_game
 {
-	void					*mlx;
-	void					*win;
-	int						*keys;
-	t_map					*map;
-	t_image					*image;
-}							t_game;
+	void		*mlx;
+	void		*win;
+	bool		keys[TOTAL_KEYS];
+	t_image		*image;
+	t_map		*map;
+	t_player	*player;
+}			t_game;
 
 typedef struct s_player
 {
@@ -70,11 +76,27 @@ typedef struct s_player
 
 typedef struct s_image
 {
-	void					*img;
-	char					*addr;
-	int						bpp;
-	int						endian;
-	int						size_line;
-	int						size_height;
-}							t_image;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		endian;
+	int		size_line;
+	int		size_height;
+}			t_image;
+
+typedef struct	s_map2d
+{
+	char	**map_2d;
+	int		map_width;
+	int		map_height;
+	double	max_width;
+	double	max_height;
+	double	scale;
+	double	player_x;
+	double	player_y;
+	double	player_size;
+	int		player_color;
+	int		wall_color;
+}				t_map2d;
+
 #endif
