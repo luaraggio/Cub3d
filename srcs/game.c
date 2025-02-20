@@ -58,7 +58,7 @@ int	game_loop(t_game *game)
 {
 	//printf("game->player->x_direction = %f\n", game->player->x_direction);
 	//printf("game->player->y_direction = %f\n", game->player->y_direction);
-	update_player_position(game);
+	//update_player_position(game);
 	print_game(game);
 	usleep(937500);
 	return (0);
@@ -72,7 +72,7 @@ void	create_general_img(void *mlx, t_image *img)
 	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line), &(img->endian));
 }
 
-int	start_game(t_game *game, t_map *map, t_player *player)
+void	play_cub3d(t_game *game, t_map *map, t_player *player)
 {
 	init_game(game, map, player);
 	create_texture_imgs(map->textures, game);

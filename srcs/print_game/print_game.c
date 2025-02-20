@@ -22,15 +22,6 @@ void	print_game(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);
 }
 
-static void	create_general_img(void *mlx, t_image *img)
-{
-	img->size_line = W_WIDTH;
-	img->size_height = W_HEIGHT;
-	img->img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line),
-			&(img->endian));
-}
-
 static void	print_background(t_image *img, t_map *map)
 		// Mudar de printagem de pixels para printagem de retângulos
 {
