@@ -47,10 +47,10 @@ int	exit_game(t_game *game)
 
 void	set_hooks(t_game *game)
 {
+	mlx_loop_hook(game->mlx, game_loop, game);
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, release_key, game);
 	mlx_hook(game->win, 17, 0, exit_game, game);
-	mlx_loop_hook(game->mlx, game_loop, game);
 	mlx_loop(game->mlx);
 }
 
@@ -58,6 +58,7 @@ int	game_loop(t_game *game)
 {
 	//printf("game->player->x_direction = %f\n", game->player->x_direction);
 	//printf("game->player->y_direction = %f\n", game->player->y_direction);
+	update_player_position(game);
 	print_game(game);
 	usleep(937500);
 	return (0);

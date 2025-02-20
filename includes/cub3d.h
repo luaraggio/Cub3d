@@ -21,6 +21,7 @@
 # include <signal.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include <unistd.h>
 
 // Colors
 # define GREEN "\033[0;32m"
@@ -67,6 +68,7 @@ int	game_loop(t_game *game);
 //player.c
 int	init_player(t_game *game, t_player *player);
 void	set_player_position(t_game *game, t_player *player);
+void	update_player_position(t_game *game);
 
 //keys.c
 void	print_pressed_key(const char *key_name, const char *color);
@@ -76,8 +78,8 @@ int press_key(int keycode, t_game *game);
 int	release_key(int keycode, t_game *game);
 
 // moves.c
-void			move_player_forward(t_player *player);
-void			move_player_backward(t_player *player);
+void			move_player_forward(t_game *game, t_player *player);
+void			move_player_backward(t_game *game, t_player *player);
 void			turn_player_to_left(t_player *player);
 void			turn_player_to_right(t_player *player);
 

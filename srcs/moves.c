@@ -12,14 +12,16 @@
 
 #include "../includes/cub3d.h"
 
-void	move_player_forward(t_player *player)
+void	move_player_forward(t_game *game, t_player *player)
 {
+	(void)game;
 	player->x += player->x_direction * player->move_speed;
 	player->y += player->y_direction * player->move_speed;
 }
 
-void	move_player_backward(t_player *player)
+void	move_player_backward(t_game *game, t_player *player)
 {
+	(void)game;
 	player->x -= player->x_direction * player->move_speed;
 	player->y -= player->y_direction * player->move_speed;
 }

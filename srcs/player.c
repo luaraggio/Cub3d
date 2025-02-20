@@ -36,6 +36,18 @@ void	set_player_position(t_game *game, t_player *player)
 	}
 }
 
+void	update_player_position(t_game *game)
+{
+	if (game->keys[W_INDEX])
+		move_player_forward(game, game->player);
+	if (game->keys[S_INDEX])
+		move_player_backward(game, game->player);
+	if (game->keys[A_INDEX])
+		turn_player_to_left(game->player);
+	if (game->keys[D_INDEX])
+		turn_player_to_right(game->player);
+}
+
 int	init_player(t_game *game, t_player *player)
 {
 	game->player = player;
