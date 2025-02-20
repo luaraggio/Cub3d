@@ -69,10 +69,6 @@ static void	destroy_texture_imgs(t_game *game, t_textures *textures)
         mlx_destroy_image(game->mlx, textures->east_texture_img->img);
         textures->east_texture_img->img = NULL;
     }
-/*	mlx_destroy_image(mlx, textures->north_texture_img->img);
-	mlx_destroy_image(mlx, textures->south_texture_img->img);
-	mlx_destroy_image(mlx, textures->west_texture_img->img);
-	mlx_destroy_image(mlx, textures->east_texture_img->img);*/
 	free(textures->north_texture_img);
 	textures->north_texture_img = NULL;
 	free(textures->south_texture_img);
