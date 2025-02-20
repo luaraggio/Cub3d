@@ -64,10 +64,19 @@ int	game_loop(t_game *game)
 	return (0);
 }
 
-void	play_cub3d(t_game *game, t_map *map, t_player *player)
+void	create_general_img(void *mlx, t_image *img)
+{
+	img->size_line = W_WIDTH;
+	img->size_height = W_HEIGHT;
+	img->img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
+	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line), &(img->endian));
+}
+
+int	start_game(t_game *game, t_map *map, t_player *player)
 {
 	init_game(game, map, player);
 	create_texture_imgs(map->textures, game);
+	create_general_img(game->mlx, game->image);
 	set_hooks(game);
 }
 

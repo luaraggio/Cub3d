@@ -142,7 +142,6 @@ static void draw_line_to_wall(t_game *game, t_map2d *map2d)
     y = game->player->y * map2d->scale;
     x_dir = game->player->x_direction * map2d->scale;
     y_dir = game->player->y_direction * map2d->scale;
-
     while (map2d->map_2d[(int)(y / map2d->scale)][(int)(x / map2d->scale)] != '1')
     {
         my_mlx_pixel_put(game->image, (int)x, (int)y, 0xFFFFFF);

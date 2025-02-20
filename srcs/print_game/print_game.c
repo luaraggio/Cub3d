@@ -12,13 +12,11 @@
 
 #include "../../includes/cub3d.h"
 
-static void	create_general_img(void *mlx, t_image *img);
 static void	print_background(t_image *img, t_map *map);
 //static void print_img_struct(t_image *img, char *name);
 
 void	print_game(t_game *game)
 {
-	create_general_img(game->mlx, game->image);
 	print_background(game->image, game->map);
 	print_2dmap(game, game->map->map);
 	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);

@@ -63,6 +63,8 @@ void    play_cub3d(t_game *game, t_map *map, t_player *player);
 int init_game(t_game *game, t_map *map, t_player *player);
 int exit_game(t_game *game);
 int	game_loop(t_game *game);
+void	create_general_img(void *mlx, t_image *img);
+int start_game(t_game *game, t_map *map, t_player *player);
 //void	print_add_img(t_textures *textures);
 
 //player.c
