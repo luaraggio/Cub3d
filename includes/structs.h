@@ -55,10 +55,8 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
-	t_image		*image;
-	int			w_height;
-	int			w_width;
 	bool		keys[7000];
+	t_image		*image;
 	t_map		*map;
 	t_player	*player;
 }			t_game;

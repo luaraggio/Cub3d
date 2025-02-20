@@ -12,36 +12,26 @@
 
 #include "../includes/cub3d.h"
 
-/*
-
-If	mlx_init(void) fails to set up the connection to the graphical system,
-it will return NULL, otherwise a non-null pointer is returned as a connection
-identifier.
-
-*/
-
-int	init_game_struct(t_game *game, t_map *map, t_player *player)
+int	init_game(t_game *game, t_map *map, t_player *player)
 {
 	t_image	*image;
 
 	image = (t_image *)malloc(sizeof(t_image));
 	my_bzero(image, sizeof(t_image));
+	game->map = map;
+	game->image = image;
 	game->mlx = mlx_init();
-	game->w_height = W_HEIGHT;
-	game->w_width = W_WIDTH;
-	if (game->mlx == NULL)
+	if (!game->mlx)
 	{
 		my_printf_error(RED "Error. Something went wrong with "
 			"mlx initialization\n" RESET);
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-		return (ERROR);
+			mlx_destroy_display(game->mlx);
+			free(game->mlx);
+			return (ERROR);
 	}
-	game->win = mlx_new_window(game->mlx, game->w_width, game->w_height,
+	game->win = mlx_new_window(game->mlx, W_WIDTH, W_HEIGHT,
 		"Cub3d");
-	game->map = map;
-	game->image = image;
-	game->player = player;
+	init_player_struct(game, player);
 	return (NO_ERROR);
 }
 
@@ -54,29 +44,27 @@ int	exit_game(t_game *game)
 
 void	set_hooks(t_game *game)
 {
-	mlx_hook(game->win, 2, 1L << 0, press_key, game);     // Evento keypress
-	mlx_hook(game->win, 3, 1L << 1, release_key, game);   // Evento keyrelease
-	mlx_hook(game->win, 17, 0, exit_game, game);          // Evento de fechar a janela
+	mlx_loop_hook(game->mlx, game_loop, game);
+	mlx_hook(game->win, 2, 1L << 0, press_key, game);
+	mlx_hook(game->win, 3, 1L << 1, release_key, game);
+	mlx_hook(game->win, 17, 0, exit_game, game);
+	mlx_loop(game->mlx);
 }
 
 int	game_loop(t_game *game)
 {
-	printf("game->player->x_direction = %f\n", game->player->x_direction);
-	printf("game->player->y_direction = %f\n", game->player->y_direction);
+	//printf("game->player->x_direction = %f\n", game->player->x_direction);
+	//printf("game->player->y_direction = %f\n", game->player->y_direction);
 	print_game(game);
 	usleep(937500);
 	return (0);
 }
 
-int	start_game(t_game *game, t_map *map, t_player *player)
+void	play_cub3d(t_game *game, t_map *map, t_player *player)
 {
-	init_game_struct(game, map, player);
-	init_player_struct(map, player);
+	init_game(game, map, player);
 	create_texture_imgs(map->textures, game);
-	mlx_loop_hook(game->mlx, game_loop, game);
 	set_hooks(game);
-	mlx_loop(game->mlx);
-	return (NO_ERROR);
 }
 
 /*
