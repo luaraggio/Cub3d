@@ -6,11 +6,34 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:31:54 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:05:38 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:18:27 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+/*
+
+------------------------------- Raycasting ------------------------------
+Setar valores para struct de raycasting
+Calcular a direção do raio
+Enxertar a posição do jogador no mapa
+Calcular o tamanho do raio entre dois pontos (o ptempo que o raio leva para
+atravessar um quadrado)
+
+
+Calcular direção do raio direita, esqueda, cima e baixo
+Calcular a distancia do raio até a próxima parede
+Algoritmo de DDA (quando encontro uma parede)
+Calcular a distância do jogador até a parede e corrigir a distorção da
+perspectiva
+Calcular a altura da parede
+
+------------------------ Desenhar --------------------------------------
+Desenhar linhas verticais
+Desenhar minimapa
+
+*/
 
 int	init_raycasting_struct(t_game *game)
 {

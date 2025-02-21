@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:53:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:05:23 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:55:33 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,11 @@ void	turn_player_to_right(t_player *player)
 
 	old_x = player->x_direction;
 	old_plane_x = player->plane_x;
+
 	// rotate player
 	player->x_direction = player->x * cos(-ROTATION_SPEED) - player->y_direction
 		* sin(-ROTATION_SPEED);
-	player->y_direction = old_x * sin(-ROTATION_SPEED) + player->y
+	player->y_direction = old_x * sin(-ROTATION_SPEED) + player->y_direction
 		* cos(-ROTATION_SPEED);
 	// rotate camera (plane)
 	player->plane_x = player->plane_x * cos(-ROTATION_SPEED) - player->plane_y

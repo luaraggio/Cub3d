@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:00:41 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:43:28 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define W_HEIGHT 800
 # define W_WIDTH 1300
 # define MOVE_SPEED 0.5
-# define ROTATION_SPEED 0.5
+# define ROTATION_SPEED 0.01
 
 // Texture Size
 # define TEXTURE_SIZE 64
