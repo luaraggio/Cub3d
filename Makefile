@@ -45,6 +45,7 @@ srcs/keys.c \
 srcs/clear.c \
 srcs/moves.c \
 srcs/player.c \
+srcs/raycasting.c \
 srcs/print_game/print_game.c \
 srcs/print_game/minimap_system/print_2d.c
 

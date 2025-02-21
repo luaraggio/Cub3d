@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/12 15:02:50 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 13:36:55 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_image		t_image;
 typedef struct s_textures	t_textures;
 typedef struct s_player		t_player;
+typedef struct s_raycast	t_raycast;
 
 typedef struct s_map
 {
@@ -60,19 +61,30 @@ typedef struct s_game
 	t_image		*image;
 	t_map		*map;
 	t_player	*player;
+	t_raycast	*ray;
 }			t_game;
 
 typedef struct s_player
 {
-	double x; // posição do jogador no mapa
-	double					y;
-	double x_direction; // direção que o jogador está olhando
-	double					y_direction;
-	double plane_x; // plano da câmera para visão periférica
-	double					plane_y;
-	double					move_speed;
-	double					rotation_speed;
+	double	x;
+	double	y;
+	double	x_direction;
+	double	y_direction;
+	double	plane_x;
+	double	plane_y;
+	double	move_speed;
+	double	rotation_speed;
 }							t_player;
+
+typedef struct s_raycast
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	int		start_raycasting;
+	int		end_raycasting;	
+}		t_raycast;
 
 typedef struct s_image
 {

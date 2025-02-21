@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/12 15:01:15 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 13:37:22 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@
 # include <stdio.h>
 # include <unistd.h>
 
-// Colors
 # define GREEN "\033[0;32m"
 # define RESET "\033[0m"
 # define RED "\033[31m"
 # define YELLOW "\033[33m"
 # define BLUE "\033[34m"
 # define PINK "\033[35m"
-
-// Keycodes
 # define ESC_KEY 65307
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
@@ -42,12 +39,8 @@
 # define D_KEY 100
 # define L_SHIFT_KEY 65505
 # define R_SHIFT_KEY 65506
-
-// Window Size
 # define W_HEIGHT 800
 # define W_WIDTH 1300
-
-// Speed
 # define MOVE_SPEED 0.5
 # define ROTATION_SPEED 0.5
 
@@ -84,6 +77,10 @@ void			move_player_forward(t_game *game, t_player *player);
 void			move_player_backward(t_game *game, t_player *player);
 void			turn_player_to_left(t_player *player);
 void			turn_player_to_right(t_player *player);
+
+//raycasting.c
+int init_raycasting_struct(t_game *game);
+void    render_game(t_game *game);
 
 //------------------MAP------------------
 // map.c
