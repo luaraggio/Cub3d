@@ -48,8 +48,8 @@
 # define W_WIDTH 1300
 
 // Speed
-# define MOVE_SPEED 0.01
-# define ROTATION_SPEED 0.01
+# define MOVE_SPEED 0.5
+# define ROTATION_SPEED 0.5
 
 //Texture Size
 #define TEXTURE_SIZE 64
@@ -137,6 +137,6 @@ void			copy_map(t_map *map);
 void	print_game(t_game *game);
 void	my_mlx_pixel_put(t_image *image, int i, int j, int color);
 // print_2d.c
-void    print_2dmap(t_game *game, char **map_2d);
+void    print_2dmap(t_game *game, char **map_2d, t_player *player);
 
 #endif

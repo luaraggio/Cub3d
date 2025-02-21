@@ -55,6 +55,7 @@ int	release_key(int keycode, t_game *game)
 		game->keys[A_INDEX] = false;
 	else if (keycode == D_KEY)
 		game->keys[D_INDEX] = false;
+	update_player_position(game);
 	return (NO_ERROR);
 }
 
@@ -92,5 +93,7 @@ int	press_key(int keycode, t_game *game)
 		game->keys[D_INDEX] = true;
 		print_pressed_key("D", PINK);
 	}
+	// Raycasting:
+	update_player_position(game);
 	return (NO_ERROR);
 }

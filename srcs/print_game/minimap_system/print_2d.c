@@ -19,8 +19,9 @@ static int get_opposite_color(int color);
 static void draw_line_to_wall(t_game *game, t_map2d *map2d);
 //static void    print_map2d_struct(t_map2d *map2d);
 
-void    print_2dmap(t_game *game, char **map_2d)
+void    print_2dmap(t_game *game, char **map_2d, t_player *player)
 {
+    (void)player;
     t_map2d map2d;
     double scale_x;
     double scale_y;
