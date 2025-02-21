@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:53:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 15:10:30 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:43:34 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ void	move_player_backward(t_game *game, t_player *player)
 	printf("game->map->player_j (x) = %d\n", game->map->player_j);
 	printf("game->map->player_i (y) = %d\n", game->map->player_i);
 }*/
+
+void	move_player_to_left(t_game *game, t_player *player)
+{
+	player->x += player->plane_x * player->move_speed;
+	player->y += player->plane_y * player->move_speed;
+	game->map->player_j = (int)player->x;
+	game->map->player_i = (int)player->y;
+}
+
+void	move_player_to_right(t_game *game, t_player *player)
+{
+	player->x -= player->plane_x * player->move_speed;
+	player->y -= player->plane_y * player->move_speed;
+	game->map->player_j = (int)player->x;
+	game->map->player_i = (int)player->y;
+}
 
 void	turn_player_to_left(t_player *player)
 {

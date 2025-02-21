@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 15:03:12 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:26:08 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void			move_player_forward(t_game *game, t_player *player);
 void			move_player_backward(t_game *game, t_player *player);
 void			turn_player_to_left(t_player *player);
 void			turn_player_to_right(t_player *player);
+void	        move_player_to_left(t_game *game, t_player *player);
+void	        move_player_to_right(t_game *game, t_player *player);
 
 // raycasting.c
 int				init_raycasting_struct(t_game *game);
