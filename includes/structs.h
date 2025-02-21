@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:00:23 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 17:20:02 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,21 @@ typedef struct s_player
 
 typedef struct s_raycast
 {
+	double					camera_x; //x-coordinate in camera space: permite olhar apenas para os lados
 	double					pos_x;
 	double					pos_y;
 	double					dir_x;
 	double					dir_y;
-	int						start_raycasting;
-	int						end_raycasting;
+	double					deltaDistX;
+	double					deltaDistY;
+	double					sideDistX;
+	double					sideDistY;
+	int						step_x;
+	int						step_y;
+	int						hit;
+	int						side;
+	int						draw_start;
+	int						draw_end;
 }							t_raycast;
 
 typedef struct s_image

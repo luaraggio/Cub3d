@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:55:24 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 16:22:22 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,35 +53,17 @@ int	press_key(int keycode, t_game *game)
 	if (keycode == ESC_KEY)
 		exit_game(game);
 	else if (keycode == RIGHT_KEY)
-	{
 		game->keys[RIGHT_INDEX] = true;
-		print_pressed_key("seta para a direita", PINK);
-	}
 	else if (keycode == LEFT_KEY)
-	{
 		game->keys[LEFT_INDEX] = true;
-		print_pressed_key("seta para a esquerda", PINK);
-	}
 	else if (keycode == W_KEY)
-	{
 		game->keys[W_INDEX] = true;
-		print_pressed_key("W", PINK);
-	}
 	else if (keycode == S_KEY)
-	{
 		game->keys[S_INDEX] = true;
-		print_pressed_key("S", PINK);
-	}
 	else if (keycode == A_KEY)
-	{
 		game->keys[A_INDEX] = true;
-		print_pressed_key("A", PINK);
-	}
 	else if (keycode == D_KEY)
-	{
 		game->keys[D_INDEX] = true;
-		print_pressed_key("D", PINK);
-	}
 	update_player_position(game);
 	return (NO_ERROR);
 }
