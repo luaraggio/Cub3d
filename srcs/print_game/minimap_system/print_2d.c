@@ -14,8 +14,8 @@
 
 static void	print_minigame(t_game *game, t_map2d *map_2d);
 static void    found_wall(t_game *game, t_map2d *map_2d, int i, int j);
-static void    found_player(t_game *game, t_map2d *map_2d, int i, int j);
 static int get_opposite_color(int color);
+static void draw_player(t_game *game, t_map2d *map2d);
 static void draw_line_to_wall(t_game *game, t_map2d *map2d);
 //static void    print_map2d_struct(t_map2d *map2d);
 
@@ -63,12 +63,11 @@ static void	print_minigame(t_game *game, t_map2d *map_2d)
         {
             if (map_2d->map_2d[i][j] == '1')
                 found_wall(game, map_2d, i, j);
-            else if (is_player(map_2d->map_2d[i][j]) == NO_ERROR)
-                found_player(game, map_2d, i, j);
             j++;
         }
         i++;
     }
+    draw_player(game, map_2d);
     draw_line_to_wall(game, map_2d);
 }
 
@@ -95,29 +94,6 @@ static void    found_wall(t_game *game, t_map2d *map_2d, int i, int j)
     }
 }
 
-static void    found_player(t_game *game, t_map2d *map_2d, int i, int j)
-{
-    int dy;
-    int dx;
-    int x;
-    int y;
-
-    dy = 0;
-    dx = 0;
-    x = i * map_2d->scale;
-    y = j * map_2d->scale;
-    while (dy < map_2d->scale)
-    {
-        dx = 0;
-        while (dx < map_2d->scale)
-        {
-            my_mlx_pixel_put(game->image, x + dx, y + dy, map_2d->player_color);
-            dx++;
-        }
-        dy++;
-    }
-}
-
 static int get_opposite_color(int color)
 {
     int r;
@@ -130,6 +106,26 @@ static int get_opposite_color(int color)
     b = 0xFF - (color & 0xFF);
     new_color = (r << 16) | (g << 8) | b;
     return new_color;
+}
+
+static void draw_player(t_game *game, t_map2d *map2d)
+{
+    int size;
+    int i;
+    int j;
+
+    size = 5; // Define o tamanho do jogador no minimapa
+    i = -size;
+    while (i <= size)
+    {
+        j = -size;
+        while (j <= size)
+        {
+            my_mlx_pixel_put(game->image, game->player->x * map2d->scale + i, game->player->y * map2d->scale + j, 0xFF0000); // Cor vermelha para o jogador
+            j++;
+        }
+        i++;
+    }
 }
 
 static void draw_line_to_wall(t_game *game, t_map2d *map2d)
