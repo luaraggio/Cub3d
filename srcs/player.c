@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:54:55 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:51:01 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 15:05:21 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	set_player_position(t_game *game, t_player *player)
 
 void	update_player_position(t_game *game)
 {
-	write(1, "Oi", 2);
 	if (game->keys[W_INDEX])
 		move_player_forward(game, game->player);
 	if (game->keys[S_INDEX])
