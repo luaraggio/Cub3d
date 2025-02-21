@@ -18,10 +18,10 @@ PINK=\033[35m
 RED=\033[31m
 BLUE=\033[34m
 
-#MAP = maps/map.cub
+MAP = maps/good/big.cub
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
-MAP = maps/good/test_textures.cub
+#MAP = maps/good/test_textures.cub
 #MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/no_filetype

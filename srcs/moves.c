@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-static void print_player_test(t_game *game, t_player *player);
+//static void print_player_test(t_game *game, t_player *player);
 
 void	move_player_forward(t_game *game, t_player *player)
 {
@@ -20,7 +20,7 @@ void	move_player_forward(t_game *game, t_player *player)
 	player->y += player->y_direction * player->move_speed;
 	game->map->player_j = (int)player->x;
 	game->map->player_i = (int)player->y;
-	print_player_test(game, player);
+//	print_player_test(game, player);
 }
 
 void	move_player_backward(t_game *game, t_player *player)
@@ -29,9 +29,9 @@ void	move_player_backward(t_game *game, t_player *player)
 	player->y -= player->y_direction * player->move_speed;
 	game->map->player_j = (int)player->x;
 	game->map->player_i = (int)player->y;
-	print_player_test(game, player);
+//	print_player_test(game, player);
 }
-
+/*
 static void print_player_test(t_game *game, t_player *player)
 {
 	printf("player->x = %f\n", player->x);
@@ -39,7 +39,7 @@ static void print_player_test(t_game *game, t_player *player)
 	printf("game->map->player_j (x) = %d\n", game->map->player_j);
 	printf("game->map->player_i (y) = %d\n", game->map->player_i);
 }
-
+*/
 void	turn_player_to_left(t_player *player)
 {
 	double	old_x;
