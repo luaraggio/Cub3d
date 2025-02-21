@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 13:37:22 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:00:41 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,33 @@
 # define MOVE_SPEED 0.5
 # define ROTATION_SPEED 0.5
 
-//Texture Size
-#define TEXTURE_SIZE 64
+// Texture Size
+# define TEXTURE_SIZE 64
 
-//main.c
-int	main(int argc, char **argv);
+// main.c
+int				main(int argc, char **argv);
 
-//game.c
-void	set_hooks(t_game *game);
-void    play_cub3d(t_game *game, t_map *map, t_player *player);
-int init_game(t_game *game, t_map *map, t_player *player);
-int exit_game(t_game *game);
-int	game_loop(t_game *game);
-void	create_general_img(void *mlx, t_image *img);
-int start_game(t_game *game, t_map *map, t_player *player);
-//void	print_add_img(t_textures *textures);
+// game.c
+void			set_hooks(t_game *game);
+void			play_cub3d(t_game *game, t_map *map, t_player *player);
+int				init_game(t_game *game, t_map *map, t_player *player);
+int				exit_game(t_game *game);
+int				game_loop(t_game *game);
+void			create_general_img(void *mlx, t_image *img);
+int				start_game(t_game *game, t_map *map, t_player *player);
+// void	print_add_img(t_textures *textures);
 
-//player.c
-int	init_player(t_game *game, t_player *player);
-void	set_player_position(t_game *game, t_player *player);
-void	update_player_position(t_game *game);
+// player.c
+int				init_player(t_game *game, t_player *player);
+void			set_player_position(t_game *game, t_player *player);
+void			update_player_position(t_game *game);
 
-//keys.c
-void	print_pressed_key(const char *key_name, const char *color);
-//void	print_released_key(const char *key_name, const char *color);
-void	reset_key_array(t_game *game);
-int press_key(int keycode, t_game *game);
-int	release_key(int keycode, t_game *game);
+// keys.c
+void			print_pressed_key(const char *key_name, const char *color);
+// void	print_released_key(const char *key_name, const char *color);
+void			reset_key_array(t_game *game);
+int				press_key(int keycode, t_game *game);
+int				release_key(int keycode, t_game *game);
 
 // moves.c
 void			move_player_forward(t_game *game, t_player *player);
@@ -78,9 +78,9 @@ void			move_player_backward(t_game *game, t_player *player);
 void			turn_player_to_left(t_player *player);
 void			turn_player_to_right(t_player *player);
 
-//raycasting.c
-int init_raycasting_struct(t_game *game);
-void    render_game(t_game *game);
+// raycasting.c
+int				init_raycasting_struct(t_game *game);
+void			render_game(t_game *game);
 
 //------------------MAP------------------
 // map.c
@@ -112,17 +112,17 @@ int				check_first_and_last_line(t_map *map);
 // get_map_data.c
 int				get_total_i(t_map *map);
 // texture.c
-void    set_textures_names(t_map *map, char *map_line);
-void	set_texture(t_map *map, char *map_line, char *direction);
-int		open_texture(t_map *map);
-int		check_textures_extension(t_map *map);
-void	create_texture_imgs(t_textures *textures, t_game *game);
+void			set_textures_names(t_map *map, char *map_line);
+void			set_texture(t_map *map, char *map_line, char *direction);
+int				open_texture(t_map *map);
+int				check_textures_extension(t_map *map);
+void			create_texture_imgs(t_textures *textures, t_game *game);
 // clear.c
-void	clear_map(t_map *map);
-void	clear_texture_map(t_map *map);
-void	close_texture_fds(t_map *map);
-void	clear_all(t_game *game, t_map *map);
-void	clear_game(t_game *game);
+void			clear_map(t_map *map);
+void			clear_texture_map(t_map *map);
+void			close_texture_fds(t_map *map);
+void			clear_all(t_game *game, t_map *map);
+void			clear_game(t_game *game);
 // color.c
 unsigned int	get_color(t_map *map, char ref);
 char			*dec_to_hex(int n);
@@ -131,9 +131,9 @@ void			copy_map(t_map *map);
 
 //------------------PRINT_GAME------------------
 // print_game.c
-void	print_game(t_game *game);
-void	my_mlx_pixel_put(t_image *image, int i, int j, int color);
+void			print_game(t_game *game);
+void			my_mlx_pixel_put(t_image *image, int i, int j, int color);
 // print_2d.c
-void    print_2dmap(t_game *game, char **map_2d, t_player *player);
+void			print_2dmap(t_game *game, char **map_2d, t_player *player);
 
 #endif

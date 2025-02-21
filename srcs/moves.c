@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:53:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/12 15:04:50 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:05:23 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void print_player_test(t_game *game, t_player *player);
+static void	print_player_test(t_game *game, t_player *player);
 
 void	move_player_forward(t_game *game, t_player *player)
 {
@@ -32,7 +32,7 @@ void	move_player_backward(t_game *game, t_player *player)
 	print_player_test(game, player);
 }
 
-static void print_player_test(t_game *game, t_player *player)
+static void	print_player_test(t_game *game, t_player *player)
 {
 	printf("player->x = %f\n", player->x);
 	printf("player->y = %f\n", player->y);

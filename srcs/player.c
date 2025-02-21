@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:54:55 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/11 17:44:28 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:05:30 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,26 @@ void	set_player_position(t_game *game, t_player *player)
 {
 	if (game->map->player_direction == 'N')
 	{
-		player->x_direction = -1; //jogador olhando para cima em x e não se move em y
+		player->x_direction = -1;
+			// jogador olhando para cima em x e não se move em y
 		player->plane_y = -0.66;
 	}
 	else if (game->map->player_direction == 'S')
 	{
-		player->x_direction = 1; //jogador olhando para baixo em x e não se move em y
+		player->x_direction = 1;
+			// jogador olhando para baixo em x e não se move em y
 		player->plane_y = 0.66;
 	}
-	else if (game->map->player_direction == 'E') //leste
+	else if (game->map->player_direction == 'E') // leste
 	{
-		player->y_direction = 1; //jogador olhando para o leste em y e não se move em x
+		player->y_direction = 1;
+			// jogador olhando para o leste em y e não se move em x
 		player->plane_x = -0.66;
 	}
-	else if (game->map->player_direction == 'W') //oeste
+	else if (game->map->player_direction == 'W') // oeste
 	{
-		player->y_direction = -1; //jogador olhando para o oeste em y e não se move em x
+		player->y_direction = -1;
+			// jogador olhando para o oeste em y e não se move em x
 		player->plane_x = 0.66;
 	}
 }

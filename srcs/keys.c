@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/12 15:02:57 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:04:30 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,20 @@
 
 void	print_pressed_key(const char *key_name, const char *color)
 {
-	printf("A tecla " "%s%s" RESET " foi pressionada.\n", color, key_name);
+	printf("A tecla ""%s%s" RESET " foi pressionada.\n", color,
+		key_name);
 }
-
-/*void	print_released_key(const char *key_name, const char *color)
-{
-	printf("A tecla " "%s%s" RESET " foi solta.\n", color, key_name);
-}*/
-
-/*void	handle_shift(t_player *player)
-{
-	player->speed = MOVE_SPEED * 2;
-	print_pressed_key("SHIFT", PINK);
-}*/
 
 void	reset_key_array(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while(i < TOTAL_KEYS)
+	while (i < TOTAL_KEYS)
 	{
 		game->keys[i] = false;
 		i++;
 	}
-
 }
 
 int	release_key(int keycode, t_game *game)
@@ -93,7 +82,6 @@ int	press_key(int keycode, t_game *game)
 		game->keys[D_INDEX] = true;
 		print_pressed_key("D", PINK);
 	}
-	// Raycasting:
 	update_player_position(game);
 	return (NO_ERROR);
 }

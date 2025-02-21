@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 13:36:55 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:00:23 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,64 +51,64 @@ typedef struct s_textures
 	t_image					*south_texture_img;
 	t_image					*west_texture_img;
 	t_image					*east_texture_img;
-}				t_textures;
+}							t_textures;
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	bool		keys[TOTAL_KEYS];
-	t_image		*image;
-	t_map		*map;
-	t_player	*player;
-	t_raycast	*ray;
-}			t_game;
+	void					*mlx;
+	void					*win;
+	bool					keys[TOTAL_KEYS];
+	t_image					*image;
+	t_map					*map;
+	t_player				*player;
+	t_raycast				*ray;
+}							t_game;
 
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	x_direction;
-	double	y_direction;
-	double	plane_x;
-	double	plane_y;
-	double	move_speed;
-	double	rotation_speed;
+	double					x;
+	double					y;
+	double					x_direction;
+	double					y_direction;
+	double					plane_x;
+	double					plane_y;
+	double					move_speed;
+	double					rotation_speed;
 }							t_player;
 
 typedef struct s_raycast
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	int		start_raycasting;
-	int		end_raycasting;	
-}		t_raycast;
+	double					pos_x;
+	double					pos_y;
+	double					dir_x;
+	double					dir_y;
+	int						start_raycasting;
+	int						end_raycasting;
+}							t_raycast;
 
 typedef struct s_image
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		endian;
-	int		size_line;
-	int		size_height;
-}			t_image;
+	void					*img;
+	char					*addr;
+	int						bpp;
+	int						endian;
+	int						size_line;
+	int						size_height;
+}							t_image;
 
-typedef struct	s_map2d
+typedef struct s_map2d
 {
-	char	**map_2d;
-	int		map_width;
-	int		map_height;
-	double	max_width;
-	double	max_height;
-	double	scale;
-	double	player_x;
-	double	player_y;
-	double	player_size;
-	int		player_color;
-	int		wall_color;
-}				t_map2d;
+	char					**map_2d;
+	int						map_width;
+	int						map_height;
+	double					max_width;
+	double					max_height;
+	double					scale;
+	double					player_x;
+	double					player_y;
+	double					player_size;
+	int						player_color;
+	int						wall_color;
+}							t_map2d;
 
 #endif

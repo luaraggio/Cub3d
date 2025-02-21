@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:10 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/12 15:03:31 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/21 14:05:14 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	check_args(int argc)
 {
 	if (argc != 2)
 	{
-		my_printf_error(RED "Error\n"
-							"Usage: ./cub3d <map.cub>\n" RESET);
+		my_printf_error(RED "Error\n" "Usage: ./cub3d <map.cub>\n" RESET);
 		exit(ERROR);
 	}
 	return (NO_ERROR);
@@ -36,7 +35,7 @@ int	main(int argc, char **argv)
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
 	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do "
-	"nosso projeto! 🦋🐙\n" RESET);
+		"nosso projeto! 🦋🐙\n" RESET);
 	play_cub3d(&game, &map, &player);
 	clear_map(&map);
 }
