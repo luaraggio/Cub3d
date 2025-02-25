@@ -130,6 +130,7 @@ unsigned int	get_color(t_map *map, char ref);
 char			*dec_to_hex(int n);
 // copy_map.c
 void			copy_map(t_map *map);
+void			map_to_int(t_map *map);
 
 //------------------PRINT_GAME------------------
 // print_game.c

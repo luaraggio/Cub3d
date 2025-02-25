@@ -51,7 +51,6 @@ int	init_raycasting(t_game *game)
 	return (NO_ERROR);
 }
 
-
 void	ray_direction(t_game *game, t_raycast *ray)
 {
 	if (ray->dir_x < 0)
@@ -66,7 +65,7 @@ void	ray_direction(t_game *game, t_raycast *ray)
 	}
 	if (ray->dir_y < 0)
 	{
-		ray->step_x = -1;
+		ray->step_y = -1;
 		ray->sideDistY = (ray->pos_y - game->player->y) * ray->deltaDistX;
 	}
 	else
@@ -99,7 +98,6 @@ void	dda(t_game *game, t_raycast *ray)
 	//Check if ray has hit a wall
 	/*if (game->map->map_int[x][y] > 0)
 		ray->hit = 1;*/
-
 	//TROCAR X E Y PELOS ÍNDICES NO MAPA DE INTEIROS
 }
 

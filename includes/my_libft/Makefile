@@ -34,6 +34,7 @@ my_putstr.c \
 my_putstr_fd.c \
 my_split.c \
 my_clean_vect.c \
+my_clean_int_vect.c \
 my_copy_matrix.c \
 my_str_end_cmp.c \
 my_strchr.c \

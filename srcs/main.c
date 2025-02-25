@@ -32,10 +32,10 @@ int	main(int argc, char **argv)
 	my_bzero(&player, sizeof(t_player));
 	my_bzero(&game, sizeof(t_game));
 	check_args(argc);
-	if (set_map(&map, argv[1]) == ERROR)
-		return (ERROR);
 	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do "
 		"nosso projeto! 🦋🐙\n" RESET);
+	if (set_map(&map, argv[1]) == ERROR)
+		return (ERROR);
 	play_cub3d(&game, &map, &player);
 	clear_map(&map);
 }

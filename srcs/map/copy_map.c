@@ -13,6 +13,7 @@
 #include "../../includes/cub3d.h"
 
 static void malloc_map(t_map *map);
+static void print_int_map(t_map *map);
 
 void    copy_map(t_map *map)
 {
@@ -64,4 +65,47 @@ static void malloc_map(t_map *map)
         k++;
     }
 //    printf("Mapa alocado. Falta copiar\n");
+}
+
+void    map_to_int(t_map *map)
+{
+    map->map_int = my_calloc(map->total_i - map->i_start + 2, sizeof(int **));
+    int i = 0;
+    int j = 0;
+
+    while (map->map[i])
+    {
+        map->map_int[i] = my_calloc(my_strlen(map->map[i]) + 1, sizeof(int *));
+        j = 0;
+        while (map->map[i][j])
+        {
+//            printf("map->map[%d][%d] = %c\n", i, j, map->map[i][j]);
+            if (map->map[i][j] == '1')
+                map->map_int[i][j] = 1;
+            else
+                map->map_int[i][j] = 0;
+//            printf("map->map_int[%d][%d] = %d\n", i, j, map->map_int[i][j]);
+            j++;
+        }
+        i++;
+    }
+    print_int_map(map);
+}
+
+static void print_int_map(t_map *map)
+{
+    int i = 0;
+    int j = 0;
+
+    while (i < map->total_i - map->i_start + 1)
+    {
+        j = 0;
+        while (j < (int)my_strlen(map->map[i]))
+        {
+            printf("%d", map->map_int[i][j]);
+            j++;
+        }
+        printf("\n");
+        i++;
+    }
 }

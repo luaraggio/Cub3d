@@ -49,6 +49,7 @@ int					my_putstr(char *s);
 int					my_putstr_fd(char *s, int fd);
 char				**my_split(char const *s, char c);
 void				my_clean_vect(char **vect);
+void				my_clean_int_vect(int **vect);
 char				**my_copy_matrix(char **matrix);
 int					my_str_end_cmp(const char *s1, const char *s2);
 char				*my_strchr(const char *s, int c);

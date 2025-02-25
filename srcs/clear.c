@@ -24,7 +24,11 @@ void	clear_all(t_game *game, t_map *map)
 void	clear_map(t_map *map)
 {
 	my_clean_vect(map->map_file);
+	map->map_file = NULL;
 	my_clean_vect(map->map);
+	map->map = NULL;
+	my_clean_int_vect(map->map_int);
+	map->map_int = NULL;
 	clear_texture_map(map);
 	free(map->textures);
 	map->textures = NULL;

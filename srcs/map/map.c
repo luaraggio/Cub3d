@@ -103,6 +103,7 @@ static void	finish_map_struct(t_map *map)
 	map->ceiling_color = get_color(map, 'C');
 	copy_map(map);
 	set_player_start(map->map, map, OFF);
+	map_to_int(map);
 }
 
 static void	set_player_start(char **map, t_map *st_map, int flag_start)
