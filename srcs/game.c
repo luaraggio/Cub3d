@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:11:57 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/25 23:18:05 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,8 @@ void	set_hooks(t_game *game)
 	mlx_loop(game->mlx);
 }
 
-/*void	renderizar(t_game *game)
-{
-	//carregar texturas
-	//criar imagens
-	//ray_casting
-	//desenhar minimapa
-	//colocar imagem na janela
-	//destruir e limpar imagem
-}*/
-
 int	game_loop(t_game *game)
 {
-	//renderizar
 	print_game(game);
 	usleep(937500);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 16:24:55 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 00:02:45 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int				init_game(t_game *game, t_map *map, t_player *player);
 int				exit_game(t_game *game);
 int				game_loop(t_game *game);
 void			create_general_img(void *mlx, t_image *img);
-int				start_game(t_game *game, t_map *map, t_player *player);
 // void	print_add_img(t_textures *textures);
 
 // player.c
@@ -69,7 +68,6 @@ void			update_player_position(t_game *game);
 
 // keys.c
 void			print_pressed_key(const char *key_name, const char *color);
-// void	print_released_key(const char *key_name, const char *color);
 void			reset_key_array(t_game *game);
 int				press_key(int keycode, t_game *game);
 int				release_key(int keycode, t_game *game);
@@ -79,15 +77,17 @@ void			move_player_forward(t_game *game, t_player *player);
 void			move_player_backward(t_game *game, t_player *player);
 void			turn_player_to_left(t_player *player);
 void			turn_player_to_right(t_player *player);
-void	        move_player_to_left(t_game *game, t_player *player);
-void	        move_player_to_right(t_game *game, t_player *player);
+void			move_player_to_left(t_game *game, t_player *player);
+void			move_player_to_right(t_game *game, t_player *player);
 
 // raycasting.c
 int				init_raycasting(t_game *game);
-void	calculate_ray_direction(t_game *game, t_raycast *ray);
-void	dda(t_game *game, t_raycast *ray);
-void	calculate_wall_height(t_raycast *ray);
-void	raycasting(t_game *game, t_raycast *ray);
+void			calculate_ray_direction(t_game *game, t_raycast *ray);
+void			perform_dda(t_game *game, t_raycast *ray);
+void			calculate_wall_height(t_raycast *ray);
+void			raycasting(t_game *game, t_raycast *ray);
+void			calculate_wall_distance(t_raycast *ray);
+void			draw_vertical_lines(t_game *game, t_raycast *ray, int x);
 
 //------------------MAP------------------
 // map.c
