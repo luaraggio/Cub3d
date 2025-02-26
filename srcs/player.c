@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:54:55 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 15:26:40 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 00:17:34 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	set_player_position(t_game *game, t_player *player)
 void	update_player_position(t_game *game)
 {
 	if (game->keys[LEFT_INDEX])
-		turn_player_to_left(game->player);
+		rotate_player_to_left(game->player);
 	if (game->keys[RIGHT_INDEX])
-		turn_player_to_right(game->player);
+		rotate_player_to_right(game->player);
 	if (game->keys[W_INDEX])
 		move_player_forward(game, game->player);
 	if (game->keys[S_INDEX])

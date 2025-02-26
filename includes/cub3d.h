@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 00:02:45 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 00:17:46 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int				release_key(int keycode, t_game *game);
 // moves.c
 void			move_player_forward(t_game *game, t_player *player);
 void			move_player_backward(t_game *game, t_player *player);
-void			turn_player_to_left(t_player *player);
-void			turn_player_to_right(t_player *player);
+void			rotate_player_to_left(t_player *player);
+void			rotate_player_to_right(t_player *player);
 void			move_player_to_left(t_game *game, t_player *player);
 void			move_player_to_right(t_game *game, t_player *player);
 
