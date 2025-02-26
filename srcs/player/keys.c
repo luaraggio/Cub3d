@@ -6,11 +6,11 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 00:29:09 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 01:17:49 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	reset_key_array(t_game *game)
 {

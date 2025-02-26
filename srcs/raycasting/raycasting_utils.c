@@ -6,11 +6,11 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 00:33:42 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 01:12:54 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 /**
  * @brief Initializes the raycasting structure for the game.
@@ -32,7 +32,8 @@
     t_raycast *ray;
 
     ray = malloc(sizeof(t_raycast));
-    if (!ray) return (ERROR);
+    if (!ray)
+        return (ERROR);
     my_bzero(ray, sizeof(t_raycast));
     game->ray = ray;
     ray->pos_x = (int)game->player->x;

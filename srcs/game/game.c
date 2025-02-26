@@ -6,36 +6,11 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/25 23:18:05 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 01:18:39 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
-
-int	init_game(t_game *game, t_map *map, t_player *player)
-{
-	t_image	*image;
-
-	image = (t_image *)malloc(sizeof(t_image));
-	if (!image)
-		return (ERROR);
-	my_bzero(image, sizeof(t_image));
-	game->map = map;
-	game->image = image;
-	game->mlx = mlx_init();
-	if (!game->mlx)
-	{
-		my_printf_error(RED "Error. Something went wrong with "
-							"mlx initialization\n" RESET);
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-		return (ERROR);
-	}
-	game->win = mlx_new_window(game->mlx, W_WIDTH, W_HEIGHT, "Cub3d");
-	reset_key_array(game);
-	init_player(game, player);
-	return (NO_ERROR);
-}
+#include "../../includes/cub3d.h"
 
 int	exit_game(t_game *game)
 {
@@ -58,15 +33,6 @@ int	game_loop(t_game *game)
 	print_game(game);
 	usleep(937500);
 	return (0);
-}
-
-void	create_general_img(void *mlx, t_image *img)
-{
-	img->size_line = W_WIDTH;
-	img->size_height = W_HEIGHT;
-	img->img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line),
-			&(img->endian));
 }
 
 void	play_cub3d(t_game *game, t_map *map, t_player *player)

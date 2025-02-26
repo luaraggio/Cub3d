@@ -29,6 +29,7 @@ MAP = maps/good/big.cub
 SRCS = \
 srcs/main.c \
 srcs/map/map.c \
+srcs/utils/clear.c \
 srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \
@@ -40,13 +41,14 @@ srcs/map/floodfill.c \
 srcs/map/texture.c \
 srcs/map/color.c \
 srcs/map/copy_map.c \
-srcs/game.c \
-srcs/keys.c \
-srcs/clear.c \
-srcs/moves.c \
-srcs/player.c \
-srcs/raycasting.c \
-srcs/raycasting_utils.c \
+srcs/player/keys.c \
+srcs/player/moves.c \
+srcs/player/rotate.c \
+srcs/player/player.c \
+srcs/game/game.c \
+srcs/game/initializations.c \
+srcs/raycasting/raycasting.c \
+srcs/raycasting/raycasting_utils.c \
 srcs/print_game/print_game.c \
 srcs/print_game/minimap_system/print_2d.c
 

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:10:35 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/02/21 14:01:11 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 01:20:12 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	destroy_texture_imgs(t_game *game, t_textures *textures);
 

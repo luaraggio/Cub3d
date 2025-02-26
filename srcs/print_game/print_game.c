@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:22:20 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/02/25 23:29:16 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 00:57:12 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ void	my_mlx_pixel_put(t_image *image, int i, int j, int color)
 	dst = image->addr + (i * image->size_line + j * (image->bpp / 8));
 	*(unsigned int *)dst = color;
 }
+
+void	create_general_img(void *mlx, t_image *img)
+{
+	img->size_line = W_WIDTH;
+	img->size_height = W_HEIGHT;
+	img->img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
+	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line),
+			&(img->endian));
+}
+
 /*
 static void	print_img_struct(t_image *img, char *name)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 21:21:19 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/15 15:39:47 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 01:07:31 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void	set_player_start(char **map, t_map *st_map, int flag_start)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 0;
 	while (flag_start == ON && (i < st_map->total_i) && line_belongs_to_map(st_map->map_file[i]) == ERROR)
