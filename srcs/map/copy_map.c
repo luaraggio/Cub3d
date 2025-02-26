@@ -13,7 +13,7 @@
 #include "../../includes/cub3d.h"
 
 static void malloc_map(t_map *map);
-static void print_int_map(t_map *map);
+//static void print_int_map(t_map *map);
 
 void    copy_map(t_map *map)
 {
@@ -89,9 +89,8 @@ void    map_to_int(t_map *map)
         }
         i++;
     }
-    print_int_map(map);
 }
-
+/*
 static void print_int_map(t_map *map)
 {
     int i = 0;
@@ -108,4 +107,4 @@ static void print_int_map(t_map *map)
         printf("\n");
         i++;
     }
-}
+}*/

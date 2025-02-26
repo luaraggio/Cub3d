@@ -43,6 +43,8 @@
 # define W_WIDTH 1300
 # define MOVE_SPEED 0.5
 # define ROTATION_SPEED 0.5
+# define VERTICAL_SIDE 0
+# define HORIZONTAL_SIDE 1
 
 // Texture Size
 # define TEXTURE_SIZE 64
@@ -82,7 +84,10 @@ void	        move_player_to_right(t_game *game, t_player *player);
 
 // raycasting.c
 int				init_raycasting(t_game *game);
-void			render_game(t_game *game);
+void	calculate_ray_direction(t_game *game, t_raycast *ray);
+void	dda(t_game *game, t_raycast *ray);
+void	calculate_wall_height(t_raycast *ray);
+void	raycasting(t_game *game, t_raycast *ray);
 
 //------------------MAP------------------
 // map.c

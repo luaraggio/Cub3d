@@ -80,20 +80,22 @@ typedef struct s_player
 typedef struct s_raycast
 {
 	double					camera_x; //x-coordinate in camera space: permite olhar apenas para os lados
-	double					pos_x;
-	double					pos_y;
-	double					dir_x;
-	double					dir_y;
+	double					pos_x; //posição x do raio: começa como pos(x) do personagem
+	double					pos_y; //posição y do raio: começa como pos(y) do personagem
+	double					dir_x; //direção x do raio: começa como dir(x) do personagem
+	double					dir_y; //direção y do raio: começa como dir(y) do personagem
 	double					deltaDistX;
 	double					deltaDistY;
-	double					sideDistX;
-	double					sideDistY;
-	int						step_x;
+	double					sideDistX;  //distância que o raio precisa percorrer até antingir uma borda horizontal (quando o raio cruza uma linha entre colunas no mapa).
+	double					sideDistY; ////distância que o raio precisa percorrer até antingir uma borda vertical (quando o raio cruza uma linha entre linhas no mapa).
+	double					perp_wall_dist;
+	int						line_height; // Altura da parede
+	int						step_x; //step_x e step_y determinam a direção do movimento do raio na grade do mapa.
 	int						step_y;
-	int						hit;
-	int						side;
-	int						draw_start;
-	int						draw_end;
+	int						hit; //pra saber se bateu ou não em uma parede
+	int						side; //vai ser 1 se tiver batido primeiro em uma borda vertical, vai ser 0 se tiver batido em uma borda horizontal
+	int						draw_start; // Ponto mais alto da parede
+	int						draw_end; // Ponto mais baixo da parede
 }							t_raycast;
 
 typedef struct s_image
