@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 16:59:00 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 19:23:07 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@
         return (ERROR);
     my_bzero(ray, sizeof(t_raycast));
     game->ray = ray;
-    /*ray->pos_x = (int)game->player->x;
-    ray->pos_y = (int)game->player->y;*/
     ray->dir_x = game->player->x_direction;
     ray->dir_y = game->player->y_direction;
     ray->map_x = (int)game->player->x;
@@ -116,7 +114,7 @@ void perform_dda(t_game *game, t_raycast *ray)
          else  // o raio atingirá primeiro uma borda horizontal (entre linhas).
          {
              ray->side_dist_y += ray->delta_dist_y;
-             ray->map_y += ray->step_y;  // move o jogador uma célula no eixo X
+             ray->map_y += ray->step_y;  // move o jogador uma célula no eixo Y
              ray->side = HORIZONTAL_SIDE;
          }
      }

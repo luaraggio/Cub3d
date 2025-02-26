@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:31:54 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 17:15:48 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 19:36:19 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	draw_vertical_lines(t_game *game, t_raycast *ray, int x)
 	int	y;
 	int	color;
 
-	/* Define a cor base (pode vir de uma textura ou ser fixa) */
-	color = 0xAAAAAA;
+	color = 0xFF0000;
+	/* Vermelho */
 	y = ray->draw_start;
 	if (ray->side == VERTICAL_SIDE)
-		color = 0xFFFFFF;
+		color = (color >> 1) & 8355711;
+	/* Se o raio atingiu uma borda vertical, escurece a cor */
 	while (y < ray->draw_end)
 	{
 		my_mlx_pixel_put(game->image->img, x, y, color);
