@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 00:03:29 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 00:33:42 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ void calculate_ray_direction(t_game *game, t_raycast *ray)
     else
     {
         ray->step_x = 1;
-        ray->side_dist_x =
-            (game->player->x + 1.0 - ray->pos_x) * ray->delta_dist_x;
+        ray->side_dist_x = (game->player->x + 1.0 - ray->pos_x) * ray->delta_dist_x;
     }
     if (ray->dir_y < 0)
     {

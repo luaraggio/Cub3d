@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 21:17:06 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 16:22:22 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 00:29:09 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	print_pressed_key(const char *key_name, const char *color)
-{
-	printf("A tecla ""%s%s" RESET " foi pressionada.\n", color,
-		key_name);
-}
 
 void	reset_key_array(t_game *game)
 {
