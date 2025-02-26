@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:03 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/25 23:13:40 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:38:37 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ typedef struct s_raycast
     double side_dist_y;  // distância que o raio precisa percorrer até antingir uma borda vertical (quando o raio cruza uma linha entre linhas no mapa).
     double perp_wall_dist; //distância perpendicular do raio até a parede
     double wall_x; //posição exata de onde o raio bateu na parede
+    int map_x;
+    int map_y;
     int line_height;  // altura da parede
     int step_x;  // step_x e step_y determinam a direção do movimento do raio na grade do mapa.
     int step_y;

@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 01:24:40 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:59:39 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			raycasting(t_game *game, t_raycast *ray);
 void			calculate_ray_direction(t_game *game, t_raycast *ray);
 void			perform_dda(t_game *game, t_raycast *ray);
 void			calculate_wall_height(t_raycast *ray);
-void			calculate_wall_distance(t_raycast *ray);
+void			calculate_wall_distance(t_game *game, t_raycast *ray);
 
 //------------------MAP------------------//
 

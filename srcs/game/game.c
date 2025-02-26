@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 01:18:39 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 17:18:14 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	play_cub3d(t_game *game, t_map *map, t_player *player)
 	init_game(game, map, player);
 	create_texture_imgs(map->textures, game);
 	create_general_img(game->mlx, game->image);
+	raycasting(game, game->ray);
 	set_hooks(game);
 }
 
