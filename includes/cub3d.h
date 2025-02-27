@@ -59,6 +59,7 @@ void			set_hooks(t_game *game);
 void			play_cub3d(t_game *game, t_map *map, t_player *player);
 int				exit_game(t_game *game);
 int				game_loop(t_game *game);
+int     			render_game(t_game *game);
 void			create_general_img(void *mlx, t_image *img);
 
 //initializations.c

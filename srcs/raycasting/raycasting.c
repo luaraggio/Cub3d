@@ -51,8 +51,8 @@ void	raycasting(t_game *game, t_raycast *ray)
 	 /* Lança um raio para cada coluna da tela, da esquerda pra direita*/
 	{
 		ray->hit = 0;
-        ray->map_x = (int)game->player->x;
-        ray->map_y = (int)game->player->y;
+		ray->map_x = (int)game->player->x;
+		ray->map_y = (int)game->player->y;
 		set_ray_values(game, ray, x);
 		calculate_ray_direction(game, ray);
 		perform_dda(game, ray);

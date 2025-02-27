@@ -22,6 +22,7 @@ int	exit_game(t_game *game)
 void	set_hooks(t_game *game)
 {
 	mlx_loop_hook(game->mlx, game_loop, game);
+	mlx_loop_hook(game, render_game, game);
 	mlx_hook(game->win, 2, 1L << 0, press_key, game);
 	mlx_hook(game->win, 3, 1L << 1, release_key, game);
 	mlx_hook(game->win, 17, 0, exit_game, game);
@@ -30,10 +31,14 @@ void	set_hooks(t_game *game)
 
 int	game_loop(t_game *game)
 {
-	update_player_position(game);
-	raycasting(game, game->ray);
 	print_game(game);
 	usleep(937500);
+	return (0);
+}
+
+int	render_game(t_game *game)
+{
+	raycasting(game, game->ray);
 	return (0);
 }
 
@@ -42,7 +47,6 @@ void	play_cub3d(t_game *game, t_map *map, t_player *player)
 	init_game(game, map, player);
 	create_texture_imgs(map->textures, game);
 	create_general_img(game->mlx, game->image);
-	raycasting(game, game->ray);
 	set_hooks(game);
 }
 
