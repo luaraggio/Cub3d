@@ -19,6 +19,8 @@ void	draw_vertical_lines(t_game *game, t_raycast *ray, int x)
 
 	color = 0xFF0000;
 	/* Vermelho */
+	printf("Draw start: %i\n", ray->draw_start);
+	printf("Draw end: %i\n", ray->draw_end);
 	y = ray->draw_start;
 	if (ray->side == VERTICAL_SIDE)
 		color = (color >> 1) & 8355711;
@@ -44,12 +46,14 @@ void	set_ray_values(t_game *game, t_raycast *ray, int x)
 
 void	raycasting(t_game *game, t_raycast *ray)
 {
+	printf("Oi da funcao de raycasting\n");
 	int	x;
 
 	x = 0;
 	while (x < W_WIDTH)
 	 /* Lança um raio para cada coluna da tela, da esquerda pra direita*/
 	{
+		printf("Oi de dentro do loop do raycasting!!\n");
 		ray->hit = 0;
 		ray->map_x = (int)game->player->x;
 		ray->map_y = (int)game->player->y;
