@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 19:23:07 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 20:38:04 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void perform_dda(t_game *game, t_raycast *ray)
              ray->side = HORIZONTAL_SIDE;
          }
      }
-     if (game->map->map_int[ray->map_y][ray->map_x] == '1')
+     if (game->map->map_int[ray->map_y][ray->map_x] == 1)
          ray->hit = 1;
  }
 

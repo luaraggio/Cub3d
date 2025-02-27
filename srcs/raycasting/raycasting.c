@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:31:54 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 19:36:19 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 20:03:46 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void	raycasting(t_game *game, t_raycast *ray)
 	while (x < W_WIDTH)
 	 /* Lança um raio para cada coluna da tela, da esquerda pra direita*/
 	{
+		ray->hit = 0;
+        ray->map_x = (int)game->player->x;
+        ray->map_y = (int)game->player->y;
 		set_ray_values(game, ray, x);
 		calculate_ray_direction(game, ray);
 		perform_dda(game, ray);

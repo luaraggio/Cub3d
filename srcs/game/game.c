@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 17:18:14 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/02/26 21:09:24 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	set_hooks(t_game *game)
 
 int	game_loop(t_game *game)
 {
+	update_player_position(game);
+	raycasting(game, game->ray);
 	print_game(game);
 	usleep(937500);
 	return (0);
