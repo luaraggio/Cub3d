@@ -101,26 +101,31 @@ void calculate_ray_direction(t_game *game, t_raycast *ray)
 
 void perform_dda(t_game *game, t_raycast *ray)
 {
+//    printf("Entrou no perform_dda\n");
     // perform DDA
      while (ray->hit == 0)
      {
+//        printf("Entrou no while do perform_dda com ray->hit = %i\n", ray->hit);
          // jump to next map square, either in x-direction, or in y-direction
          if (ray->side_dist_x < ray->side_dist_y)  // o raio atingirá primeiro uma borda vertical (entre colunas).
          {
+//            printf("Entrou no if de perform_dda com side_dist_x = %f e side_dist_y = %f\n", ray->side_dist_x, ray->side_dist_y);
              ray->side_dist_x += ray->delta_dist_x;  // atualiza side_dist_x para o próximo ponto de interseção no X
              ray->map_x += ray->step_x;  // move o jogador uma célula no eixo X
              ray->side = VERTICAL_SIDE;
          }
          else  // o raio atingirá primeiro uma borda horizontal (entre linhas).
          {
+//            printf("Entrou no else de perform_dda com side_dist_x = %f e side_dist_y = %f\n", ray->side_dist_x, ray->side_dist_y);
              ray->side_dist_y += ray->delta_dist_y;
              ray->map_y += ray->step_y;  // move o jogador uma célula no eixo Y
              ray->side = HORIZONTAL_SIDE;
          }
+         if (game->map->map_int[ray->map_y][ray->map_x] == 1)
+             ray->hit = 1;
      }
-     if (game->map->map_int[ray->map_y][ray->map_x] == 1)
-         ray->hit = 1;
- }
+//     printf("Saiu do loop de perform_dda\n");
+}
 
 /**
  * @brief Calculate distance of perpendicular ray (Euclidean distance would

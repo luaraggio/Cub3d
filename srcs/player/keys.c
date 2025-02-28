@@ -26,6 +26,7 @@ void	reset_key_array(t_game *game)
 
 int	release_key(int keycode, t_game *game)
 {
+	//printf("Entrou na release_key\n");
 	if (keycode == RIGHT_KEY)
 		game->keys[RIGHT_INDEX] = false;
 	else if (keycode == LEFT_KEY)
@@ -39,11 +40,13 @@ int	release_key(int keycode, t_game *game)
 	else if (keycode == D_KEY)
 		game->keys[D_INDEX] = false;
 	update_player_position(game);
+	//raycasting(game, game->ray);
 	return (NO_ERROR);
 }
 
 int	press_key(int keycode, t_game *game)
 {
+	//printf("Entrou na press_key\n");
 	if (keycode == ESC_KEY)
 		exit_game(game);
 	else if (keycode == RIGHT_KEY)
@@ -59,5 +62,6 @@ int	press_key(int keycode, t_game *game)
 	else if (keycode == D_KEY)
 		game->keys[D_INDEX] = true;
 	update_player_position(game);
+	//raycasting(game, game->ray);
 	return (NO_ERROR);
 }

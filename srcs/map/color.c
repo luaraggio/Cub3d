@@ -104,6 +104,7 @@ static unsigned int	rgb_to_hexa(char *str)
 		i++;
 	}
 	color = hexStringToInt(str_hex_color);
+	//printf("Color: %u\n", color);
 	free(str);
 	free(str_hex_color);
 	return (color);

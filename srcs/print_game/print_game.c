@@ -18,6 +18,7 @@ static void	print_background(t_image *img, t_map *map);
 void	print_game(t_game *game)
 {
 	print_background(game->image, game->map);
+	//raycasting(game, game->ray);
 	print_2dmap(game, game->map->map, game->player);
 	mlx_put_image_to_window(game->mlx, game->win, game->image->img, 0, 0);
 }
