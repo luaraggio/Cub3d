@@ -33,20 +33,19 @@ void    print_2dmap(t_game *game, char **map_2d, t_player *player)
     map2d.player_color = get_opposite_color(game->map->ceiling_color - 0x202020);
     map2d.wall_color = get_opposite_color(game->map->ceiling_color);
 
+    map2d.map_height = 0;
     while (map_2d[map2d.map_height])
+    {
+        int current_width = my_strlen(map_2d[map2d.map_height]);
+        if (current_width > map2d.map_width)
+            map2d.map_width = current_width;
         map2d.map_height++;
-    while (map_2d[0][map2d.map_width])
-        map2d.map_width++;
+    }
 
     scale_x = (double)map2d.max_width / map2d.map_width;
     scale_y = (double)map2d.max_height / map2d.map_height;
-    if (scale_x < scale_y) {
-        map2d.scale = scale_x;
-    } else {
-        map2d.scale = scale_y;
-    }
-//    print_map2d_struct(&map2d);
-   	print_minigame(game, &map2d);
+    map2d.scale = fmin(scale_x, scale_y);
+    print_minigame(game, &map2d);
 }
 
 static void	print_minigame(t_game *game, t_map2d *map_2d)
@@ -80,8 +79,8 @@ static void    found_wall(t_game *game, t_map2d *map_2d, int i, int j)
 
     dy = 0;
     dx = 0;
-    x = i * map_2d->scale;
-    y = j * map_2d->scale;
+    x = j * map_2d->scale;
+    y = i * map_2d->scale;
     while (dy < map_2d->scale)
     {
         dx = 0;
@@ -113,6 +112,8 @@ static void draw_player(t_game *game, t_map2d *map2d)
     int size;
     int i;
     int j;
+    float player_x = game->player->x + 0.5;
+    float player_y = game->player->y + 0.5;
 
     size = 5; // Define o tamanho do jogador no minimapa
     i = -size;
@@ -121,7 +122,12 @@ static void draw_player(t_game *game, t_map2d *map2d)
         j = -size;
         while (j <= size)
         {
-            my_mlx_pixel_put(game->image, game->player->x * map2d->scale + i, game->player->y * map2d->scale + j, 0xFF0000); // Cor vermelha para o jogador
+            my_mlx_pixel_put(
+                game->image, 
+                (int)(player_x * map2d->scale) + j,
+                (int)(player_y * map2d->scale) + i,
+                0xFF0000
+            );
             j++;
         }
         i++;
@@ -135,8 +141,8 @@ static void draw_line_to_wall(t_game *game, t_map2d *map2d)
     double x_dir;
     double y_dir;
 
-    x = game->player->x * map2d->scale;
-    y = game->player->y * map2d->scale;
+    x = (game->player->x + 0.5) * map2d->scale;
+    y = (game->player->y + 0.5) * map2d->scale;
     x_dir = game->player->x_direction * map2d->scale;
     y_dir = game->player->y_direction * map2d->scale;
     while (map2d->map_2d[(int)(y / map2d->scale)][(int)(x / map2d->scale)] != '1')
