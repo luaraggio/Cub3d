@@ -34,7 +34,7 @@ int	game_loop(t_game *game)
 {
 	//printf("Oi de dentro de game_loop\n");
 	print_game(game);
-	raycasting(game, game->ray);
+	//raycasting(game, game->ray);
 	//usleep(937500);
 	return (0);
 }
