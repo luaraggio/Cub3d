@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_2d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:53:17 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/02/11 11:53:18 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:17:33 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ static void draw_player(t_game *game, t_map2d *map2d)
         while (j <= size)
         {
             my_mlx_pixel_put(
-                game->image, 
+                game->image,
                 (int)(player_x * map2d->scale) + j,
                 (int)(player_y * map2d->scale) + i,
                 0xFF0000
