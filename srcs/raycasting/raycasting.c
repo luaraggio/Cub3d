@@ -12,30 +12,50 @@
 
 #include "../../includes/cub3d.h"
 
-void	draw_vertical_lines(t_game *game, t_raycast *ray, int x)
-{
-	int	y;
-	unsigned int	color;
+void draw_vertical_lines(t_game *game, t_raycast *ray, int x) {
+    int y;
+	int d;
+    int tex_x;
+    int tex_y;
+    t_image *texture;
 
-	color = 0xFF0000; /* Vermelho */
-	//printf("Color: %u\n", color);
-	//printf("Draw start: %i\n", ray->draw_start);
-	//printf("Draw end: %i\n", ray->draw_end);
+	d = 0;
+	y = 0;
+    // Escolhe a textura correta com base na direção do raio
+    if (ray->side == VERTICAL_SIDE)
+	{
+        if (ray->dir_x > 0)
+            texture = game->map->textures->south_texture_img;
+        else
+            texture = game->map->textures->north_texture_img;
+    }
+	else
+	{
+        if (ray->dir_y > 0)
+            texture = game->map->textures->east_texture_img;
+        else
+            texture = game->map->textures->west_texture_img;
+    }
+
+	// Calcula tex_x
+	tex_x = (int)(ray->wall_x * (double)TEXTURE_SIZE);
+	if ((ray->side == VERTICAL_SIDE && ray->dir_x > 0) || (ray->side == HORIZONTAL_SIDE && ray->dir_y < 0)) 
+		tex_x = TEXTURE_SIZE - tex_x - 1; // Espelha a textura se necessário
 	y = ray->draw_start;
-	if (ray->side == VERTICAL_SIDE)
+	// Loop para cada pixel vertical
+    while (y < ray->draw_end)
 	{
-		//printf("Entrou no if de draw_vertical_lines com side = 0\n");
-		color = (color >> 1) & 8355711;
-	}
-	/* Se o raio atingiu uma borda vertical, escurece a cor */
-	//printf("Tamanho x do mapa: %i\n", W_WIDTH);
-	//printf("Tamanho y do mapa: %i\n", W_HEIGHT);
-	while (y < ray->draw_end)
-	{
-		//printf("No loop de draw_vertical_lines com y = %i e x = %i\n", y, x);
-		my_mlx_pixel_put(game->image, y, x, color);
+        // Calcula tex_y
+        d = y * 256 - W_HEIGHT * 128 + ray->line_height * 128; // Ajuste de posição
+        tex_y = ((d * TEXTURE_SIZE) / ray->line_height) / 256;
+
+        // Obtém a cor da textura
+        unsigned int color = *(unsigned int *)(texture->addr + (tex_y * texture->size_line + tex_x * (texture->bpp / 8)));
+
+        // Desenha o pixel na tela
+        my_mlx_pixel_put(game->image, y, x, color);
 		y++;
-	}
+    }
 }
 
 void	set_ray_values(t_game *game, t_raycast *ray, int x)
