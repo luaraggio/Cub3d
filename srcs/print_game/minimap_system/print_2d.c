@@ -28,8 +28,8 @@ void    print_2dmap(t_game *game, char **map_2d, t_player *player)
 
     my_bzero(&map2d, sizeof(t_map2d));
     map2d.map_2d = map_2d;
-    map2d.max_width = W_WIDTH / 3;
-    map2d.max_height = W_HEIGHT / 3;
+    map2d.max_width = W_WIDTH * MINIMAP_PROPORTION;
+    map2d.max_height = W_HEIGHT * MINIMAP_PROPORTION;
     map2d.player_color = get_opposite_color(game->map->ceiling_color - 0x202020);
     map2d.wall_color = get_opposite_color(game->map->ceiling_color);
 

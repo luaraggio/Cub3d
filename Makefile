@@ -18,11 +18,12 @@ PINK=\033[35m
 RED=\033[31m
 BLUE=\033[34m
 
+#MAP = maps/good/test_map.cub # TA DANDO RUIM NESSE!
 MAP = maps/good/big.cub
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
 #MAP = maps/good/test_textures.cub
-#MAP = maps/good/subject_map.cub
+#MAP = maps/good/subject_map.cub # TA DANDO RUIM NESSE!
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/no_filetype
 
@@ -95,6 +96,12 @@ norm:
 
 val: re
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
+
+val2:
+	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
+
+run2:
+	./$(NAME) $(MAP)
 
 container:
 	exec docker container run -u root -ti -v $(CONTAINER_WORKDIR_PATH):/workspace devcontainer

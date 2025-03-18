@@ -42,12 +42,13 @@
 # define W_HEIGHT 800
 # define W_WIDTH 1300
 # define MOVE_SPEED 0.5
-# define ROTATION_SPEED 0.5
+# define ROTATION_SPEED 0.1
 # define VERTICAL_SIDE 0
 # define HORIZONTAL_SIDE 1
 
 // Texture Size
 # define TEXTURE_SIZE 64
+# define MINIMAP_PROPORTION 0.2
 
 // main.c
 int				main(int argc, char **argv);
