@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:53:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/18 20:36:28 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/18 21:01:38 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,24 @@ void	move_player_backward(t_game *game, t_player *player)
 
 void	move_player_to_right(t_game *game, t_player *player)
 {
-	if (game->map->map_int[(int)(player->x + player->plane_x
-			* player->move_speed)][(int)(player->y)] == 0)
-		player->x += player->plane_x * player->move_speed;
-	if (game->map->map_int[(int)(player->x)][(int)(player->y +
-			player->plane_y * player->move_speed)] == 0)
+	if (game->map->map_int[(int)(player->y + player->plane_y
+			* player->move_speed)][(int)(player->x)] == 0)
 		player->y += player->plane_y * player->move_speed;
-	printf("x antes: %i\n", game->map->player_j);
-	printf("y antes: %i\n", game->map->player_i);
+	if (game->map->map_int[(int)(player->y)][(int)(player->x +
+			player->plane_x * player->move_speed)] == 0)
+		player->x += player->plane_x * player->move_speed;
 	game->map->player_j = (int)player->x;
 	game->map->player_i = (int)player->y;
-	printf("x depois: %i\n", game->map->player_j);
-	printf("y depois: %i\n", game->map->player_i);
 }
 
 void	move_player_to_left(t_game *game, t_player *player)
 {
-	if (game->map->map_int[(int)(player->x - player->plane_x
-		* player->move_speed)][(int)(player->y)] == 0)
-		player->x -= player->plane_x * player->move_speed;
-	if (game->map->map_int[(int)(player->x)][(int)(player->y -
-			player->plane_y * player->move_speed)] == 0)
+	if (game->map->map_int[(int)(player->y - player->plane_y
+		* player->move_speed)][(int)(player->x)] == 0)
 		player->y -= player->plane_y * player->move_speed;
-	printf("x antes: %i\n", game->map->player_j);
-	printf("y antes: %i\n", game->map->player_i);
+	if (game->map->map_int[(int)(player->y)][(int)(player->x -
+			player->plane_x * player->move_speed)] == 0)
+		player->x -= player->plane_x * player->move_speed;
 	game->map->player_j = (int)player->x;
 	game->map->player_i = (int)player->y;
-	printf("x depois: %i\n", game->map->player_j);
-	printf("y depois: %i\n", game->map->player_i);
 }
