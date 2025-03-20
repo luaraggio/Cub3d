@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 20:38:04 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 19:56:47 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@
         return (ERROR);
     my_bzero(ray, sizeof(t_raycast));
     game->ray = ray;
-    ray->dir_x = game->player->x_direction;
-    ray->dir_y = game->player->y_direction;
-    ray->map_x = (int)game->player->x;
-    ray->map_y = (int)game->player->y;
     return (NO_ERROR);
 }
 
@@ -143,10 +139,6 @@ void perform_dda(t_game *game, t_raycast *ray)
 
 void calculate_wall_height(t_raycast *ray)
 {
-    if (ray->side == VERTICAL_SIDE)
-        ray->perp_wall_dist = ray->side_dist_x - ray->delta_dist_x;
-    else
-        ray->perp_wall_dist = ray->side_dist_y - ray->delta_dist_y;
     ray->line_height = (int)(W_HEIGHT / ray->perp_wall_dist); // Calculate height of line to draw on screen
     ray->draw_start = -ray->line_height / 2 + W_HEIGHT / 2; // calculate lowest pixel to fill in current stripe
     if (ray->draw_start < 0)
@@ -170,35 +162,33 @@ void calculate_wall_height(t_raycast *ray)
  *             information;
  */
 
- void calculate_wall_distance(t_game *game, t_raycast *ray)
+/*
+ * Calcula a posição exata (no eixo da parede) onde o raio atingiu a parede.
+ * Se a parede é vertical (ou seja, o raio atingiu uma borda vertical) usamos a coordenada Y,
+ * senão usamos a coordenada X.
+ */
+ /*void calculate_wall_distance(t_game *game, t_raycast *ray)
  {
-    // Removido: int texture_number;
-    // Removido: texture_number = game->map->map_int[ray->map_x][ray->map_y] - 1;
-
-     /*
-      * Calcula a posição exata (no eixo da parede) onde o raio atingiu a parede.
-      * Se a parede é vertical (ou seja, o raio atingiu uma borda vertical) usamos a coordenada Y,
-      * senão usamos a coordenada X.
-      */
      if (ray->side == VERTICAL_SIDE)
          ray->wall_x = game->player->y + ray->perp_wall_dist * ray->dir_y;
      else
          ray->wall_x = game->player->x + ray->perp_wall_dist * ray->dir_x;
      // Pega somente a parte fracionária de wall_x (a posição relativa na célula)
      ray->wall_x -= floor(ray->wall_x);
+ }*/
 
-     /*
-      * Calcula qual coluna da textura (coordenada X) deve ser usada.
-      * Multiplicamos o valor fracionário wall_x pelo tamanho da textura.
-      */
-     ///ray->texture_x = (int)(ray->wall_x * (double)TEXTURE_SIZE);
-
-     /*
-      * Se a parede foi atingida de determinados lados, invertemos a coordenada da textura
-      * para que ela fique orientada corretamente.
-      */
-     //if (ray->side == VERTICAL_SIDE && ray->dir_x > 0)
-         //ray->texture_x = TEXTURE_SIZE - ray->texture_x - 1;
-     //if (ray->side == HORIZONTAL_SIDE && ray->dir_y < 0)
-         //ray->texture_x = TEXTURE_SIZE - ray->texture_x - 1;
+ void calculate_wall_distance(t_game *game, t_raycast *ray)
+ {
+     if (ray->side == VERTICAL_SIDE)
+     {
+        ray->perp_wall_dist = (ray->map_x - game->player->x + (1 - ray->step_x) / 2) / ray->dir_x;
+        ray->wall_x = game->player->y + ray->perp_wall_dist * ray->dir_y;
+     }
+     else
+     {
+        ray->perp_wall_dist = (ray->map_y - game->player->y + (1 - ray->step_y) / 2) / ray->dir_y;
+        ray->wall_x = game->player->x + ray->perp_wall_dist * ray->dir_x;
+     }
+     // Pega somente a parte fracionária de wall_x (a posição relativa na célula)
+     ray->wall_x -= floor(ray->wall_x);
  }
