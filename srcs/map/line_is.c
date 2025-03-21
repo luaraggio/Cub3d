@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_is.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:31:33 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/08 17:31:35 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:42:04 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	line_belongs_to_map(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
 	{
-		if ((line[i] != '\n' || line[i] != '\0') && character_belongs_to_map(line[i], line[i + 1]) == ERROR)
+		if ((line[i] != '\n' || line[i] != '\0')
+			&& character_belongs_to_map(line[i], line[i + 1]) == ERROR)
 			return (ERROR);
 		i++;
 	}

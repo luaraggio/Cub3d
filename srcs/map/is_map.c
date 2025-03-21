@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 23:08:15 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/07 23:08:16 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:41:49 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_map(char **map)
 	return (NO_ERROR);
 }
 
-int character_belongs_to_map(char c, char next)
+int	character_belongs_to_map(char c, char next)
 {
 	if (c == ' ' || c == '1' || c == '0')
 		return (NO_ERROR);
@@ -49,11 +49,10 @@ int	is_player(char c)
 	return (ERROR);
 }
 
-
 int	map_start(t_map *map)
 {
 	int	i;
-	
+
 	i = 0;
 	while (map->map_file[i])
 	{

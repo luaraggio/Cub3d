@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 21:21:19 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/03/20 23:10:23 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 13:46:08 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,10 @@ static void	finish_map_struct(t_map *map);
 static void	set_player_start(char **map, t_map *st_map, int flag_start);
 static void	start_textures(t_textures *textures);
 
-/*static void print_int_matrix(int **matrix)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i <= 13 )
-	{
-		j = 0;
-		while (j < 33)
-		{
-			printf("%d ", matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}*/
-
 int	set_map(t_map *map, char *map_file)
 {
 	if (open_map(map, map_file) == ERROR)
-		return ERROR;
+		return (ERROR);
 	if (valid_map_file(map_file) == ERROR)
 	{
 		free(map->full_map);
@@ -48,9 +29,6 @@ int	set_map(t_map *map, char *map_file)
 		return (ERROR);
 	}
 	set_initial_map_struct(map);
-/*	printf("Map file:\n");
-	print_matrix(map->map_file);
-	printf("__________\n");*/
 	if (valid_map(map) != NO_ERROR)
 	{
 		free_imgs(map->textures);
@@ -58,12 +36,6 @@ int	set_map(t_map *map, char *map_file)
 		return (ERROR);
 	}
 	finish_map_struct(map);
-/*	printf("Map:\n");
-	print_matrix(map->map);
-	printf("__________\n");
-	printf("Map int:\n");
-	print_int_matrix(map->map_int);
-	printf("__________\n");*/
 	return (NO_ERROR);
 }
 
@@ -76,8 +48,9 @@ static int	open_map(t_map *map, char *map_file)
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{
-		my_printf_error(RED "Error\n" "Could not open the file %s\n" RESET, map_file);
-		return ERROR;
+		my_printf_error(RED "Error\n"
+			"Could not open the file %s\n" RESET, map_file);
+		return (ERROR);
 	}
 	while (42)
 	{
@@ -89,7 +62,8 @@ static int	open_map(t_map *map, char *map_file)
 	close(fd);
 	if (!map->full_map)
 	{
-		my_printf_error(RED "Error\n" "Empty map\n" RESET);
+		my_printf_error(RED "Error\n"
+							"Empty map\n" RESET);
 		return (ERROR);
 	}
 	return (NO_ERROR);
@@ -142,8 +116,9 @@ static void	set_player_start(char **map, t_map *st_map, int flag_start)
 
 	i = 0;
 	j = 0;
-	while (flag_start == ON && (i < st_map->total_i) && line_belongs_to_map(st_map->map_file[i]) == ERROR)
-        i++;
+	while (flag_start == ON && (i < st_map->total_i)
+		&& line_belongs_to_map(st_map->map_file[i]) == ERROR)
+		i++;
 	while (map[i])
 	{
 		j = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 20:29:02 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/15 18:08:44 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:01:32 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	set_texture(t_map *map, char *map_line, char *direction)
 	int	j;
 
 	j = 2;
-//	printf("EM SET TEXTURE: \nDirection = %s\nmap_line[%i] = %c\n", direction, j, map_line[j]);
 	while (map_line[j] && map_line[j] == ' ')
 		j++;
-//	printf("EM SET TEXTURE: depois do while com map_line[%i] = %c\n", j, map_line[j]);
 	if (my_strcmp(direction, "NO") == 0)
 		map->textures->north_texture = my_strdup(&(map_line[j]));
 	else if (my_strcmp(direction, "SO") == 0)
@@ -29,10 +27,6 @@ void	set_texture(t_map *map, char *map_line, char *direction)
 		map->textures->west_texture = my_strdup(&(map_line[j]));
 	else if (my_strcmp(direction, "EA") == 0)
 		map->textures->east_texture = my_strdup(&(map_line[j]));
-//	printf("NO = %s\n", map->textures->north_texture);
-//	printf("SO = %s\n", map->textures->south_texture);
-//	printf("WE = %s\n", map->textures->west_texture);
-//	printf("EA = %s\n", map->textures->east_texture);
 }
 
 int	open_texture(t_map *map)
@@ -50,9 +44,7 @@ int	open_texture(t_map *map)
 	{
 		return (my_printf_error(RED "Error\n" "Unable to open texture west\n" RESET));
 	}
-//	printf("Vai abrir a textura leste, %s\n", map->textures->east_texture);
 	map->textures->fd_east_texture = open(map->textures->east_texture, O_RDONLY);
-//	printf("map->fd_east_texture == %d\n", map->fd_east_texture);
 	if (map->textures->fd_east_texture == -1)
 	{
 		return (my_printf_error(RED "Error\n" "Unable to open texture east\n" RESET));
@@ -64,7 +56,7 @@ int	check_textures_extension(t_map *map)
 {
 	int	size;
 	int	ret;
-	
+
 	ret = NO_ERROR;
 	size = my_strlen(map->textures->north_texture);
 	if (map->textures->north_texture[size - 4] != '.' || map->textures->north_texture[size - 3] != 'x' || map->textures->north_texture[size - 2] != 'p' || map->textures->north_texture[size - 1] != 'm')
@@ -89,7 +81,7 @@ int	check_textures_extension(t_map *map)
 void	create_texture_imgs(t_textures *textures, t_game *game)
 {
 	int	size;
-	
+
 	size = TEXTURE_SIZE;
 	textures->north_texture_img->img = mlx_xpm_file_to_image(game->mlx, textures->north_texture, &size, &size);
 	textures->south_texture_img->img = mlx_xpm_file_to_image(game->mlx, textures->south_texture, &size, &size);
