@@ -12,41 +12,19 @@
 
 #include "../../includes/cub3d.h"
 
-static int	rgb_is_valid(t_map *map, int i, int j);
+static int	parse_ceiling_and_floor(t_map *map, int *c_flag, int *f_flag);
+static int	process_ceiling(t_map *map, int i, int *j, int *c_flag);
+static int	process_floor(t_map *map, int i, int *j, int *f_flag);
 
 int	valid_ceiling_and_floor(t_map *map)
 {
-	int	i;
-	int	j;
 	int	c_flag;
 	int	f_flag;
 
-	i = 0;
 	c_flag = 0;
 	f_flag = 0;
-	while (map->map_file[i] && line_belongs_to_map(map->map_file[i]) == ERROR)
-	{
-		j = 0;
-		while (map->map_file[i][j] && line_belongs_to_map(map->map_file[i]) == ERROR)
-		{
-			if (map->map_file[i][j] == 'C')
-			{
-				c_flag++;
-				if (rgb_is_valid(map, i, j++) == ERROR)
-					return (ERROR);
-			}
-			else if (map->map_file[i][j] == 'F')
-			{
-				f_flag++;
-				if (rgb_is_valid(map, i, j++) == ERROR)
-					return (ERROR);
-			}
-			else if (map->map_file[i][j] != ' ')
-				break ;
-			j++;
-		}
-		i++;
-	}
+	if (parse_ceiling_and_floor(map, &c_flag, &f_flag) == ERROR)
+		return (ERROR);
 	if (c_flag == 0 || f_flag == 0)
 	{
 		my_printf_error(RED "Error\n" "Ceiling or floor not found\n" RESET);
@@ -54,48 +32,56 @@ int	valid_ceiling_and_floor(t_map *map)
 	}
 	else if (c_flag > 1 || f_flag > 1)
 	{
-		my_printf_error(RED "Error\n" "There can be only one floor and only one ceiling\n" RESET);
+		my_printf_error(RED "Error\n"
+			"There can be only one floor and only one ceiling\n" RESET);
 		return (ERROR);
 	}
 	return (NO_ERROR);
 }
 
-static int	rgb_is_valid(t_map *map, int i, int j)
+static int	parse_ceiling_and_floor(t_map *map, int *c_flag, int *f_flag)
 {
-	int		num;
-	int		rgb_size;
-	char	*str_n;
-	int		line_size;
+	int	i;
+	int	j;
 
-	num = 0;
-	rgb_size = 0;
-	str_n = NULL;
-	line_size = my_strlen(map->map_file[i]);
-	while (j <= line_size && map->map_file[i][j])
+	i = 0;
+	while (map->map_file[i] && line_belongs_to_map(map->map_file[i]) == ERROR)
 	{
-		if ((my_isnum(map->map_file[i][j]) != 0 || map->map_file[i][j] == '-' || map->map_file[i][j] == '+') && rgb_size < 3)
+		j = 0;
+		while (map->map_file[i][j]
+			&& line_belongs_to_map(map->map_file[i]) == ERROR)
 		{
-			rgb_size++;
-			if (rgb_size < 3 && my_strchr(&map->map_file[i][j], ',') != NULL)
-				str_n = my_strcdup(&map->map_file[i][j], ',');
-			else
-				str_n = my_strcdup(&map->map_file[i][j], '\0');
-			num = atoi(str_n);
-			j += my_strlen(str_n);
-			free(str_n);
-			str_n = NULL;
-			if (num < 0 || num > 255)
-			{
-				my_printf_error(RED "Error\n" "Invalid RGB value\n" RESET);
+			if (process_ceiling(map, i, &j, c_flag) == ERROR)
 				return (ERROR);
-			}
+			if (process_floor(map, i, &j, f_flag) == ERROR)
+				return (ERROR);
+			else if (map->map_file[i][j] != ' ')
+				break ;
+			j++;
 		}
-		j++;
+		i++;
 	}
-	if (rgb_size != 3)
+	return (NO_ERROR);
+}
+
+static int	process_ceiling(t_map *map, int i, int *j, int *c_flag)
+{
+	if (map->map_file[i][*j] == 'C')
 	{
-		my_printf_error(RED "Error\n" "Invalid RGB format\n" RESET);
-		return (ERROR);
+		(*c_flag)++;
+		if (rgb_is_valid(map, i, (*j)++) == ERROR)
+			return (ERROR);
+	}
+	return (NO_ERROR);
+}
+
+static int	process_floor(t_map *map, int i, int *j, int *f_flag)
+{
+	if (map->map_file[i][*j] == 'F')
+	{
+		(*f_flag)++;
+		if (rgb_is_valid(map, i, (*j)++) == ERROR)
+			return (ERROR);
 	}
 	return (NO_ERROR);
 }

@@ -20,7 +20,7 @@ static void	start_textures(t_textures *textures);
 
 int	set_map(t_map *map, char *map_file)
 {
-	if (open_map(map, map_file) == ERROR)
+	if (open_map(map, map_file, NULL) == ERROR)
 		return (ERROR);
 	if (valid_map_file(map_file) == ERROR)
 	{
@@ -39,12 +39,10 @@ int	set_map(t_map *map, char *map_file)
 	return (NO_ERROR);
 }
 
-static int	open_map(t_map *map, char *map_file)
+static int	open_map(t_map *map, char *map_file, char *ret)
 {
 	int		fd;
-	char	*ret;
 
-	ret = NULL;
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{
@@ -62,8 +60,7 @@ static int	open_map(t_map *map, char *map_file)
 	close(fd);
 	if (!map->full_map)
 	{
-		my_printf_error(RED "Error\n"
-							"Empty map\n" RESET);
+		my_printf_error(RED "Error\nEmpty map\n" RESET);
 		return (ERROR);
 	}
 	return (NO_ERROR);

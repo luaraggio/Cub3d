@@ -117,6 +117,8 @@ int				valid_map_file(char *map_file);
 int				map_is_last(t_map *map);
 // ceiling_and_floor.c
 int				valid_ceiling_and_floor(t_map *map);
+// rgb.c
+int				rgb_is_valid(t_map *map, int i, int j);
 // walls.c
 int				valid_walls(t_map *map);
 // is_map.c

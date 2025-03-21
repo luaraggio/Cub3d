@@ -34,6 +34,7 @@ srcs/map/map.c \
 srcs/utils/clear.c \
 srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
+srcs/map/rgb.c \
 srcs/map/walls.c \
 srcs/map/ceiling_and_floor.c \
 srcs/map/is_map.c \

@@ -112,7 +112,5 @@ static unsigned int	rgb_to_hexa(char *str)
 		i++;
 	}
 	color = hex_string_to_int(str_hex_color);
-	free(str);
-	free(str_hex_color);
-	return (color);
+	return (free(str), free(str_hex_color), color);
 }
