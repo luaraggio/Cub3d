@@ -111,6 +111,9 @@ int				calculate_tex_y(int y, t_raycast *ray);
 
 // map.c
 int				set_map(t_map *map, char *map_file);
+// initializations.c
+void			set_initial_map_struct(t_map *map);
+void			finish_map_struct(t_map *map);
 // map_validation.c
 int				valid_map(t_map *map);
 int				valid_map_file(char *map_file);
@@ -143,8 +146,10 @@ int				get_total_i(t_map *map);
 void			set_textures_names(t_map *map, char *map_line);
 void			set_texture(t_map *map, char *map_line, char *direction);
 int				open_texture(t_map *map);
-int				check_textures_extension(t_map *map);
 void			create_texture_imgs(t_textures *textures, t_game *game);
+void			get_img_data_adds(t_textures *textures);
+// texture_extension.c
+int				check_textures_extension(t_map *map);
 // color.c
 unsigned int	get_color(t_map *map, char ref);
 char			*dec_to_hex(int n);

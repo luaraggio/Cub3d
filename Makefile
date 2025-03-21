@@ -31,6 +31,7 @@ MAP = maps/good/big.cub
 SRCS = \
 srcs/main.c \
 srcs/map/map.c \
+srcs/map/initializations.c \
 srcs/utils/clear.c \
 srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
@@ -42,6 +43,7 @@ srcs/map/char_validation.c \
 srcs/map/line_is.c \
 srcs/map/floodfill.c \
 srcs/map/texture.c \
+srcs/map/texture_extension.c \
 srcs/map/color.c \
 srcs/map/copy_map.c \
 srcs/player/keys.c \
