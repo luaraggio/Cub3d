@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 22:58:59 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:35:14 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,15 @@ void			print_2dmap(t_game *game, char **map_2d, t_player *player);
 
 //------------------UTILS---------------------//
 
-// clear.c
+// general_clear.c
+void			clear_all(t_game *game, t_map *map);
 void			clear_map(t_map *map);
+void			clear_game(t_game *game);
+
+// clear_textures.c
 void			clear_texture_map(t_map *map);
 void			close_texture_fds(t_map *map);
-void			clear_all(t_game *game, t_map *map);
-void			clear_game(t_game *game);
+void			destroy_texture_imgs(t_game *game, t_textures *textures);
 void			free_imgs(t_textures *textures);
 
 #endif

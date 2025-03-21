@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:24:23 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 21:58:59 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:44:41 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	set_hooks(t_game *game)
 int	game_loop(t_game *game)
 {
 	print_game(game);
-	//usleep(937500);
 	return (0);
 }
 
@@ -42,20 +41,3 @@ void	play_cub3d(t_game *game, t_map *map, t_player *player)
 	create_general_img(game->mlx, game->image);
 	set_hooks(game);
 }
-
-/*
-void	print_add_img(t_textures *textures)
-{
-	printf("& t_image de north: %p\n", textures->north_texture_img);
-	printf("textures->north_texture_img->img: %p\n",
-		textures->north_texture_img->img);
-	printf("& t_image de south: %p\n", textures->south_texture_img);
-	printf("textures->south_texture_img->img: %p\n",
-		textures->south_texture_img->img);
-	printf("& t_image de west: %p\n", textures->west_texture_img);
-	printf("textures->west_texture_img->img: %p\n",
-		textures->west_texture_img->img);
-	printf("& t_image de east: %p\n", textures->east_texture_img);
-	printf("textures->east_texture_img->img: %p\n",
-		textures->east_texture_img->img);
-}*/

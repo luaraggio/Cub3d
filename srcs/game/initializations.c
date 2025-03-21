@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initializations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 00:59:47 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 23:10:55 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:45:02 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	init_game(t_game *game, t_map *map, t_player *player)
 	if (!game->mlx)
 	{
 		my_printf_error(RED "Error\n Something went wrong with "
-							"mlx initialization\n" RESET);
+			"mlx initialization\n" RESET);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 		return (ERROR);

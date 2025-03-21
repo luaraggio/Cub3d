@@ -31,7 +31,8 @@ MAP = maps/good/big.cub
 SRCS = \
 srcs/main.c \
 srcs/map/map.c \
-srcs/utils/clear.c \
+srcs/utils/general_clear.c \
+srcs/utils/clear_textures.c \
 srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
 srcs/map/walls.c \

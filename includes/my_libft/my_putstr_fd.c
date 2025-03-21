@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao <lpaixao-@student.42.rio>          +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 22:48:42 by lpaixao           #+#    #+#             */
-/*   Updated: 2025/01/09 22:48:44 by lpaixao          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:43:12 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	my_putstr_fd(char *s, int fd)
 	int	i;
 
 	if (!s)
-		return 0;
+		return (0);
 	i = 0;
 	while (s[i])
 	{

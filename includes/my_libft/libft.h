@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao <lpaixao-@student.42.rio>          +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 22:47:21 by lpaixao           #+#    #+#             */
-/*   Updated: 2025/01/09 22:47:22 by lpaixao          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:40:15 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int					my_putchar_fd(char c, int fd);
 void				my_putendl_fd(char *s, int fd);
 int					my_putnbr(int n);
 int					my_putnbr_base(unsigned long int n, int max_base, char c);
-int					my_putnbr_base_fd(unsigned long int n, int max_base, char c, int fd);
+int					my_putnbr_base_fd(unsigned long int n, int max_base,
+						char c, int fd);
 int					my_putnbr_fd(int n, int fd);
 int					my_putstr(char *s);
 int					my_putstr_fd(char *s, int fd);

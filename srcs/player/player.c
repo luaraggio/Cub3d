@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:54:55 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 22:39:45 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:46:20 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,21 @@ void	set_player_position(t_game *game, t_player *player)
 	if (game->map->player_direction == 'N')
 	{
 		player->x_direction = -1;
-			// jogador olhando para cima em x e não se move em y
 		player->plane_y = -0.66;
 	}
 	else if (game->map->player_direction == 'S')
 	{
 		player->x_direction = 1;
-			// jogador olhando para baixo em x e não se move em y
 		player->plane_y = 0.66;
 	}
-	else if (game->map->player_direction == 'E') // leste
+	else if (game->map->player_direction == 'E')
 	{
 		player->y_direction = 1;
-			// jogador olhando para o leste em y e não se move em x
 		player->plane_x = -0.66;
 	}
-	else if (game->map->player_direction == 'W') // oeste
+	else if (game->map->player_direction == 'W')
 	{
 		player->y_direction = -1;
-			// jogador olhando para o oeste em y e não se move em x
 		player->plane_x = 0.66;
 	}
 }

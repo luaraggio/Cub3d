@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_printf_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 21:43:04 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/01/05 21:43:07 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/03/21 14:41:59 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int	check_ptr(unsigned long int ptr)
 {
 	if (ptr == 0)
-		return(my_putstr_fd("(nil)", 2));
-	return(my_putstr_fd("0x", 2) + my_putnbr_base_fd(ptr, 16, 'p', 2));
+		return (my_putstr_fd("(nil)", 2));
+	return ((my_putstr_fd("0x", 2) + my_putnbr_base_fd(ptr, 16, 'p', 2)));
 }
 
 static int	type_verification(va_list *args, char c)
