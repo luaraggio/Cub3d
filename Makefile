@@ -20,6 +20,7 @@ BLUE=\033[34m
 
 #MAP = maps/good/test_map.cub # TA DANDO RUIM NESSE!
 MAP = maps/good/big.cub
+MAP = maps/good/library.cub
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
 #MAP = maps/good/test_textures.cub
@@ -31,10 +32,12 @@ MAP = maps/good/big.cub
 SRCS = \
 srcs/main.c \
 srcs/map/map.c \
+srcs/map/initializations.c \
 srcs/utils/general_clear.c \
 srcs/utils/clear_textures.c \
 srcs/map/get_map_data.c \
 srcs/map/map_validation.c \
+srcs/map/rgb.c \
 srcs/map/walls.c \
 srcs/map/ceiling_and_floor.c \
 srcs/map/is_map.c \
@@ -42,6 +45,7 @@ srcs/map/char_validation.c \
 srcs/map/line_is.c \
 srcs/map/floodfill.c \
 srcs/map/texture.c \
+srcs/map/texture_extension.c \
 srcs/map/color.c \
 srcs/map/copy_map.c \
 srcs/player/keys.c \
@@ -96,7 +100,7 @@ run: re cube
 
 norm:
 	@echo "$(PURPLE)Passando a Norminette com a flag -R CheckForbiddenSourceHeader: $(RESET)"
-	@-norminette -R CheckForbiddenSourceHeader
+	@-norminette -R CheckForbiddenSourceHeader CheckDefine $(SRCS) includes/cub3d.h includes/my_libft includes/enums.h includes/structs.h
 
 val: re
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)

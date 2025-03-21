@@ -14,6 +14,7 @@
 
 static int	direction_ok(t_map *map, char *direction);
 static int	validate_texture(t_map *map);
+static int	check_direction_line(t_map *map, char *direction, int j, int flag);
 
 int	valid_walls(t_map *map)
 {
@@ -38,38 +39,45 @@ int	valid_walls(t_map *map)
 static int	direction_ok(t_map *map, char *direction)
 {
 	int	i;
-	int	j;
 	int	flag;
 
 	i = 0;
 	flag = 0;
 	while (map->map_file[i] && line_belongs_to_map(map->map_file[i]) == ERROR)
 	{
-		j = 0;
-		while (map->map_file[i][j]
-			&& line_belongs_to_map(map->map_file[i]) == ERROR)
-		{
-			if (my_strncmp(&(map->map_file[i][j]), direction, 2) == 0)
-			{
-				flag++;
-				if (flag <= 1)
-					set_texture(map, map->map_file[i], direction);
-				break ;
-			}
-			else if (map->map_file[i][j] != ' ')
-				break ;
-			j++;
-		}
+		flag = check_direction_line(map, direction, i, flag);
 		i++;
 	}
 	if (flag != 1)
 	{
-		my_printf_error(RED "Error\n"
-							"There must be one, and only one, %s\n" RESET,
-						direction);
+		my_printf_error(RED "Error\n" \
+					"There must be one, and only one, %s\n" RESET, \
+				direction);
 		return (ERROR);
 	}
 	return (NO_ERROR);
+}
+
+static int	check_direction_line(t_map *map, char *direction, int i, int flag)
+{
+	int	j;
+
+	j = 0;
+	while (map->map_file[i][j]
+		&& line_belongs_to_map(map->map_file[i]) == ERROR)
+	{
+		if (my_strncmp(&(map->map_file[i][j]), direction, 2) == 0)
+		{
+			flag++;
+			if (flag <= 1)
+				set_texture(map, map->map_file[i], direction);
+			break ;
+		}
+		else if (map->map_file[i][j] != ' ')
+			break ;
+		j++;
+	}
+	return (flag);
 }
 
 static int	validate_texture(t_map *map)

@@ -14,3 +14,12 @@ C 0,0,0                # Ceiling color (RGB)
 1 0 1 1 1 1 1 0 0 1  # The player cannot pass through walls (1)
 1 0 0 0 0 1 1 0 0 1  # The player can move through free spaces (0)
 1 1 1 1 1 1 1 1 1 1  # The edges of the map must be surrounded by walls (1)
+
+
+11111111111111111111 1111111
+11111111111111111111 1111111
+11111111111111111111 1111111
+1111111111111111111101111111
+            0111111111111111
+1111111111111100000W00000011
+11          1111111111111111

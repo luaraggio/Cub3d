@@ -13,6 +13,7 @@
 #include "../../includes/cub3d.h"
 
 static int	map_is_empty(t_map *map);
+static int	check_map_line(t_map *map, int i);
 
 int	valid_map_file(char *map_file)
 {
@@ -49,7 +50,6 @@ int	valid_map(t_map *map)
 int	map_is_last(t_map *map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (map->map_file[i])
@@ -57,24 +57,34 @@ int	map_is_last(t_map *map)
 	i--;
 	while (i >= 0)
 	{
-		j = 0;
-		while (map->map_file[i][j])
-		{
-			if (map->map_file[i][j] == '1' || map->map_file[i][j] == '0')
-				return (NO_ERROR);
-			else if (map->map_file[i][j] == ' ' || \
-					map->map_file[i][j] == 'N' || \
-					map->map_file[i][j] == 'S' || \
-					map->map_file[i][j] == 'E' || map->map_file[i][j] == 'W')
-				j++;
-			else
-			{
-				my_printf_error(RED "Error\n"
-					"There must be a map at the end of the file\n" RESET);
-				return (ERROR);
-			}
-		}
+		if (check_map_line(map, i) == NO_ERROR)
+			return (NO_ERROR);
 		i--;
+	}
+	return (ERROR);
+}
+
+static int	check_map_line(t_map *map, int i)
+{
+	int	j;
+
+	j = 0;
+	while (map->map_file[i][j])
+	{
+		if (map->map_file[i][j] == '1' || map->map_file[i][j] == '0')
+			return (NO_ERROR);
+		else if (map->map_file[i][j] == ' ' || \
+				map->map_file[i][j] == 'N' || \
+				map->map_file[i][j] == 'S' || \
+				map->map_file[i][j] == 'E' || \
+				map->map_file[i][j] == 'W')
+			j++;
+		else
+		{
+			my_printf_error(RED "Error\n"
+				"There must be a map at the end of the file\n" RESET);
+			return (ERROR);
+		}
 	}
 	return (NO_ERROR);
 }
