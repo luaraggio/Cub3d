@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 20:57:25 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:14:19 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,30 @@
  *             information;
  */
 
-void calculate_ray_direction(t_game *game, t_raycast *ray)
+void	calculate_ray_direction(t_game *game, t_raycast *ray)
 {
-    if (ray->dir_x < 0)
-    {
-        ray->step_x = -1;
-        ray->side_dist_x = (game->player->x - ray->map_x) * ray->delta_dist_x;
-    }
-    else
-    {
-        ray->step_x = 1;
-        ray->side_dist_x = (ray->map_x + 1.0 - game->player->x) * ray->delta_dist_x;
-    }
-    if (ray->dir_y < 0)
-    {
-        ray->step_y = -1;
-        ray->side_dist_y = (game->player->y - ray->map_y) * ray->delta_dist_y;
-    }
-    else
-    {
-        ray->step_y = 1;
-        ray->side_dist_y = (ray->map_y + 1.0 - game->player->y) * ray->delta_dist_y;
-    }
+	if (ray->dir_x < 0)
+	{
+		ray->step_x = -1;
+		ray->side_dist_x = (game->player->x - ray->map_x) * ray->delta_dist_x;
+	}
+	else
+	{
+		ray->step_x = 1;
+		ray->side_dist_x = (ray->map_x + 1.0 - game->player->x)
+			* ray->delta_dist_x;
+	}
+	if (ray->dir_y < 0)
+	{
+		ray->step_y = -1;
+		ray->side_dist_y = (game->player->y - ray->map_y) * ray->delta_dist_y;
+	}
+	else
+	{
+		ray->step_y = 1;
+		ray->side_dist_y = (ray->map_y + 1.0 - game->player->y)
+			* ray->delta_dist_y;
+	}
 }
 
 /**
@@ -59,8 +61,9 @@ void calculate_ray_direction(t_game *game, t_raycast *ray)
  * O que faz?
  *  - Utiliza os valores que calculamos anteriormente (sideDistX e sideDistY)
  * para determinar se o raio avança primeiro no eixo X ou no eixo Y.
- * - Cada passo no loop move o raio para a próxima célula do mapa até ele encontrar
- * uma parede.
+ *
+	- Cada passo no loop move o raio para a próxima célula do mapa até ele
+ * encontrar uma parede.
  *
  * @param game Pointer to the main game structure (`t_game`), which contains
  *             player information.
@@ -68,26 +71,25 @@ void calculate_ray_direction(t_game *game, t_raycast *ray)
  *             information;
  */
 
-void perform_dda(t_game *game, t_raycast *ray)
+void	perform_dda(t_game *game, t_raycast *ray)
 {
-     while (ray->hit == 0)
-     {
-         // jump to next map square, either in x-direction, or in y-direction
-         if (ray->side_dist_x < ray->side_dist_y)  // o raio atingirá primeiro uma borda vertical (entre colunas).
-         {
-             ray->side_dist_x += ray->delta_dist_x;  // atualiza side_dist_x para o próximo ponto de interseção no X
-             ray->map_x += ray->step_x;  // move o jogador uma célula no eixo X
-             ray->side = VERTICAL_SIDE;
-         }
-         else  // o raio atingirá primeiro uma borda horizontal (entre linhas).
-         {
-             ray->side_dist_y += ray->delta_dist_y;
-             ray->map_y += ray->step_y;  // move o jogador uma célula no eixo Y
-             ray->side = HORIZONTAL_SIDE;
-         }
-         if (game->map->map_int[ray->map_y][ray->map_x] == 1)
-             ray->hit = 1;
-     }
+	while (ray->hit == 0)
+	{
+		if (ray->side_dist_x < ray->side_dist_y)
+		{
+			ray->side_dist_x += ray->delta_dist_x;
+			ray->map_x += ray->step_x;
+			ray->side = VERTICAL_SIDE;
+		}
+		else
+		{
+			ray->side_dist_y += ray->delta_dist_y;
+			ray->map_y += ray->step_y;
+			ray->side = HORIZONTAL_SIDE;
+		}
+		if (game->map->map_int[ray->map_y][ray->map_x] == 1)
+			ray->hit = 1;
+	}
 }
 
 /**
@@ -104,15 +106,15 @@ void perform_dda(t_game *game, t_raycast *ray)
  *             information;
  */
 
-void calculate_wall_height(t_raycast *ray)
+void	calculate_wall_height(t_raycast *ray)
 {
-    ray->line_height = (int)(W_HEIGHT / ray->perp_wall_dist); // Calculate height of line to draw on screen
-    ray->draw_start = -ray->line_height / 2 + W_HEIGHT / 2; // calculate lowest pixel to fill in current stripe
-    if (ray->draw_start < 0)
-        ray->draw_start = 0;
-    ray->draw_end = ray->line_height / 2 + W_HEIGHT / 2; //// calculate highest pixel to fill in current stripe
-    if (ray->draw_end >= W_HEIGHT)
-        ray->draw_end = W_HEIGHT - 1;
+	ray->line_height = (int)(W_HEIGHT / ray->perp_wall_dist);
+	ray->draw_start = -ray->line_height / 2 + W_HEIGHT / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + W_HEIGHT / 2;
+	if (ray->draw_end >= W_HEIGHT)
+		ray->draw_end = W_HEIGHT - 1;
 }
 
 /**
@@ -129,24 +131,19 @@ void calculate_wall_height(t_raycast *ray)
  *             information;
  */
 
-/*
- * Calcula a posição exata (no eixo da parede) onde o raio atingiu a parede.
- * Se a parede é vertical (ou seja, o raio atingiu uma borda vertical) usamos a coordenada Y,
- * senão usamos a coordenada X.
- */
-
- void calculate_wall_distance(t_game *game, t_raycast *ray)
- {
-     if (ray->side == VERTICAL_SIDE)
-     {
-        ray->perp_wall_dist = (ray->map_x - game->player->x + (1 - ray->step_x) / 2) / ray->dir_x;
-        ray->wall_x = game->player->y + ray->perp_wall_dist * ray->dir_y;
-     }
-     else
-     {
-        ray->perp_wall_dist = (ray->map_y - game->player->y + (1 - ray->step_y) / 2) / ray->dir_y;
-        ray->wall_x = game->player->x + ray->perp_wall_dist * ray->dir_x;
-     }
-     // Pega somente a parte fracionária de wall_x (a posição relativa na célula)
-     ray->wall_x -= floor(ray->wall_x);
- }
+void	calculate_wall_distance(t_game *game, t_raycast *ray)
+{
+	if (ray->side == VERTICAL_SIDE)
+	{
+		ray->perp_wall_dist = (ray->map_x - game->player->x + (1 - ray->step_x)
+				/ 2) / ray->dir_x;
+		ray->wall_x = game->player->y + ray->perp_wall_dist * ray->dir_y;
+	}
+	else
+	{
+		ray->perp_wall_dist = (ray->map_y - game->player->y + (1 - ray->step_y)
+				/ 2) / ray->dir_y;
+		ray->wall_x = game->player->x + ray->perp_wall_dist * ray->dir_x;
+	}
+	ray->wall_x -= floor(ray->wall_x);
+}

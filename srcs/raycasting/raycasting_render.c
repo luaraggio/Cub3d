@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_textures.c                                    :+:      :+:    :+:   */
+/*   raycasting_render.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 20:55:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 20:56:56 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:11:25 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	select_texture(t_game *game, t_raycast *ray, t_image **texture)
 
 int	calculate_tex_x(t_raycast *ray)
 {
-	int tex_x;
+	int	tex_x;
 
 	tex_x = (int)(ray->wall_x * (double)TEXTURE_SIZE);
 	if ((ray->side == VERTICAL_SIDE && ray->dir_x > 0)
@@ -43,29 +43,29 @@ int	calculate_tex_x(t_raycast *ray)
 
 int	calculate_tex_y(int y, t_raycast *ray)
 {
-	int d;
-	int tex_y;
+	int	d;
+	int	tex_y;
 
 	d = y * 256 - W_HEIGHT * 128 + ray->line_height * 128;
 	tex_y = ((d * TEXTURE_SIZE) / ray->line_height) / 256;
 	return (tex_y);
 }
 
-void	draw_texture_column(t_game *game, t_image *texture,
-	t_raycast *ray, int x)
+void	draw_texture_column(t_game *game, t_image *texture, t_raycast *ray,
+		int x)
 {
-	int		y;
-	int		tex_x;
-	int		tex_y;
-	int		color;
+	int	y;
+	int	tex_x;
+	int	tex_y;
+	int	color;
 
 	tex_x = calculate_tex_x(ray);
 	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
 		tex_y = calculate_tex_y(y, ray);
-		color = *(unsigned int *)(texture->addr + (tex_y
-					* texture->size_line + tex_x * (texture->bpp / 8)));
+		color = *(unsigned int *)(texture->addr + (tex_y * texture->size_line
+					+ tex_x * (texture->bpp / 8)));
 		my_mlx_pixel_put(game->image, y, x, color);
 		y++;
 	}
