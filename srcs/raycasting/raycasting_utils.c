@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/21 14:14:19 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 15:50:37 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 /**
- * @brief Determines the initial step direction and side distances for
- * raycasting.
+ * @brief Determines the initial step direction and side distances for 
+ *        raycasting.
  *
- * O que faz?
- *  - Define os valores de step_x e step_y, que indicam se o raio se move para
- * frente (+1) ou para trás (-1) no mapa.
- * - Calcula side_dist_x e side_dist_y, que representam a distância que o raio
- * precisa percorrer até alcançar a primeira borda da célula do mapa.
+ * What does it do?
+ *  - Sets the values of step_x and step_y, indicating whether the ray moves 
+ *    forward (+1) or backward (-1) on the map.
+ *  - Computes side_dist_x and side_dist_y, representing the distance the ray 
+ *    must travel to reach the first edge of a map cell.
  *
- * @param game Pointer to the main game structure (`t_game`), which contains
+ * @param game Pointer to the main game structure (`t_game`), which contains 
  *             player information.
- * @param ray Poninter to raycast structure (`t_raycast`), wich contains ray
- *             information;
+ * @param ray Pointer to the raycast structure (`t_raycast`), which contains 
+ *            ray information.
  */
 
 void	calculate_ray_direction(t_game *game, t_raycast *ray)
@@ -55,20 +55,19 @@ void	calculate_ray_direction(t_game *game, t_raycast *ray)
 }
 
 /**
- * @brief It's a loop that increments the ray with 1 square every time, until a
- * wall is hit.
+ * @brief A loop that increments the ray by one square at a time until it 
+ *        hits a wall.
  *
- * O que faz?
- *  - Utiliza os valores que calculamos anteriormente (sideDistX e sideDistY)
- * para determinar se o raio avança primeiro no eixo X ou no eixo Y.
+ * What does it do?
+ *  - Uses the previously calculated values (sideDistX and sideDistY) to 
+ *    determine whether the ray advances first along the X or Y axis.
+ *  - Each step in the loop moves the ray to the next map cell until it 
+ *    encounters a wall.
  *
-	- Cada passo no loop move o raio para a próxima célula do mapa até ele
- * encontrar uma parede.
- *
- * @param game Pointer to the main game structure (`t_game`), which contains
+ * @param game Pointer to the main game structure (`t_game`), which contains 
  *             player information.
- * @param ray Poninter to raycast structure (`t_raycast`), wich contains ray
- *             information;
+ * @param ray Pointer to the raycast structure (`t_raycast`), which contains 
+ *            ray information.
  */
 
 void	perform_dda(t_game *game, t_raycast *ray)
@@ -93,17 +92,18 @@ void	perform_dda(t_game *game, t_raycast *ray)
 }
 
 /**
- * @brief Calculate distance of perpendicular ray (Euclidean distance would
- * givefisheye effect!)
+ * @brief Calculates the perpendicular ray distance (Euclidean distance would 
+ *        cause a fisheye effect!).
  *
- * O que faz?
- *  - Calcula a altura da parede na tela depois que o raio atinge uma parede
- *no mapa.
- * - Usa a distância perpendicular do raio até a parede (perp_wall_dist) para
- * determinar o tamanho da linha que deve ser desenhada no centro da tela.
+ * What does it do?
+ *  - Computes the wall height on the screen after the ray hits a wall in 
+ *    the map.
+ *  - Uses the perpendicular distance from the ray to the wall 
+ *    (`perp_wall_dist`) to determine the size of the line that should be 
+ *    drawn in the center of the screen.
  *
- * @param ray Poninter to raycast structure (`t_raycast`), wich contains ray
- *             information;
+ * @param ray Pointer to the raycast structure (`t_raycast`), which contains 
+ *            ray information.
  */
 
 void	calculate_wall_height(t_raycast *ray)
@@ -118,17 +118,16 @@ void	calculate_wall_height(t_raycast *ray)
 }
 
 /**
- * @brief Calcula a distância perpendicular do jogador até a parede e
- * corrige o tamanho das paredes na tela para que a perspectiva fique
- * correta.
+ * @brief Calculates the player's perpendicular distance to the wall and 
+ *        adjusts wall sizes on the screen for correct perspective.
  *
- * O que faz?
- *  - Calcula wall_x para saber exatamente onde o raio colidiu dentro
- * do bloco.
- *  - Ajuda a escolher qual parte da textura da parede deve ser usada.
+ * What does it do?
+ *  - Computes `wall_x` to determine the exact point where the ray 
+ *    collided within the block.
+ *  - Helps select which part of the wall texture should be used.
  *
- * @param ray Poninter to raycast structure (`t_raycast`), wich contains ray
- *             information;
+ * @param ray Pointer to the raycast structure (`t_raycast`), which contains 
+ *            ray information.
  */
 
 void	calculate_wall_distance(t_game *game, t_raycast *ray)
