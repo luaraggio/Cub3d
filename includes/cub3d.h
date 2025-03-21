@@ -166,5 +166,6 @@ void			clear_texture_map(t_map *map);
 void			close_texture_fds(t_map *map);
 void			clear_all(t_game *game, t_map *map);
 void			clear_game(t_game *game);
+void			free_imgs(t_textures *textures);
 
 #endif

@@ -17,7 +17,7 @@ int	map_is_closed(t_map *map)
 	char **map_copy;
 
 	map_copy = my_copy_matrix(map->map_file);
-	if (check_first_and_last_line(map) == ERROR || floodfill(map_copy, map->player_i, map->player_j, map->total_i) == ERROR)
+	if (/*check_first_and_last_line(map) == ERROR || */floodfill(map_copy, map->player_i, map->player_j, map->total_i) == ERROR)
 	{
 		my_clean_vect(map_copy);
 		my_printf_error(RED "Error\n" "Map is not closed\n" RESET);
@@ -51,6 +51,9 @@ int	floodfill(char **map, int i, int j, int total_i)
 		return (ERROR);
 	return (error);
 }
+
+
+// PQ Q EU TINHA ESSA FUNÇÃO??
 
 int	check_first_and_last_line(t_map *map)
 {

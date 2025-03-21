@@ -18,6 +18,25 @@ static void	finish_map_struct(t_map *map);
 static void	set_player_start(char **map, t_map *st_map, int flag_start);
 static void	start_textures(t_textures *textures);
 
+/*static void print_int_matrix(int **matrix)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i <= 13 )
+	{
+		j = 0;
+		while (j < 33)
+		{
+			printf("%d ", matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}*/
+
 int	set_map(t_map *map, char *map_file)
 {
 	if (open_map(map, map_file) == ERROR)
@@ -29,12 +48,22 @@ int	set_map(t_map *map, char *map_file)
 		return (ERROR);
 	}
 	set_initial_map_struct(map);
+/*	printf("Map file:\n");
+	print_matrix(map->map_file);
+	printf("__________\n");*/
 	if (valid_map(map) != NO_ERROR)
 	{
+		free_imgs(map->textures);
 		clear_map(map);
 		return (ERROR);
 	}
 	finish_map_struct(map);
+/*	printf("Map:\n");
+	print_matrix(map->map);
+	printf("__________\n");
+	printf("Map int:\n");
+	print_int_matrix(map->map_int);
+	printf("__________\n");*/
 	return (NO_ERROR);
 }
 

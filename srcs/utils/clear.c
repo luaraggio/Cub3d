@@ -25,13 +25,22 @@ void	clear_map(t_map *map)
 {
 	my_clean_vect(map->map_file);
 	map->map_file = NULL;
-	my_clean_vect(map->map);
-	map->map = NULL;
-	my_clean_int_vect(map->map_int);
-	map->map_int = NULL;
-	clear_texture_map(map);
-	free(map->textures);
-	map->textures = NULL;
+	if (map->map)
+	{
+		my_clean_vect(map->map);
+		map->map = NULL;
+		if (map->map_int)
+		{
+			my_clean_int_vect(map->map_int);
+			map->map_int = NULL;
+		}
+	}
+	if (map->textures)
+	{
+		clear_texture_map(map);
+		free(map->textures);
+		map->textures = NULL;
+	}
 }
 
 void	clear_texture_map(t_map *map)
@@ -77,6 +86,11 @@ static void	destroy_texture_imgs(t_game *game, t_textures *textures)
 		mlx_destroy_image(game->mlx, textures->east_texture_img->img);
 		textures->east_texture_img->img = NULL;
 	}
+	free_imgs(textures);
+}
+
+void	free_imgs(t_textures *textures)
+{
 	free(textures->north_texture_img);
 	textures->north_texture_img = NULL;
 	free(textures->south_texture_img);
