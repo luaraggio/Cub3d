@@ -20,6 +20,7 @@ BLUE=\033[34m
 
 #MAP = maps/good/test_map.cub # TA DANDO RUIM NESSE!
 MAP = maps/good/big.cub
+MAP = maps/good/library.cub
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
 #MAP = maps/good/test_textures.cub
