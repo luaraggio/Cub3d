@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 21:03:55 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 22:58:59 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define R_SHIFT_KEY 65506
 # define W_HEIGHT 800
 # define W_WIDTH 1300
-# define MOVE_SPEED 0.5
+# define MOVE_SPEED 0.05
 # define ROTATION_SPEED 0.1
 # define VERTICAL_SIDE 0
 # define HORIZONTAL_SIDE 1
