@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:22:20 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/03/20 21:56:15 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 15:45:45 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 static void	print_background(t_image *img, t_map *map);
-//static void print_img_struct(t_image *img, char *name);
 
 void	print_game(t_game *game)
 {
@@ -24,10 +23,9 @@ void	print_game(t_game *game)
 }
 
 static void	print_background(t_image *img, t_map *map)
-		// Mudar de printagem de pixels para printagem de retângulos
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < W_HEIGHT)
@@ -36,9 +34,9 @@ static void	print_background(t_image *img, t_map *map)
 		while (j < W_WIDTH)
 		{
 			if (i < W_HEIGHT / 2)
-				my_mlx_pixel_put(img, i, j, map->ceiling_color); // Cor do teto
+				my_mlx_pixel_put(img, i, j, map->ceiling_color);
 			else
-				my_mlx_pixel_put(img, i, j, map->floor_color); // Cor do chão
+				my_mlx_pixel_put(img, i, j, map->floor_color);
 			j++;
 		}
 		i++;
@@ -61,17 +59,3 @@ void	create_general_img(void *mlx, t_image *img)
 	img->addr = mlx_get_data_addr(img->img, &(img->bpp), &(img->size_line),
 			&(img->endian));
 }
-
-/*
-static void	print_img_struct(t_image *img, char *name)
-{
-	printf("Printing %s\n", name);
-	printf("img_addr: %s\n", img->addr);
-	printf("bpp: %d\n", img->bpp);
-	printf("endian: %d\n", img->endian);
-	printf("bits_per_pixel: %d\n", img->bits_per_pixel);
-	printf("size_line: %d\n", img->size_line);
-	printf("size_height: %d\n", img->size_height);
-	printf("\n");
-}
-*/

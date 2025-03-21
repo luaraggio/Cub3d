@@ -54,7 +54,8 @@ srcs/raycasting/raycasting.c \
 srcs/raycasting/raycasting_utils.c \
 srcs/raycasting/raycasting_render.c \
 srcs/print_game/print_game.c \
-srcs/print_game/minimap_system/print_2d.c
+srcs/print_game/minimap_system/print_2d.c \
+srcs/print_game/minimap_system/print_2d_utils.c
 
 OBJS = ${SRCS:.c=.o}
 

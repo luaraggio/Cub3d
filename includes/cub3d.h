@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/21 14:35:14 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 15:39:49 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,13 @@ void			print_game(t_game *game);
 void			my_mlx_pixel_put(t_image *image, int i, int j, int color);
 // print_2d.c
 void			print_2dmap(t_game *game, char **map_2d, t_player *player);
+void			print_minigame(t_game *game, t_map2d *map_2d);
+
+// print_2d_utils.c
+void			found_wall(t_game *game, t_map2d *map_2d, int i, int j);
+int				get_opposite_color(int color);
+void			draw_player(t_game *game, t_map2d *map2d);
+void			draw_line_to_wall(t_game *game, t_map2d *map2d);
 
 //------------------UTILS---------------------//
 
