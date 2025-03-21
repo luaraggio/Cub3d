@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 00:59:47 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 20:57:38 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 23:10:55 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,26 @@ int	init_game(t_game *game, t_map *map, t_player *player)
 int	init_player(t_game *game, t_player *player)
 {
 	game->player = player;
-	player->x = game->map->player_j;
-	player->y = game->map->player_i;
+	player->x = game->map->player_j + 0.5;
+	player->y = game->map->player_i + 0.5;
+	player->x_direction = 0;
+	player->y_direction = 0;
+	player->plane_x = 0;
+	player->plane_y = 0;
 	player->move_speed = MOVE_SPEED;
 	player->rotation_speed = ROTATION_SPEED;
 	set_player_position(game, player);
 	return (NO_ERROR);
 }
 
- int init_raycasting(t_game *game)
+int	init_raycasting(t_game *game)
 {
-    t_raycast *ray;
+	t_raycast	*ray;
 
-    ray = malloc(sizeof(t_raycast));
-    if (!ray)
-        return (ERROR);
-    my_bzero(ray, sizeof(t_raycast));
-    game->ray = ray;
-    return (NO_ERROR);
+	ray = malloc(sizeof(t_raycast));
+	if (!ray)
+		return (ERROR);
+	my_bzero(ray, sizeof(t_raycast));
+	game->ray = ray;
+	return (NO_ERROR);
 }

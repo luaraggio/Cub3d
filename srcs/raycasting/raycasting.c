@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 13:31:54 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 20:57:06 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 21:45:34 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	set_ray_values(t_game *game, t_raycast *ray, int x)
 		* ray->camera_x; // calcula direção y do raio
 	ray->map_x = (int)game->player->x;
 	ray->map_y = (int)game->player->y;
-	// o quanto o raio tem que andar naquela direção antes de cruzar uma linha do grid.
+	// o quanto o raio tem que andar naquela direção antes de cruzar uma
+	//linha do grid.
 	ray->delta_dist_x = fabs(1 / ray->dir_x);
 	ray->delta_dist_y = fabs(1 / ray->dir_y);
 	ray->hit = 0;

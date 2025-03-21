@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 16:53:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 20:29:52 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 23:11:35 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	move_player_backward(t_game *game, t_player *player)
 void	move_player_to_right(t_game *game, t_player *player)
 {
 	if (is_valid_move(game, player->x + player->plane_x * player->move_speed, player->y))
-		player->x += player->plane_x * player->move_speed;
+	player->x += player->plane_x * player->move_speed;
 	if (is_valid_move(game, player->x, player->y + player->plane_y * player->move_speed))
-		player->y += player->plane_y * player->move_speed;
+	player->y += player->plane_y * player->move_speed;
 	game->map->player_i = (int)player->y;
 	game->map->player_j = (int)player->x;
 }
