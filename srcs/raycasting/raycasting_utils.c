@@ -6,38 +6,11 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 23:26:26 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/20 19:56:47 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 20:57:25 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-/**
- * @brief Initializes the raycasting structure for the game.
- *
- * O que faz?
- *  - Inicializa a estrutura t_raycast, responsável por armazenar as informações
- do raio.
-    - Zera todos os valores da estrutura com my_bzero.
-    - Define a posição inicial do raio (pos_x, pos_y) como a posição do jogador.
-    - Define a direção inicial do raio (dir_x, dir_y) com base na direção do
- jogador.
- *
- * @param game Pointer to the main game structure (`t_game`), which contains
- *             player information.
- */
-
- int init_raycasting(t_game *game)
-{
-    t_raycast *ray;
-
-    ray = malloc(sizeof(t_raycast));
-    if (!ray)
-        return (ERROR);
-    my_bzero(ray, sizeof(t_raycast));
-    game->ray = ray;
-    return (NO_ERROR);
-}
 
 /**
  * @brief Determines the initial step direction and side distances for
@@ -97,22 +70,17 @@ void calculate_ray_direction(t_game *game, t_raycast *ray)
 
 void perform_dda(t_game *game, t_raycast *ray)
 {
-//    printf("Entrou no perform_dda\n");
-    // perform DDA
      while (ray->hit == 0)
      {
-//        printf("Entrou no while do perform_dda com ray->hit = %i\n", ray->hit);
          // jump to next map square, either in x-direction, or in y-direction
          if (ray->side_dist_x < ray->side_dist_y)  // o raio atingirá primeiro uma borda vertical (entre colunas).
          {
-//            printf("Entrou no if de perform_dda com side_dist_x = %f e side_dist_y = %f\n", ray->side_dist_x, ray->side_dist_y);
              ray->side_dist_x += ray->delta_dist_x;  // atualiza side_dist_x para o próximo ponto de interseção no X
              ray->map_x += ray->step_x;  // move o jogador uma célula no eixo X
              ray->side = VERTICAL_SIDE;
          }
          else  // o raio atingirá primeiro uma borda horizontal (entre linhas).
          {
-//            printf("Entrou no else de perform_dda com side_dist_x = %f e side_dist_y = %f\n", ray->side_dist_x, ray->side_dist_y);
              ray->side_dist_y += ray->delta_dist_y;
              ray->map_y += ray->step_y;  // move o jogador uma célula no eixo Y
              ray->side = HORIZONTAL_SIDE;
@@ -120,7 +88,6 @@ void perform_dda(t_game *game, t_raycast *ray)
          if (game->map->map_int[ray->map_y][ray->map_x] == 1)
              ray->hit = 1;
      }
-//     printf("Saiu do loop de perform_dda\n");
 }
 
 /**
@@ -167,15 +134,6 @@ void calculate_wall_height(t_raycast *ray)
  * Se a parede é vertical (ou seja, o raio atingiu uma borda vertical) usamos a coordenada Y,
  * senão usamos a coordenada X.
  */
- /*void calculate_wall_distance(t_game *game, t_raycast *ray)
- {
-     if (ray->side == VERTICAL_SIDE)
-         ray->wall_x = game->player->y + ray->perp_wall_dist * ray->dir_y;
-     else
-         ray->wall_x = game->player->x + ray->perp_wall_dist * ray->dir_x;
-     // Pega somente a parte fracionária de wall_x (a posição relativa na célula)
-     ray->wall_x -= floor(ray->wall_x);
- }*/
 
  void calculate_wall_distance(t_game *game, t_raycast *ray)
  {

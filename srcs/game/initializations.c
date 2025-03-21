@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 00:59:47 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 01:30:40 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 20:57:38 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,16 @@ int	init_player(t_game *game, t_player *player)
 	player->rotation_speed = ROTATION_SPEED;
 	set_player_position(game, player);
 	return (NO_ERROR);
+}
+
+ int init_raycasting(t_game *game)
+{
+    t_raycast *ray;
+
+    ray = malloc(sizeof(t_raycast));
+    if (!ray)
+        return (ERROR);
+    my_bzero(ray, sizeof(t_raycast));
+    game->ray = ray;
+    return (NO_ERROR);
 }

@@ -6,7 +6,7 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:11:57 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/26 16:59:39 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/20 21:03:55 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ int				main(int argc, char **argv);
 void			set_hooks(t_game *game);
 void			play_cub3d(t_game *game, t_map *map, t_player *player);
 int				exit_game(t_game *game);
-int				game_loop(t_game *game);
-int     			render_game(t_game *game);
 void			create_general_img(void *mlx, t_image *img);
+int				game_loop(t_game *game);
 
-//initializations.c
+// initializations.c
 int				init_game(t_game *game, t_map *map, t_player *player);
 int				init_player(t_game *game, t_player *player);
+int				init_raycasting(t_game *game);
 
 //------------------PLAYER---------------//
 
@@ -84,22 +84,28 @@ void			move_player_backward(t_game *game, t_player *player);
 void			move_player_to_left(t_game *game, t_player *player);
 void			move_player_to_right(t_game *game, t_player *player);
 
-//rotate.c
+// rotate.c
 void			rotate_player_to_left(t_player *player);
 void			rotate_player_to_right(t_player *player);
 
 //------------------RAYCASTING-----------//
 // raycasting.c
-int				init_raycasting(t_game *game);
-void			draw_vertical_lines(t_game *game, t_raycast *ray, int x);
 void			set_ray_values(t_game *game, t_raycast *ray, int x);
 void			raycasting(t_game *game, t_raycast *ray);
 
-//raycasting_utils.c
+// raycasting_utils.c
 void			calculate_ray_direction(t_game *game, t_raycast *ray);
 void			perform_dda(t_game *game, t_raycast *ray);
 void			calculate_wall_height(t_raycast *ray);
 void			calculate_wall_distance(t_game *game, t_raycast *ray);
+
+// raycasting_render.c
+void			select_texture(t_game *game, t_raycast *ray, t_image **texture);
+void			draw_texture_column(t_game *game, t_image *texture,
+					t_raycast *ray, int x);
+void			draw_vertical_lines(t_game *game, t_raycast *ray, int x);
+int				calculate_tex_x(t_raycast *ray);
+int				calculate_tex_y(int y, t_raycast *ray);
 
 //------------------MAP------------------//
 

@@ -50,6 +50,7 @@ srcs/game/game.c \
 srcs/game/initializations.c \
 srcs/raycasting/raycasting.c \
 srcs/raycasting/raycasting_utils.c \
+srcs/raycasting/raycasting_render.c \
 srcs/print_game/print_game.c \
 srcs/print_game/minimap_system/print_2d.c
 
