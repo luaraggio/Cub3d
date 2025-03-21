@@ -19,13 +19,14 @@ RED=\033[31m
 BLUE=\033[34m
 
 #MAP = maps/good/test_map.cub # TA DANDO RUIM NESSE!
-#MAP = maps/good/big.cub
+MAP = maps/good/big.cub
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
 #MAP = maps/good/test_textures.cub
-MAP = maps/good/subject_map.cub # TA DANDO RUIM NESSE!
+#MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/no_filetype
+#MAP = maps/bad/map_starts_with_W_in_middle_of_map.cub
 
 SRCS = \
 srcs/main.c \

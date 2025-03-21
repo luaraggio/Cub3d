@@ -58,10 +58,14 @@ void	clear_texture_map(t_map *map)
 
 void	close_texture_fds(t_map *map)
 {
-	close(map->textures->fd_north_texture);
-	close(map->textures->fd_south_texture);
-	close(map->textures->fd_west_texture);
-	close(map->textures->fd_east_texture);
+	if (map->textures->fd_north_texture != -1)
+		close(map->textures->fd_north_texture);
+	if (map->textures->fd_south_texture != -1)
+		close(map->textures->fd_south_texture);
+	if (map->textures->fd_west_texture != -1)
+		close(map->textures->fd_west_texture);
+	if (map->textures->fd_east_texture != -1)
+		close(map->textures->fd_east_texture);
 }
 
 static void	destroy_texture_imgs(t_game *game, t_textures *textures)
@@ -91,14 +95,26 @@ static void	destroy_texture_imgs(t_game *game, t_textures *textures)
 
 void	free_imgs(t_textures *textures)
 {
-	free(textures->north_texture_img);
-	textures->north_texture_img = NULL;
-	free(textures->south_texture_img);
-	textures->south_texture_img = NULL;
-	free(textures->west_texture_img);
-	textures->west_texture_img = NULL;
-	free(textures->east_texture_img);
-	textures->east_texture_img = NULL;
+	if (textures->north_texture_img)
+	{
+		free(textures->north_texture_img);
+		textures->north_texture_img = NULL;
+	}
+	if (textures->south_texture_img)
+	{
+		free(textures->south_texture_img);
+		textures->south_texture_img = NULL;
+	}
+	if (textures->west_texture_img)
+	{
+		free(textures->west_texture_img);
+		textures->west_texture_img = NULL;
+	}
+	if (textures->east_texture_img)
+	{
+		free(textures->east_texture_img);
+		textures->east_texture_img = NULL;
+	}
 }
 
 void	clear_game(t_game *game)

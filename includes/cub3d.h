@@ -134,7 +134,7 @@ int				valid_player(t_map *map);
 // floodfill.c
 int				map_is_closed(t_map *map);
 int				floodfill(char **map, int i, int j, int total_i);
-int				check_first_and_last_line(t_map *map);
+int				check_extremities(t_map *map);
 // get_map_data.c
 int				get_total_i(t_map *map);
 // texture.c

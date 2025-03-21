@@ -17,7 +17,7 @@ int	map_is_closed(t_map *map)
 	char **map_copy;
 
 	map_copy = my_copy_matrix(map->map_file);
-	if (/*check_first_and_last_line(map) == ERROR || */floodfill(map_copy, map->player_i, map->player_j, map->total_i) == ERROR)
+	if (check_extremities(map) == ERROR || floodfill(map_copy, map->player_i, map->player_j, map->total_i) == ERROR)
 	{
 		my_clean_vect(map_copy);
 		my_printf_error(RED "Error\n" "Map is not closed\n" RESET);
@@ -32,6 +32,8 @@ int	floodfill(char **map, int i, int j, int total_i)
 	int error;
 
 	error = NO_ERROR;
+	if (j == 0)
+		return (ERROR);
 	map[i][j] = '1';
 	if (error != ERROR && map[i][j + 1] == '0')
 		error = floodfill(map, i, j + 1, total_i);
@@ -52,24 +54,29 @@ int	floodfill(char **map, int i, int j, int total_i)
 	return (error);
 }
 
-
-// PQ Q EU TINHA ESSA FUNÇÃO??
-
-int	check_first_and_last_line(t_map *map)
+int	check_extremities(t_map *map)
 {
 	int j;
+	int i;
 
 	j = 0;
+	i = map->i_start;
 	while (map->map_file[map->i_start][j])
 	{
-		if (map->map_file[map->i_start][j] != '1')
+		if (is_player(map->map_file[map->i_start][j]) == NO_ERROR)
 			return (ERROR);
 		j++;
+	}
+	while (map->map_file[i])
+	{
+		if (is_player(map->map_file[i][0]) == NO_ERROR)
+			return (ERROR);
+		i++;
 	}
 	j = 0;
 	while (map->map_file[map->total_i][j])
 	{
-		if (map->map_file[map->total_i][j] != '1')
+		if (is_player(map->map_file[map->i_start][j]) == NO_ERROR)
 			return (ERROR);
 		j++;
 	}
