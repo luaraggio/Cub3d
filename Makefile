@@ -9,6 +9,7 @@ MLX = $(MLX_PATH)/libmlx.a
 
 CONTAINER_WORKDIR_PATH = "/Users/lraggio/Studies/my_container/"
 BAD_MAPS = ${shell find ./maps/bad}
+GOOD_MAPS = ${shell find ./maps/good}
 
 # Colors
 RESET=\033[0m
@@ -117,4 +118,9 @@ container:
 test_error: re
 	clear
 	@$(foreach map,$(BAD_MAPS),echo processing: $(map); valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(map);)
+	@echo "\n"
+
+test_all: re
+	clear
+	@$(foreach map,$(GOOD_MAPS),echo processing: $(map); valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(map);)
 	@echo "\n"

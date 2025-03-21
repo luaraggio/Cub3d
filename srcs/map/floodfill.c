@@ -36,19 +36,20 @@ int	floodfill(char **map, int i, int j, int total_i)
 	if (j == 0)
 		return (ERROR);
 	map[i][j] = '1';
-	if (error != ERROR && map[i][j + 1] == '0')
+	if (error != ERROR && (map[i][j + 1] == '0' || map[i][j + 1] == ' '))
 		error = floodfill(map, i, j + 1, total_i);
 	else if (error != ERROR && map[i][j + 1] != '1')
 		return (ERROR);
-	if (error != ERROR && map[i][j - 1] == '0')
+	if (error != ERROR && (map[i][j - 1] == '0' || map[i][j - 1] == ' '))
 		error = floodfill(map, i, j - 1, total_i);
 	else if (error != ERROR && map[i][j - 1] != '1')
 		return (ERROR);
-	if (error != ERROR && (i < total_i) && map[i + 1][j] == '0')
+	if (error != ERROR && (i < total_i) && (map[i + 1][j] == '0' || \
+			map[i + 1][j] == ' '))
 		error = floodfill(map, i + 1, j, total_i);
 	else if (error != ERROR && ((i == total_i) || map[i + 1][j] != '1'))
 		return (ERROR);
-	if (error != ERROR && map[i - 1][j] == '0')
+	if (error != ERROR && (map[i - 1][j] == '0' || map[i - 1][j] == ' '))
 		error = floodfill(map, i - 1, j, total_i);
 	else if (error != ERROR && map[i - 1][j] != '1')
 		return (ERROR);
@@ -77,7 +78,7 @@ int	check_extremities(t_map *map)
 	j = 0;
 	while (map->map_file[map->total_i][j])
 	{
-		if (is_player(map->map_file[map->i_start][j]) == NO_ERROR)
+		if (is_player(map->map_file[map->total_i][j]) == NO_ERROR)
 			return (ERROR);
 		j++;
 	}

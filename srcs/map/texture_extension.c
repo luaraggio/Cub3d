@@ -40,6 +40,8 @@ static int	check_individual_extension_xpm( \
 	int	size;
 
 	size = my_strlen(full_direction);
+	while (size > 0 && full_direction[size - 1] == ' ')
+		size--;
 	if (full_direction[size - 4] != '.' || full_direction[size - 3] != 'x' || \
 		full_direction[size - 2] != 'p' || full_direction[size - 1] != 'm')
 	{

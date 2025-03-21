@@ -18,17 +18,20 @@ void	set_texture(t_map *map, char *map_line, char *full_direction)
 {
 	int	j;
 
-	j = 2;
+	j = 0;
+	while (map_line[j] && map_line[j] == ' ')
+		j++;
+	j += 2;
 	while (map_line[j] && map_line[j] == ' ')
 		j++;
 	if (my_strcmp(full_direction, "NO") == 0)
-		map->textures->north_texture = my_strdup(&(map_line[j]));
+		map->textures->north_texture = my_strcdup(&(map_line[j]), ' ');
 	else if (my_strcmp(full_direction, "SO") == 0)
-		map->textures->south_texture = my_strdup(&(map_line[j]));
+		map->textures->south_texture = my_strcdup(&(map_line[j]), ' ');
 	else if (my_strcmp(full_direction, "WE") == 0)
-		map->textures->west_texture = my_strdup(&(map_line[j]));
+		map->textures->west_texture = my_strcdup(&(map_line[j]), ' ');
 	else if (my_strcmp(full_direction, "EA") == 0)
-		map->textures->east_texture = my_strdup(&(map_line[j]));
+		map->textures->east_texture = my_strcdup(&(map_line[j]), ' ');
 }
 
 int	open_texture(t_map *map)

@@ -18,7 +18,7 @@ char	*my_strcdup(const char *s, char c)
 	int		size;
 
 	size = 0;
-	while (s[size] != c)
+	while (s[size] && s[size] != c)
 		size++;
 	dest = (char *)malloc((size + 1) * sizeof(char));
 	if (!dest)
