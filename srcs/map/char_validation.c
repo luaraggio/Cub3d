@@ -29,7 +29,7 @@ int	valid_map_chars(t_map *map)
 			i++;
 		else
 		{
-			my_printf_error(RED "Error\n"
+			my_printf_error(RED "Error\n" \
 				"Invalid characters have been found\n" RESET);
 			return (ERROR);
 		}
@@ -74,35 +74,3 @@ static int	count_players(t_map *map, int i, int *player_count)
 	}
 	return (NO_ERROR);
 }
-
-/*
-int	valid_player(t_map *map)
-{
-	int	i;
-	int	j;
-	int	player_count;
-
-	i = 0;
-	player_count = 0;
-	while (line_belongs_to_map(map->map_file[i]) == ERROR)
-		i++;
-	while (map->map_file[i])
-	{
-		j = 0;
-		while (map->map_file[i][j])
-		{
-			if (is_player(map->map_file[i][j]) == NO_ERROR)
-				player_count++;
-			j++;
-		}
-		i++;
-	}
-	if (player_count != 1)
-	{
-		my_printf_error(RED "Error.\nThere must be one player, and only one,"
-			"in the map\n" RESET);
-		return (ERROR);
-	}
-	return (NO_ERROR);
-}
-*/

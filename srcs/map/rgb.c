@@ -17,14 +17,10 @@ static int	check_rgb_size(int rgb_size);
 
 int	rgb_is_valid(t_map *map, int i, int j)
 {
-	int		num;
 	int		rgb_size;
-	char	*str_n;
 	int		line_size;
 
-	num = 0;
 	rgb_size = 0;
-	str_n = NULL;
 	line_size = my_strlen(map->map_file[i]);
 	while (j <= line_size && map->map_file[i][j])
 	{
