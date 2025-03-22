@@ -156,6 +156,8 @@ char			*dec_to_hex(int n);
 // copy_map.c
 void			copy_map(t_map *map);
 void			map_to_int(t_map *map);
+// check_zeros_outside.c
+int				map_is_closed_by_walls(t_map *map);
 
 //------------------PRINT_GAME------------------//
 
