@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 10:58:56 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/25 13:07:46 by lraggio          ###   ########.fr       */
+/*   Created: 2025/03/25 13:23:38 by lraggio           #+#    #+#             */
+/*   Updated: 2025/03/25 13:26:31 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_BONUS
-# define CUB3D_BONUS
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "mlx/mlx.h"
 # include "my_libft/libft.h"
