@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:12:10 by lraggio           #+#    #+#             */
-/*   Updated: 2025/02/21 14:05:14 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/25 10:37:53 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	main(int argc, char **argv)
 	my_bzero(&player, sizeof(t_player));
 	my_bzero(&game, sizeof(t_game));
 	check_args(argc);
-	my_printf(PINK "Olá! Seja bem-vindo(a) ao início do "
-		"nosso projeto! 🦋🐙\n" RESET);
+	my_printf(PINK "Hi! Welcome to our project! 🦋🐙\n" RESET);
 	if (set_map(&map, argv[1]) == ERROR)
 		return (ERROR);
 	play_cub3d(&game, &map, &player);
