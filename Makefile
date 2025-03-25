@@ -20,12 +20,12 @@ BAD_MAPS = ${shell find ./maps/bad}
 GOOD_MAPS = ${shell find ./maps/good}
 
 #MAP = maps/good/test_map.cub
-MAP = maps/good/big.cub
+#MAP = maps/good/big.cub
 #MAP = maps/good/library.cub
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
-#MAP = maps/good/test_textures.cub
-MAP = maps/good/subject_map.cub
+MAP = maps/good/test_whitespace.cub
+#MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/map_not_closed_with_walls_4.cub
 #MAP = maps/bad/map_starts_with_W_in_middle_of_map.cub
@@ -90,9 +90,9 @@ bonus/game/initializations.c \
 bonus/raycasting/raycasting.c \
 bonus/raycasting/raycasting_utils.c \
 bonus/raycasting/raycasting_render.c \
-bonus/print_game/minimap_system/print_2d.c \
-bonus/print_game/minimap_system/print_2d_utils.c \
-bonus/print_game/print_game.c
+bonus/print_game/minimap_system/print_2d_bonus.c \
+bonus/print_game/minimap_system/print_2d_utils_bonus.c \
+bonus/print_game/print_game_bonus.c
 
 OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
@@ -140,7 +140,7 @@ run: re cube
 
 norm:
 	@echo "$(PURPLE)Passing Norminette with flag -R CheckForbiddenSourceHeader: $(RESET)"
-	@-norminette -R CheckForbiddenSourceHeader $(SRCS) includes/cub3d.h includes/my_libft includes/enums.h includes/structs.h includes/cub3d_bonus.h
+	@-norminette -R CheckForbiddenSourceHeader $(SRCS) $(SRCS_BONUS) includes/cub3d.h includes/my_libft includes/enums.h includes/structs.h includes/cub3d_bonus.h
 
 val: re
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
