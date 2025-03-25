@@ -140,7 +140,7 @@ run: re cube
 
 norm:
 	@echo "$(PURPLE)Passing Norminette with flag -R CheckForbiddenSourceHeader: $(RESET)"
-	@-norminette -R CheckForbiddenSourceHeader $(SRCS) includes/cub3d.h includes/my_libft includes/enums.h includes/structs.h
+	@-norminette -R CheckForbiddenSourceHeader $(SRCS) includes/cub3d.h includes/my_libft includes/enums.h includes/structs.h includes/cub3d_bonus.h
 
 val: re
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
