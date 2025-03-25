@@ -64,9 +64,14 @@ void	draw_texture_column(t_game *game, t_image *texture, t_raycast *ray,
 	while (y < ray->draw_end)
 	{
 		tex_y = calculate_tex_y(y, ray);
-		color = *(unsigned int *)(texture->addr + (tex_y * texture->size_line
-					+ tex_x * (texture->bpp / 8)));
-		my_mlx_pixel_put(game->image, y, x, color);
+		if (tex_x >= 0 && tex_x < TEXTURE_SIZE && \
+				tex_y >= 0 && tex_y < TEXTURE_SIZE)
+		{
+			color = *(unsigned int *)(texture->addr + \
+						(tex_y * texture->size_line \
+						+ tex_x * (texture->bpp / 8)));
+			my_mlx_pixel_put(game->image, y, x, color);
+		}
 		y++;
 	}
 }

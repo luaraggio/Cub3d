@@ -41,9 +41,9 @@ static int	check_zeros_in_lines_start(t_map *smap, char **map)
 		j = 0;
 		while (map[i][j] && map[i][j] == ' ')
 			j++;
-		if (map[i][j] == '1')
+		if (map[i][j] == '1' || j == (int)my_strlen(map[i]))
 			i++;
-		else
+		else if (map[i][j] == '0')
 		{
 			my_printf_error(RED "Error\n"
 				"Map is not closed by walls\n" RESET);
@@ -64,9 +64,9 @@ static int	check_zeros_in_lines_end(t_map *smap, char **map)
 		j = my_strlen(map[i]) - 1;
 		while (j != 0 && map[i][j] == ' ')
 			j--;
-		if (map[i][j] == '1')
+		if (map[i][j] == '1' || j == 0)
 			i++;
-		else
+		else if (map[i][j] == '0')
 		{
 			my_printf_error(RED "Error\n" \
 				"Map is not closed by walls\n" RESET);
@@ -88,16 +88,15 @@ static int	check_zeros_in_columns_start(t_map *smap, char **map)
 		i = smap->i_start;
 		while (i <= smap->total_i)
 		{
-			if (map[i][j] == ' ')
-				i++;
-			else if (map[i][j] == '1')
+			if (map[i][j] == '1' || i == smap->total_i)
 				break ;
-			else
+			else if (map[i][j] == '0')
 			{
 				my_printf_error(RED "Error\n" \
 					"Map is not closed by walls\n" RESET);
 				return (ERROR);
 			}
+			i++;
 		}
 		j++;
 	}
@@ -116,16 +115,15 @@ static int	check_zeros_in_columns_end(t_map *smap, char **map)
 		i = smap->total_i;
 		while (i >= smap->i_start)
 		{
-			if (map[i][j] == ' ')
-				i--;
-			else if (map[i][j] == '1')
+			if (map[i][j] == '1' || i == smap->i_start)
 				break ;
-			else
+			else if (map[i][j] == '0')
 			{
 				my_printf_error(RED "Error\n"
 					"Map is not closed by walls\n" RESET);
 				return (ERROR);
 			}
+			i--;
 		}
 		j++;
 	}
