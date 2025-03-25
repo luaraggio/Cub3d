@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_zeros_outside.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 11:03:09 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/03/22 11:03:11 by lpaixao-         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:17:45 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static int	check_zeros_in_columns_start(t_map *smap, char **map)
 	j = 0;
 	while (j < (int)my_strlen(map[i]))
 	{
+		i = smap->i_start;
 		while (i <= smap->total_i)
 		{
 			if (map[i][j] == ' ')
@@ -112,6 +113,7 @@ static int	check_zeros_in_columns_end(t_map *smap, char **map)
 	j = 0;
 	while (j < (int)my_strlen(map[i]))
 	{
+		i = smap->total_i;
 		while (i >= smap->i_start)
 		{
 			if (map[i][j] == ' ')
