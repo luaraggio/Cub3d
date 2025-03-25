@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_2d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:53:17 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/03/21 15:45:00 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:21:35 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes/cub3d_bonus.h"
 
 void	print_2dmap(t_game *game, char **map_2d, t_player *player)
 {

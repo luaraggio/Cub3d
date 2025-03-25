@@ -6,11 +6,11 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 20:29:02 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/03/25 11:28:27 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:04:10 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3d_bonus.h"
 
 static int	check_texture_access(int *fd, char *texture, char *text_nickname);
 

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_2d_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:37:08 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/21 15:45:29 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:21:26 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../../includes/cub3d_bonus.h"
 
 void	found_wall(t_game *game, t_map2d *map_2d, int i, int j)
 {
