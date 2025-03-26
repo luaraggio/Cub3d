@@ -133,10 +133,15 @@ fclean: clean
 
 re: fclean all
 
+re_bonus: fclean bonus
+
 cube:
 	./$(NAME) $(MAP)
 
 run: re cube
+
+run_bonus: re_bonus
+	./$(NAME_BONUS) $(MAP)
 
 norm:
 	@echo "$(PURPLE)Passing Norminette with flag -R CheckForbiddenSourceHeader: $(RESET)"
@@ -147,6 +152,9 @@ val: re
 
 val2:
 	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(MAP)
+
+val_bonus: re_bonus
+	valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME_BONUS) $(MAP)
 
 run2:
 	./$(NAME) $(MAP)
@@ -159,4 +167,9 @@ test_error: re
 test_all: re
 	clear
 	@$(foreach map,$(GOOD_MAPS),echo processing: $(map); valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME) $(map);)
+	@echo "\n"
+
+test_all_bonus: re_bonus
+	clear
+	@$(foreach map,$(GOOD_MAPS),echo processing: $(map); valgrind  --leak-check=full --show-leak-kinds=all --track-fds=yes ./$(NAME_BONUS) $(map);)
 	@echo "\n"
