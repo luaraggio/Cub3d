@@ -24,11 +24,11 @@ GOOD_MAPS = ${shell find ./maps/good}
 #MAP = maps/good/library.cub
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
-MAP = maps/good/test_whitespace.cub
+#MAP = maps/good/test_whitespace.cub
 #MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/map_not_closed_with_walls_4.cub
-#MAP = maps/bad/map_starts_with_W_in_middle_of_map.cub
+MAP = maps/bad/test_map.cub
 
 SRCS = \
 srcs/main.c \
