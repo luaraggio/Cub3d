@@ -25,10 +25,10 @@ GOOD_MAPS = ${shell find ./maps/good}
 #MAP = maps/good/matrix.cub
 #MAP = maps/good/test_pos_bottom.cub;
 #MAP = maps/good/test_whitespace.cub
-#MAP = maps/good/subject_map.cub
+MAP = maps/good/subject_map.cub
 #MAP = maps/bad/empty.cub
 #MAP = maps/bad/map_not_closed_with_walls_4.cub
-MAP = maps/bad/test_map.cub
+#MAP = maps/bad/test_map.cub
 
 SRCS = \
 srcs/main.c \
