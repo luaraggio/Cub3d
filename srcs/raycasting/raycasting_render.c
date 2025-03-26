@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_render.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 20:55:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/21 14:11:25 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/26 15:41:21 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	select_texture(t_game *game, t_raycast *ray, t_image **texture)
 	else
 	{
 		if (ray->dir_y > 0)
-			*texture = game->map->textures->east_texture_img;
-		else
 			*texture = game->map->textures->west_texture_img;
+		else
+			*texture = game->map->textures->east_texture_img;
 	}
 }
 
