@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_render.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lraggio <lraggio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 20:55:53 by lraggio           #+#    #+#             */
-/*   Updated: 2025/03/25 13:05:08 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/26 15:41:21 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d_bonus.h"
+#include "../../includes/cub3d.h"
 
 void	select_texture(t_game *game, t_raycast *ray, t_image **texture)
 {
@@ -24,9 +24,9 @@ void	select_texture(t_game *game, t_raycast *ray, t_image **texture)
 	else
 	{
 		if (ray->dir_y > 0)
-			*texture = game->map->textures->east_texture_img;
-		else
 			*texture = game->map->textures->west_texture_img;
+		else
+			*texture = game->map->textures->east_texture_img;
 	}
 }
 
@@ -64,9 +64,14 @@ void	draw_texture_column(t_game *game, t_image *texture, t_raycast *ray,
 	while (y < ray->draw_end)
 	{
 		tex_y = calculate_tex_y(y, ray);
-		color = *(unsigned int *)(texture->addr + (tex_y * texture->size_line
-					+ tex_x * (texture->bpp / 8)));
-		my_mlx_pixel_put(game->image, y, x, color);
+		if (tex_x >= 0 && tex_x < TEXTURE_SIZE && \
+				tex_y >= 0 && tex_y < TEXTURE_SIZE)
+		{
+			color = *(unsigned int *)(texture->addr + \
+						(tex_y * texture->size_line \
+						+ tex_x * (texture->bpp / 8)));
+			my_mlx_pixel_put(game->image, y, x, color);
+		}
 		y++;
 	}
 }

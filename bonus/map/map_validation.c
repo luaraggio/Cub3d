@@ -6,11 +6,11 @@
 /*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:13:07 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/03/25 13:03:56 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 13:44:41 by lraggio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d_bonus.h"
+#include "../../includes/cub3d.h"
 
 static int	map_is_empty(t_map *map);
 static int	check_map_line(t_map *map, int i);
@@ -42,9 +42,9 @@ int	valid_map(t_map *map)
 		return (ERROR);
 	if (valid_player(map) == ERROR)
 		return (ERROR);
-	if (map_is_closed_by_walls(map) == ERROR)
-		return (ERROR);
 	if (map_is_closed(map) == ERROR)
+		return (ERROR);
+	if (map_is_closed_by_walls(map) == ERROR)
 		return (ERROR);
 	return (NO_ERROR);
 }

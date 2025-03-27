@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lraggio <lraggio@student.42.rio>           +#+  +:+       +#+        */
+/*   By: lpaixao- <lpaixao-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:14:58 by lpaixao-          #+#    #+#             */
-/*   Updated: 2025/03/25 13:04:04 by lraggio          ###   ########.fr       */
+/*   Updated: 2025/03/21 14:14:59 by lpaixao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d_bonus.h"
+#include "../../includes/cub3d.h"
 
 static int	process_rgb_value(t_map *map, int i, int *j, int *rgb_size);
 static int	check_rgb_size(int rgb_size);
@@ -25,12 +25,13 @@ int	rgb_is_valid(t_map *map, int i, int j)
 	while (j <= line_size && map->map_file[i][j])
 	{
 		if ((my_isnum(map->map_file[i][j]) != 0 \
-				|| map->map_file[i][j] == '-' \
 				|| map->map_file[i][j] == '+') && rgb_size < 3)
 		{
 			if (process_rgb_value(map, i, &j, &rgb_size) == ERROR)
 				return (ERROR);
 		}
+		else if (map->map_file[i][j] == '-')
+			return (check_rgb_size(rgb_size));
 		j++;
 	}
 	return (check_rgb_size(rgb_size));

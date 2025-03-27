@@ -25,12 +25,13 @@ int	rgb_is_valid(t_map *map, int i, int j)
 	while (j <= line_size && map->map_file[i][j])
 	{
 		if ((my_isnum(map->map_file[i][j]) != 0 \
-				|| map->map_file[i][j] == '-' \
 				|| map->map_file[i][j] == '+') && rgb_size < 3)
 		{
 			if (process_rgb_value(map, i, &j, &rgb_size) == ERROR)
 				return (ERROR);
 		}
+		else if (map->map_file[i][j] == '-')
+			return (check_rgb_size(rgb_size));
 		j++;
 	}
 	return (check_rgb_size(rgb_size));
