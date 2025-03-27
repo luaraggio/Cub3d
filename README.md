@@ -77,7 +77,7 @@ This will launch the game with the specified .cub map. Replace maps/example_map.
 - **S**: Move backward.
 - **A**: Move to the left.
 - **A**: Move to the right.
-- **->**: Rotate left.
+- **<-**: Rotate left.
 - **->**: Rotate right.
 - **Esc**: Quit the game.
 
