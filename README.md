@@ -75,8 +75,10 @@ This will launch the game with the specified .cub map. Replace maps/example_map.
 
 - **W**: Move forward.
 - **S**: Move backward.
-- **A**: Rotate left.
-- **D**: Rotate right.
+- **A**: Move to the left.
+- **A**: Move to the right.
+- **->**: Rotate left.
+- **->**: Rotate right.
 - **Esc**: Quit the game.
 
 ## Makefile
@@ -85,14 +87,13 @@ The Makefile includes several useful targets for managing the project.
 ### Usage:
 
 ``` bash
-make        # Builds the project
-make clean  # Removes object files
-make fclean # Removes object files and executable
-make re     # Rebuilds the project from scratch
+make           # Builds the project
+make bonus     # Builds the project with bonuses
+make clean     # Removes object files
+make fclean    # Removes object files and executable
+make re        # Rebuilds the project from scratch
+make run       # Runs project with a MAP already initializated in Makefile
+make run_bonus # Runs project with a MAP already initializated in Makefile
 make valgrind  # Runs Valgrind to check for memory leaks
-make norm    # Runs Norminette checks
+make norm      # Runs Norminette checks in all files (except for mlx files)
 ```
-## Conclusion
-
-Cub3D is a fun and educational project that provides a simple 3D raycasting engine. It gives you the opportunity to dive into computer graphics, map parsing, and handling user input in a game environment. By working with the project, you'll gain valuable experience in programming with C, particularly in graphics rendering, memory management, and system-level programming.
-
